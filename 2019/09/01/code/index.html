@@ -10,21 +10,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.4.0">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.4.0">
-  <link rel="mask-icon" href="/images/logo.svg?v=7.4.0" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/outt-iao.github.io/images/apple-touch-icon-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="/outt-iao.github.io/images/favicon-32x32-next.png?v=7.4.0">
+  <link rel="icon" type="image/png" sizes="16x16" href="/outt-iao.github.io/images/favicon-16x16-next.png?v=7.4.0">
+  <link rel="mask-icon" href="/outt-iao.github.io/images/logo.svg?v=7.4.0" color="#222">
 
-<link rel="stylesheet" href="/css/main.css?v=7.4.0">
+<link rel="stylesheet" href="/outt-iao.github.io/css/main.css?v=7.4.0">
 
 
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
+<link rel="stylesheet" href="/outt-iao.github.io/lib/font-awesome/css/font-awesome.min.css?v=4.7.0">
 
 
 <script id="hexo-configurations">
   var NexT = window.NexT || {};
   var CONFIG = {
-    root: '/',
+    root: '/outt-iao.github.io/',
     scheme: 'Gemini',
     version: '7.4.0',
     exturl: false,
@@ -132,7 +132,7 @@
   <div class="site-meta">
 
     <div>
-      <a href="/" class="brand" rel="start">
+      <a href="/outt-iao.github.io/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">V'uyBlog</span>
         <span class="logo-line-after"><i></i></span>
@@ -150,6 +150,9 @@
 </div>
 
 
+
+
+
 <nav class="site-nav">
   
   <ul id="menu" class="menu">
@@ -161,7 +164,7 @@
       
     
 
-    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
+    <a href="/outt-iao.github.io/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>Home</a>
 
   </li>
       
@@ -172,29 +175,7 @@
       
     
 
-    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-tags">
-      
-    
-
-    <a href="/404.md" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>Tags</a>
-
-  </li>
-      
-      
-      
-        
-        <li class="menu-item menu-item-categories">
-      
-    
-
-    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>Categories</a>
+    <a href="/outt-iao.github.io/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>About</a>
 
   </li>
       
@@ -205,7 +186,7 @@
       
     
 
-    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
+    <a href="/outt-iao.github.io/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>Archives</a>
 
   </li>
       <li class="menu-item menu-item-search">
@@ -238,6 +219,47 @@
 <div class="search-pop-overlay"></div>
 
   </div>
+
+
+<!--网站计时-->
+<script>
+    function secondToDate(second) {
+        if (!second) {
+            return 0;
+        }
+        var time = new Array(0, 0, 0, 0, 0);
+        if (second >= 365 * 24 * 3600) {
+            time[0] = parseInt(second / (365 * 24 * 3600));
+            second %= 365 * 24 * 3600;
+        }
+        if (second >= 24 * 3600) {
+            time[1] = parseInt(second / (24 * 3600));
+            second %= 24 * 3600;
+        }
+        if (second >= 3600) {
+            time[2] = parseInt(second / 3600);
+            second %= 3600;
+        }
+        if (second >= 60) {
+            time[3] = parseInt(second / 60);
+            second %= 60;
+        }
+        if (second > 0) {
+            time[4] = second;
+        }
+        return time;
+    }</script>
+<script type="text/javascript" language="javascript">
+    function setTime() {
+        var create_time = Math.round(new Date(Date.UTC(2017, 01, 23, 11, 42, 23)).getTime() / 1000);
+        var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);
+        currentTime = secondToDate((timestamp - create_time));
+        currentTimeHtml = '网站勉强维持了：' + currentTime[0] + '年 ' + currentTime[1] + '天 '
+                + currentTime[2] + '时 ' + currentTime[3] + '分 ' + currentTime[4]
+                + '秒';
+        document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+    }    setInterval(setTime, 1000);
+</script>
 </div>
     </header>
 
@@ -261,12 +283,12 @@
   
   
   <div class="post-block post">
-    <link itemprop="mainEntityOfPage" href="https://outt-iao.github.io/2019/09/01/code/">
+    <link itemprop="mainEntityOfPage" href="https://outt-iao.github.io/outt-iao.github.io/2019/09/01/code/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="uycool">
       <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="image" content="/outt-iao.github.io/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -325,7 +347,7 @@
       
       <span class="post-meta-item-text">Valine: </span>
     
-    <a title="valine" href="/2019/09/01/code/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/2019/09/01/code/" itemprop="commentCount"></span></a>
+    <a title="valine" href="/outt-iao.github.io/2019/09/01/code/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/outt-iao.github.io/2019/09/01/code/" itemprop="commentCount"></span></a>
   </span>
   
   
@@ -369,7 +391,7 @@
 
             <div class="post-nav-prev post-nav-item">
               
-                <a href="/2019/09/02/write/" rel="prev" title="Write">
+                <a href="/outt-iao.github.io/2019/09/02/write/" rel="prev" title="Write">
                   Write <i class="fa fa-chevron-right"></i>
                 </a>
               
@@ -431,7 +453,7 @@
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image"
-      src="/images/avatar.gif"
+      src="/outt-iao.github.io/images/avatar.gif"
       alt="uycool">
   <p class="site-author-name" itemprop="name">uycool</p>
   <div class="site-description" itemprop="description"></div>
@@ -439,7 +461,7 @@
   <nav class="site-state motion-element">
       <div class="site-state-item site-state-posts">
         
-          <a href="/archives/">
+          <a href="/outt-iao.github.io/archives/">
         
           <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
@@ -462,15 +484,13 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love" id="animate">
-    <i class="fa fa-user"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">uycool</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019,时间过得真快</span>
 </div>
-  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.9.0</div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.4.0</div>
+
+<span id="htmer_time" "></span></font>
+
+
+
 
         
 <div class="busuanzi-count">
@@ -514,14 +534,14 @@
 
     
   
-  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  <script src="/lib/anime.min.js?v=3.1.0"></script>
-  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-<script src="/js/utils.js?v=7.4.0"></script><script src="/js/motion.js?v=7.4.0"></script>
-<script src="/js/schemes/pisces.js?v=7.4.0"></script>
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/outt-iao.github.io/lib/canvas-nest/canvas-nest.min.js"></script>
+  <script src="/outt-iao.github.io/lib/anime.min.js?v=3.1.0"></script>
+  <script src="/outt-iao.github.io/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  <script src="/outt-iao.github.io/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/outt-iao.github.io/js/utils.js?v=7.4.0"></script><script src="/outt-iao.github.io/js/motion.js?v=7.4.0"></script>
+<script src="/outt-iao.github.io/js/schemes/pisces.js?v=7.4.0"></script>
 
-<script src="/js/next-boot.js?v=7.4.0"></script>
+<script src="/outt-iao.github.io/js/next-boot.js?v=7.4.0"></script>
 
 
 
@@ -534,7 +554,7 @@
 
 
 
-  <script src="/js/local-search.js?v=7.4.0"></script>
+  <script src="/outt-iao.github.io/js/local-search.js?v=7.4.0"></script>
 
 
 
@@ -580,5 +600,5 @@ NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
 }, window.Valine);
 </script>
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":90,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+<script src="/outt-iao.github.io/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginModelPath":"assets/","model":{"jsonPath":"/outt-iao.github.io/live2dw/assets/koharu.model.json"},"display":{"position":"right","width":90,"height":140},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
