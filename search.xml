@@ -4,6 +4,12 @@
     <title><![CDATA[sublime安装中文插件教程]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2Fsublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE%2F</url>
     <content type="text"><![CDATA[使用 Ctrl+ ~ 快捷键打开或者 View-&gt;Show Console 菜单打开命令行,复制粘贴如下代码 1$ import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) 按下enter确定安装,等待安装安装完毕后,重启sublime，此时就可以在Preferences菜单下看到Package Settings和Package Control两个菜单了 完了之后打开 “Preferences-&gt;Package Control” 输入 “install package” 等待服务器上加载插件列表. 加载完成后输入 “localization” 找到他回车. 安装完成重启一下 界面已经换成中文了.]]></content>
+      <categories>
+        <category>软件</category>
+      </categories>
+      <tags>
+        <tag>教程篇</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[富士施乐故障维修代码]]></title>

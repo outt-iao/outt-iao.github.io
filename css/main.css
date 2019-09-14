@@ -1656,7 +1656,6 @@ article:last-child .post-eof {
   margin: 0 auto;
   max-width: 120px;
   padding: 2px;
-  border-radius: 50%;
 }
 .site-author-name {
   color: #222;
@@ -1681,10 +1680,13 @@ article:last-child .post-eof {
   margin-bottom: 10px;
   margin-right: 10px;
   vertical-align: middle;
+  transition-delay: 0s;
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ffff73;
+  background: #ff7dff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2633,7 +2635,6 @@ ul.breadcrumb li + li:last-child {
 }
 .links-of-author-item {
   margin: 5px 0 0;
-  width: 50%;
 }
 .links-of-author-item a,
 .links-of-author-item span.exturl {
