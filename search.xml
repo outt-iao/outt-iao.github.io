@@ -24,6 +24,6 @@
   <entry>
     <title><![CDATA[常用代码&快捷方式]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F01%2F%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81.html%2F</url>
-    <content type="text"><![CDATA[[阅读更多] 生成 1$ hexo g 本地预览 1$ hexo s -p 5555 上传至服务器 1$ hexo d 新建文章 1$ hexo new "名称" 清缓存 1$ hexo clean 折叠文章 1$ &lt;!-- more --&gt; WIN+S的日常 123$ 控制面板=control panel $ 服务=service$ 注册表=regedit WIN+R日常 123$ 系统激活时间=Slmgr.vbs -xpr$ 系统版本=winver$ DirectX诊断工具=dxdiag]]></content>
+    <content type="text"><![CDATA[[阅读更多] 生成 1$ hexo g 本地预览 1$ hexo s -p 5555 上传至服务器 1$ hexo d 新建文章 1$ hexo new "名称" 清缓存 1$ hexo clean 折叠文章 1$ &lt;!-- more --&gt; WIN+S的日常 123$ 控制面板=control panel $ 服务=service$ 注册表=regedit WIN+R日常 12345$ 系统激活时间=Slmgr.vbs -xpr$ 系统版本=winver$ DirectX诊断工具=dxdiag$ 启动项管理=msconfig$ 刷新本地DNS=ipconfig /flushdns]]></content>
   </entry>
 </search>
