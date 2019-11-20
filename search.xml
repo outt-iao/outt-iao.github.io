@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[一些天梯图]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2F%E4%B8%BA%E4%BD%A0%E6%8C%89%E4%B8%8BF%E9%94%AE.html%2F</url>
-    <content type="text"><![CDATA[为你按下F键点这里桌面天梯图点这里BIOS启动按键点这里]]></content>
+    <title><![CDATA[markdown语法]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2Fmarkdown.html%2F</url>
+    <content type="text"><![CDATA[搜索”markdown语法”]]></content>
+      <categories>
+        <category>图片</category>
+      </categories>
+      <tags>
+        <tag>知识篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[富士施乐进维修模式]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F12%2F%E8%BF%9B%E7%BB%B4%E4%BF%AE%E6%A8%A1%E5%BC%8F.html%2F</url>
+    <content type="text"><![CDATA[管理员模式: 维修模式 当机器启动完成后，持续按住0按钮4秒以上，并且按下“启动”按钮，当机器面板显示4条横线，输入6789按下开始键，机器显示6个光标时，机器进入维修模式 2220\2420\2320\2520 管理员模式： 机器正常启动完成后，按认证（登陆），输入密码：11111，机器即可进入管理员模式。 当机器启动完成后，持续按住0按钮4秒以上，并且按下“启动”按钮，按照提示输入密码6789按确认，机器即进入维修模式 2060\3060\3065\4070\5070\6080\7080\C2260\C2263\C2265\C2275\C3375\C4475\C5575\C7775\C2271\C3371\C4471\C5571\C6671\C7771 管理员模式 机器正常启动完成后，按认证（登陆），输入密码：11111，机器即可进入管理员模式 维修模式： 1、机器启动完后，按住0键5秒后放开0键按开始键，密码：6789，如下图: 2、点规格设定/登记-&gt;通用设定-&gt;维护诊断，机器即进入维修模式 备注：富士施乐所有复合机网页登陆的用户名是：11111，密码x-admin]]></content>
+      <categories>
+        <category>图文</category>
+      </categories>
+      <tags>
+        <tag>教程篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[一些图片]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F10%2F%E4%B8%80%E4%BA%9B%E5%9B%BE%E7%89%87.html%2F</url>
+    <content type="text"><![CDATA[U盘启动CPU天梯图BIOS启动百度F码表瞄点码表电源推荐]]></content>
       <categories>
         <category>图片</category>
       </categories>
