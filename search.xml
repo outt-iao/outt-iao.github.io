@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[音乐]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F11%2F23%2F%E9%9F%B3%E4%B9%90.html%2F</url>
+    <content type="text"><![CDATA[[[player id=’3087712841’ type=’collect’/]]]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[机房构图]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F11%2F21%2F%E6%9C%BA%E6%88%BF%E6%9E%84%E5%9B%BE.html%2F</url>
     <content type="text"><![CDATA[以及机房构图 AP安装指南: 寻线,将一段插到AP另一端插到交换机 如果有AC控制器,将用AC后台对AP进行设置 AC后台图AP设置无限设置]]></content>
@@ -16,11 +21,6 @@
     <content type="text"><![CDATA[限制彩色设置账号: 点击 认证 进入到👇图界面/font&gt; 点击 规格设定/登记 进入到👇图界面/font&gt; 点击 认证/总计管理 进入到👇图界面/font&gt; 点击 用户登记/总计确认 进入到👇图界面/font&gt; 图中显示的数字就是账号. 里面可以具体设置 打印 扫描 以及复印 是否需要实用账号限制.黑白彩打张数等限制.]]></content>
   </entry>
   <entry>
-    <title><![CDATA[他人教程]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2F%E4%BB%96%E4%BA%BA%E6%95%99%E7%A8%8B.html%2F</url>
-    <content type="text"><![CDATA[插入音乐 markdown]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[markdown语法]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2Fmarkdown.html%2F</url>
     <content type="text"><![CDATA[搜索”markdown语法”]]></content>
@@ -30,6 +30,11 @@
       <tags>
         <tag>知识篇</tag>
       </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[他人教程]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2F%E4%BB%96%E4%BA%BA%E6%95%99%E7%A8%8B.html%2F</url>
+    <content type="text"><![CDATA[插入音乐 markdown]]></content>
   </entry>
   <entry>
     <title><![CDATA[进维修模式]]></title>
@@ -45,23 +50,12 @@
   <entry>
     <title><![CDATA[一些图片]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F10%2F%E4%B8%80%E4%BA%9B%E5%9B%BE%E7%89%87.html%2F</url>
-    <content type="text"><![CDATA[U盘启动CPU天梯图BIOS启动百度F码表瞄点码表电源推荐]]></content>
+    <content type="text"><![CDATA[启动类 U盘启动BIOS启动 查看类 CPU天梯图电源推荐 输入法类 百度F码表瞄点码表]]></content>
       <categories>
         <category>图片</category>
       </categories>
       <tags>
         <tag>实用篇</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[扫描指南]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2F%E6%89%AB%E6%8F%8F%E6%8C%87%E5%8D%97.html%2F</url>
-    <content type="text"><![CDATA[“关闭密码保护(访问该电脑共享文件夹不需要账号密码) “安全”中’组或用户名’设置共享用户的权限为’完全控制’ “关闭防火墙,win+s 输入ser 打开服务找到 关闭’Windows Defender Firewall’ “卸载软件”中’启用或关闭windows功能’勾选SMB确定 “服务”中启动这个服务 “Workstation” “管理工具-本地安全策略-用户权限分配中(‘拒绝从网络访问到这台机’中删除所有)]]></content>
-      <categories>
-        <category>文档</category>
-      </categories>
-      <tags>
-        <tag>知识篇</tag>
       </tags>
   </entry>
   <entry>
@@ -73,6 +67,17 @@
       </categories>
       <tags>
         <tag>教程篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[扫描指南]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2F%E6%89%AB%E6%8F%8F%E6%8C%87%E5%8D%97.html%2F</url>
+    <content type="text"><![CDATA[“关闭密码保护(访问该电脑共享文件夹不需要账号密码) “安全”中’组或用户名’设置共享用户的权限为’完全控制’ “关闭防火墙,win+s 输入ser 打开服务找到 关闭’Windows Defender Firewall’ “卸载软件”中’启用或关闭windows功能’勾选SMB确定 “服务”中启动这个服务 “Workstation” “管理工具-本地安全策略-用户权限分配中(‘拒绝从网络访问到这台机’中删除所有)]]></content>
+      <categories>
+        <category>文档</category>
+      </categories>
+      <tags>
+        <tag>知识篇</tag>
       </tags>
   </entry>
   <entry>
