@@ -6,19 +6,9 @@
     <content type="text"><![CDATA[以及机房构图 AP安装指南: 寻线,将一段插到AP另一端插到交换机 如果有AC控制器,将用AC后台对AP进行设置 AC后台图AP设置无限设置]]></content>
   </entry>
   <entry>
-    <title><![CDATA[百度输入法修改皮肤]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F11%2F20%2F%E7%99%BE%E5%BA%A6%E6%94%B9%E7%9A%AE%E8%82%A4.html%2F</url>
-    <content type="text"><![CDATA[关于百度输入法拆分讲解讲的非常细,认真去看便能领悟其真谛点我查看]]></content>
-  </entry>
-  <entry>
     <title><![CDATA[彩色限制]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F20%2F%E5%BD%A9%E8%89%B2%E9%99%90%E5%88%B6.html%2F</url>
-    <content type="text"><![CDATA[限制彩色设置账号: 点击 认证 进入到👇图界面/font&gt; 点击 规格设定/登记 进入到👇图界面/font&gt; 点击 认证/总计管理 进入到👇图界面/font&gt; 点击 用户登记/总计确认 进入到👇图界面/font&gt; 图中显示的数字就是账号. 里面可以具体设置 打印 扫描 以及复印 是否需要实用账号限制.黑白彩打张数等限制.]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[他人教程]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F13%2F%E5%BC%95%E7%94%A8%E6%95%99%E7%A8%8B.html%2F</url>
-    <content type="text"><![CDATA[插入音乐 markdown]]></content>
+    <content type="text"><![CDATA[限制彩色设置账号: 图中显示的数字就是账号. 里面可以具体设置 打印 扫描 以及复印 是否需要实用账号限制.黑白彩打张数等限制.]]></content>
   </entry>
   <entry>
     <title><![CDATA[进维修模式]]></title>
@@ -32,9 +22,9 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[一些图片]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F10%2F%E4%B8%80%E4%BA%9B%E5%9B%BE%E7%89%87.html%2F</url>
-    <content type="text"><![CDATA[启动类 U盘启动BIOS启动 查看类 CPU天梯图电源推荐 输入法类 百度F码表瞄点码表]]></content>
+    <title><![CDATA[收藏]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F10%2F%E6%94%B6%E8%97%8F.html%2F</url>
+    <content type="text"><![CDATA[启动类 U盘启动BIOS启动 查看类 CPU天梯图电源推荐 输入法类 百度F码表瞄点码表 引用教程 插入音乐markdown百度输入法拆解详细说明京瓷驱动下载富士施乐驱动下载]]></content>
       <categories>
         <category>图片</category>
       </categories>
@@ -43,8 +33,19 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[sublime设置中文]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2FSublime%E4%B8%AD%E6%96%87%E8%AE%BE%E7%BD%AE.html%2F</url>
+    <title><![CDATA[扫描指南]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2F%E6%89%AB%E6%8F%8F%E6%8C%87%E5%8D%97.html%2F</url>
+    <content type="text"><![CDATA[1:关闭密码保护(访问该电脑共享文件夹不需要账号密码)2:安全”中’组或用户名’设置共享用户的权限为’完全控制’3:关闭防火墙,win+s 输入ser 打开服务找到 关闭’Windows Defender Firewall’4:卸载软件”中’启用或关闭windows功能’勾选SMB确定5:”服务”中启动这个服务 “Workstation”6:管理工具-本地安全策略-用户权限分配中(‘拒绝从网络访问到这台机’中删除所有)]]></content>
+      <categories>
+        <category>文档</category>
+      </categories>
+      <tags>
+        <tag>知识篇</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[sublime中文]]></title>
+    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2FSublime%E4%B8%AD%E6%96%87.html%2F</url>
     <content type="text"><![CDATA[使用 Ctrl+ ~ 快捷键打开或者 View-&gt;Show Console 菜单打开命令行,复制粘贴如下代码 1$ import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read()) 按下enter确定安装,等待安装安装完毕后,重启sublime，此时就可以在Preferences菜单下看到Package Settings和Package Control两个菜单了 完了之后打开 “Preferences-&gt;Package Control” 输入 “install package” 等待服务器上加载插件列表. 加载完成后输入 “localization” 找到他回车. 安装完成重启一下 界面已经换成中文了.]]></content>
       <categories>
         <category>软件</category>
@@ -54,19 +55,8 @@
       </tags>
   </entry>
   <entry>
-    <title><![CDATA[扫描指南]]></title>
-    <url>%2Foutt-iao.github.io%2F2019%2F09%2F06%2F%E6%89%AB%E6%8F%8F%E6%8C%87%E5%8D%97.html%2F</url>
-    <content type="text"><![CDATA[一:”关闭密码保护(访问该电脑共享文件夹不需要账号密码)二:”安全”中’组或用户名’设置共享用户的权限为’完全控制’三:”关闭防火墙,win+s 输入ser 打开服务找到 关闭’Windows Defender Firewall’四:”卸载软件”中’启用或关闭windows功能’勾选SMB确定五:”服务”中启动这个服务 “Workstation”六:”管理工具-本地安全策略-用户权限分配中(‘拒绝从网络访问到这台机’中删除所有)]]></content>
-      <categories>
-        <category>文档</category>
-      </categories>
-      <tags>
-        <tag>知识篇</tag>
-      </tags>
-  </entry>
-  <entry>
     <title><![CDATA[常用代码]]></title>
     <url>%2Foutt-iao.github.io%2F2019%2F09%2F01%2F%E5%B8%B8%E7%94%A8%E4%BB%A3%E7%A0%81.html%2F</url>
-    <content type="text"><![CDATA[生成 1$ hexo g 本地预览 1$ hexo s -p 5555 上传至服务器 1$ hexo d 新建文章 1$ hexo new "名称" 清缓存 1$ hexo clean 折叠文章 1$ &lt;!-- more --&gt; WIN+S的日常 123$ 控制面板=control panel $ 服务=service$ 注册表=regedit WIN+R日常 12345$ 系统激活时间=Slmgr.vbs -xpr$ 系统版本=winver$ DirectX诊断工具=dxdiag$ 启动项管理=msconfig$ 刷新本地DNS=ipconfig /flushdns]]></content>
+    <content type="text"><![CDATA[生成 1$ hexo g 本地预览 1$ hexo s -p 5555 上传至服务器 1$ hexo d 新建文章 1$ hexo new "名称" 清缓存 1$ hexo clean 折叠文章 1$ &lt;!-- more --&gt; 也适用于md文件中作为注释 WIN+S的日常 123$ 控制面板=control panel $ 服务=service$ 注册表=regedit WIN+R日常 1234567$ 系统激活时间=Slmgr.vbs -xpr$ 系统版本=winver$ DirectX诊断工具=dxdiag$ 启动项管理=msconfig$ 刷新本地DNS=ipconfig /flushdns $ 显示所有共享=net share$ ping网络=ping+ip]]></content>
   </entry>
 </search>
