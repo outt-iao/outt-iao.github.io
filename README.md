@@ -1,6 +1,5 @@
 ### 1.新建CNAME
-内容输入域名
-eg:outtfalse.top
+### 2.内容输入域名(outtfalse.top)
 
 ### 2.域名解析
 | Type | Name | Content |
