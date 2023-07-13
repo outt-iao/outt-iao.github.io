@@ -15,3 +15,5 @@ kill -9 1502 //执行
 [clash汉化补丁下载](https://github.com/BoyceLig/Clash_Chinese_Patch/releases/)<br />
 [文章来自](https://uzbox.com/tech/clash.html)<br />
 
+### 管理“此电脑”里删不掉的流氓“快捷方式”
+[下载链接](https://github.com/1357310795/MyComputerManager/releases)
