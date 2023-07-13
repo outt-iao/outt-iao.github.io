@@ -12,6 +12,6 @@ kill -9 1502 //执行
 
 ### clash for windows 
 [clash下载](https://github.com/Fndroid/clash_for_windows_pkg/releases)<br />
-[clash汉化补丁](https://github.com/BoyceLig/Clash_Chinese_Patch/releases/)<br />
+[clash汉化补丁下载](https://github.com/BoyceLig/Clash_Chinese_Patch/releases/)<br />
 [文章来自](https://uzbox.com/tech/clash.html)<br />
 
