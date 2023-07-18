@@ -1,0 +1,115 @@
+* {
+    box-sizing: border-box;
+    margin: 2px; padding: 0;
+}
+/*为方便观察，将按钮元素放于屏幕中间
+1.top: 50%;left: 50%;代表可以让div块的左上顶点位于页面正中间
+2.transform: translate(-50%, -50%);代表让div块向上向左分别偏移50%，这样刚好使得div块位于正中央。
+*/
+.btn-holder{
+    position: absolute ;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.btn {
+    /*每个按钮应在页面中占有自己的位置，因此选择相对定位*/
+    position: relative;
+    /*使元素填满父级元素*/
+    display: inline-block;
+    /*div的width/height设置为auto,那么表示的这个div的所有部分(内容、边框、内边距等的距离加起来)为父元素宽度*/
+    width: auto; height: auto;
+    /*方便观察设置背景色为绿色，演示效果中设置为透明transparent*/
+    background-color: green;
+    border: none;
+    /*鼠标悬浮于其上时显示为手型光标*/
+    cursor: pointer;
+}
+.btn span {
+    /*同样文字也应每个按钮中占有固定的位置，选择相对定位*/
+    position: relative;
+    /*使元素填满父级元素*/
+    display: inline-block;
+    /*设置字体大小*/
+    font-size: 14px;
+    /*设置文字为粗体*/
+    font-weight: bold;
+    /*设置文字间的间距*/
+    letter-spacing: 2px;
+    /*定义为大写字母*/
+    /*text-transform: uppercase;*/
+    /*调整子元素在父元素中的位置*/
+    padding: 15px 20px;
+    /*设置从一个属性过渡到另一个属性的时间*/
+    transition: 0.3s;
+}
+/*，设置按钮的边框为黑色
+按钮内部及span中文本鼠标hover前字的颜色为白色*/
+.btn-1 span {
+    color: rgb(255,255,255);
+    border: 1px solid rgb(28, 31, 30);
+    transition: 0.2s 0.1s;
+}
+
+/*鼠标hover后，字体变色*/
+.btn-1 span:hover {
+    color: rgb(28, 31, 30);
+    transition: 0.2s 0.1s;
+}
+/*position: absolute;绝对定位，相对最近的父元素（btn-holder）来定位，不保留原有空间，并且不会影响其他元素位置
+ease-out : 运动形式为减速*/
+.btn-1::before {
+    position: absolute;
+    content: "";
+    background-color: rgb(28, 31, 30);
+    transition: 0.3s ease-out;
+}
+/*1.hover-filled-slide-down */
+/*修改button元素内容前的内容，也就是::before选择器插入的黑色背景
+  在鼠标hover前，距离底部边缘0px，高度为100%
+*/
+/*1.hover-filled-slide-down */
+/*修改button元素内容前的内容，也就是::before选择器插入的黑色背景
+  在鼠标hover前，距离底部边缘0px，高度为100%
+*/
+.hover-filled-slide-down::before {
+    bottom: 0;
+    height: 100%; width: 100%;
+
+}
+/*鼠标hover后,黑色背景的高度变为0%,由于该元素距离底部边缘为0px，所以自上而下活动*/
+.btn.hover-filled-slide-down:hover::before {
+    height: 0%;
+}
+/* 2.hover-filled-slide-up */
+.btn.hover-filled-slide-up::before {
+    top: 0; 
+    height: 100%; width: 100%;
+}
+.btn.hover-filled-slide-up:hover::before {
+    height: 0%;
+}
+/* 3.hover-filled-slide-left */
+.btn.hover-filled-slide-left::before {
+    top: 0; bottom: 0; left: 0;
+    height: 100%; width: 100%;
+}
+.btn.hover-filled-slide-left:hover::before {
+    width: 0%;
+}
+/* 4. hover-filled-slide-right */
+.btn.hover-filled-slide-right::before {
+    top:0; bottom: 0; right: 0;
+    height: 100%; width: 100%;
+}
+.btn.hover-filled-slide-right:hover::before {
+    width: 0%;
+}
+/* 5. hover-filled-opacity */
+.btn.hover-filled-opacity::before {
+    height: 100%; width: 100%;
+    opacity: 1;
+}
+.btn.hover-filled-opacity:hover::before {
+    opacity: 0;
+}
