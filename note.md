@@ -2,7 +2,11 @@
 1.mpos里面--->更多-系统设置-本机信息<br />
 2.终端--->ip ad sh  &  ifconfig
 
-
+<style>
+hr:nth-of-type(1) {
+  border-width: 3px 0 0 0 !important;
+}
+  
 ### mpos卡住无法退出
 ```
 sudo -i //进入特权模式
