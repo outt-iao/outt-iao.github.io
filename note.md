@@ -17,3 +17,5 @@ kill -9 1502 //执行
 
 ### 管理“此电脑”里删不掉的流氓“快捷方式”
 [下载链接](https://github.com/1357310795/MyComputerManager/releases)
+
+### usr.html代码来自[这里](https://blog.csdn.net/weixin_44009656/article/details/124786874)
