@@ -6,12 +6,15 @@
 1.top: 50%;left: 50%;代表可以让div块的左上顶点位于页面正中间
 2.transform: translate(-50%, -50%);代表让div块向上向左分别偏移50%，这样刚好使得div块位于正中央。
 */
+
+/*
 .btn-holder{
     position: absolute ;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+*/
 .btn {
     /*每个按钮应在页面中占有自己的位置，因此选择相对定位*/
     position: relative;
