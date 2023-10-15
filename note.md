@@ -1,8 +1,19 @@
 # 收银机查看IP   
 >1.mpos里面--->更多-系统设置-本机信息<br/>
->2.终端--->ip ad sh  &  ifconfig  &  ip a  s
-
-
+2.终端
+```
+ip a s
+ip ad sh
+ifconfig
+hostname -I 
+```
+# hosts设置权限
+```
+sudo -i
+cd /root
+cd /etc
+chmod 777 -R hosts
+```
 # mpos卡住无法退出
 ```
 sudo -i //进入特权模式
