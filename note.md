@@ -20,7 +20,7 @@ sudo killall MPOS
 >[文章来自](https://uzbox.com/tech/clash.html)
 
 # 管理“此电脑”里删不掉的流氓“快捷方式”
->[MyComputerManager](https://github.com/1357310795/MyComputerManager/releases)<br/>
+>[MyComputerManager](https://github.com/1357310795/MyComputerManager/releases)
 
 # usr.html代码来自
 >[源文件](https://blog.csdn.net/weixin_44009656/article/details/124786874)
