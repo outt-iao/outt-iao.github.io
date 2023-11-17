@@ -15,3 +15,20 @@ function calculateDate() {
   const output = `第 ${week} 周是 ${year} 年的 ${januaryFirst.getMonth() + 1} 月 ${januaryFirst.getDate()} 日，星期${weekdays[januaryFirst.getDay()]}`;
   resultElement.textContent = output;
 }
+// 添加回车键触发计算日期的事件监听器
+document.addEventListener('DOMContentLoaded', function() {
+  const yearInput = document.getElementById('year');
+  const weekInput = document.getElementById('week');
+
+  yearInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      calculateDate();
+    }
+  });
+
+  weekInput.addEventListener('keyup', function(event) {
+    if (event.key === 'Enter') {
+      calculateDate();
+    }
+  });
+});
