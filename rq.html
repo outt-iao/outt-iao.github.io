@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Date Comparison</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+    }
+    input, button {
+      padding: 8px;
+      margin: 5px;
+      width: 80%;
+      max-width: 300px;
+      box-sizing: border-box;
+    }
+  </style>
+</head>
+<body>
+  <h1>日期比较</h1>
 
+  <label for="yearInput">年份：</label>
+  <input type="text" id="yearInput" placeholder="输入年份"><br><br>
+
+  <label for="weekInput">周数：</label>
+  <input type="number" id="weekInput" placeholder="输入周数"><br><br>
+
+  <button onclick="compareDate()">比较日期</button><br><br>
+
+  <div id="result"></div>
+
+  <script>
+    function getDateFromYearWeek(year, week) {
+      // 计算给定年份第一周的第一天的日期
+      var januaryFirst = new Date(year, 0, 1);
+      var firstDayOfWeekOne = januaryFirst.getDay() - 1;
+      var weekOneStart = januaryFirst;
+      if (firstDayOfWeekOne > 3) {
+        weekOneStart.setDate(januaryFirst.getDate() + 8 - firstDayOfWeekOne);
+      } else {
+        weekOneStart.setDate(januaryFirst.getDate() - firstDayOfWeekOne);
+      }
+
+      // 根据给定周数计算日期
+      var targetDate = new Date(weekOneStart.getTime() + ((week - 1) * 7) * 24 * 60 * 60 * 1000);
+      return targetDate;
+    }
+
+    function compareDate() {
+      var yearInput = document.getElementById('yearInput').value;
+      var year = parseInt(yearInput);
+      if (yearInput.length === 2) {
+        year += 2000; // 如果只输入了两位数的年份，自动补全为20XX年
+      }
+
+      var week = parseInt(document.getElementById('weekInput').value);
+
+      var currentDate = new Date();
+      var targetDate = getDateFromYearWeek(year, week);
+
+      var date1 = new Date('2012-07-09');
+      var date2 = new Date('2014-04-28');
+      var date3 = new Date('2016-11-22');
+      var date4 = new Date('2018-09-05');
+
+      var result = '';
+
+      if (targetDate > date1 && targetDate <= date2) {
+        result = '推荐安装 \'BSJ_D425_SATA250_20120709\'';
+      } else if (targetDate > date2 && targetDate <= date3) {
+        result = '推荐安装 \'BSJ_N2_TOUCH_500G_20140428\'';
+      } else if (targetDate > date3 && targetDate <= date4) {
+        result = '推荐安装 \'BSJ_CAPTOUCH_500G_20161122\'';
+      } else {
+        var month = targetDate.getMonth() + 1; // 月份是从0开始的
+        var day = targetDate.getDate();
+        result = '日期是：' + targetDate.getFullYear() + '年' + (month < 10 ? '0' + month : month) + '月' + (day < 10 ? '0' + day : day) + '日';
+      }
+
+      document.getElementById('result').innerText = result + '，日期是：' + targetDate.getFullYear() + '年' + (targetDate.getMonth() + 1) + '月' + targetDate.getDate() + '日';
+    }
+  </script>
+</body>
+</html>
