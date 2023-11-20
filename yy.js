@@ -1,6 +1,6 @@
 // 歌曲列表
 const songs = [
-  { title: '双节棍', url: 'https://oos.admintop.top/raw/public/%E9%9B%99%E6%88%AA%E6%A3%8D.flac' }
+  { title: '别来无恙', url: 'https://oos.admintop.top/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' }
   ,{ title: '稻香', url: 'https://oos.admintop.top/raw/public/%E7%A8%BB%E9%A6%99.flac' }
   ,{ title: '七里香', url: 'https://oos.admintop.top/raw/public/%E4%B8%83%E9%87%8C%E9%A6%99.flac' }
   // 添加更多歌曲链接和标题
