@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>在线音乐播放器</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="yy.css">
+</head>
+<body>
+  <div class="music-player">
+    <h1>在线音乐播放器</h1>
+    <ul id="songList">
+      <!-- 歌曲列表将通过 JavaScript 动态添加 -->
+    </ul>
+
+    <audio controls id="audioPlayer" onended="playNext()">
+      <source src="" type="audio/mpeg">
+      您的浏览器不支持音频播放功能。
+    </audio>
+
+    <div class="buttons">
+      <button onclick="toggleSingleLoop()" id="loopButton">单曲循环</button>
+      <button onclick="toggleShuffle()" id="shuffleButton">随机播放</button>
+    </div>
+  </div>
+
+  <script src="yy.js"></script>
+</body>
+</html>
+
