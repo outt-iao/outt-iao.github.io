@@ -1,57 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>提取和修改 MAC 地址</title>
-    <script>
-        function clearInput() {
-            var inputData = document.getElementById('inputData');
-            if (inputData.value === "请输入地址进行替换") {
-                inputData.value = "";
-            }
-        }
+  <title>替换内容示例</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    #输入框 {
+      resize: both;
+      overflow: auto;
+      width: 80%;
+      height: 150px;
+      min-width: 300px;
+      min-height: 100px;
+    }
+    .可复制 {
+      cursor: pointer;
+      user-select: all;
+    }
+  </style>
+  <script>
+    function 替换内容() {
+      var 输入内容 = document.getElementById("输入框").value;
+      var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
+      var 结果 = document.getElementById("结果");
+      结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
+        return '<span class="可复制" onclick="复制文本(this)">' + item + '</span>';
+      }).join('<br>');
+    }
 
-        function replacePlaceholder() {
-            var inputData = document.getElementById('inputData');
-            if (inputData.value === "") {
-                inputData.value = "请输入地址进行替换";
-            }
-        }
-
-        function extractAndReplace() {
-            var inputData = document.getElementById('inputData').value;
-
-            if (inputData === "请输入地址进行替换") {
-                alert("请输入有效的数据进行操作。");
-                return;
-            }
-
-            // 使用正则表达式匹配所有的 MAC 地址模式
-            var macPattern = /[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}/g;
-            var macAddresses = inputData.match(macPattern);
-
-            var outputText = "";
-            if (macAddresses) {
-                outputText = "提取并修改的 MAC 地址:<br>";
-                for (var i = 0; i < macAddresses.length; i++) {
-                    var modifiedMAC = macAddresses[i].replace(/:/g, '-');
-
-                    // 检查是否为全 0 或全 F 的 MAC 地址，如果是则跳过
-                    if (modifiedMAC !== '00-00-00-00-00-00' && modifiedMAC !== 'ff-ff-ff-ff-ff-ff') {
-                        outputText += "<input type='text' value='" + modifiedMAC + "' readonly><br>";
-                    }
-                }
-            } else {
-                outputText = "未找到匹配的 MAC 地址";
-            }
-
-            document.getElementById('outputMAC').innerHTML = outputText;
-        }
-    </script>
+    function 复制文本(element) {
+      var 选择器 = window.getSelection();
+      var 范围 = document.createRange();
+      范围.selectNodeContents(element);
+      选择器.removeAllRanges();
+      选择器.addRange(范围);
+      document.execCommand('copy');
+      alert('已复制到剪贴板: ' + element.innerText);
+    }
+  </script>
 </head>
 <body>
-    <label for="inputData">输入数据:</label>
-    <textarea id="inputData" rows="10" cols="50" onclick="clearInput()" onblur="replacePlaceholder()">请输入地址进行替换</textarea><br>
-    <button onclick="extractAndReplace()">提取并修改 MAC 地址</button>
-    <div id="outputMAC"></div>
+  <h1>替换内容示例</h1>
+  <textarea id="输入框" placeholder="输入内容"></textarea><br>
+  <button onclick="替换内容()">执行替换</button>
+  <p>替换后的内容为：</p>
+  <p id="结果"></p>
 </body>
 </html>
