@@ -3,8 +3,27 @@
 <head>
     <title>提取和修改 MAC 地址</title>
     <script>
+        function clearInput() {
+            var inputData = document.getElementById('inputData');
+            if (inputData.value === "请输入地址进行替换") {
+                inputData.value = "";
+            }
+        }
+
+        function replacePlaceholder() {
+            var inputData = document.getElementById('inputData');
+            if (inputData.value === "") {
+                inputData.value = "请输入地址进行替换";
+            }
+        }
+
         function extractAndReplace() {
             var inputData = document.getElementById('inputData').value;
+
+            if (inputData === "请输入地址进行替换") {
+                alert("请输入有效的数据进行操作。");
+                return;
+            }
 
             // 使用正则表达式匹配所有的 MAC 地址模式
             var macPattern = /[0-9a-fA-F]{2}(:[0-9a-fA-F]{2}){5}/g;
@@ -31,7 +50,7 @@
 </head>
 <body>
     <label for="inputData">输入数据:</label>
-    <textarea id="inputData" rows="10" cols="50">mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000 link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00 inet 127.0.0.1/8 scope host lo valid_lft forever preferred_lft forever inet6 ::1/128 scope host valid_lft forever preferred_lft forever 2: ens33: mtu 1500 qdisc pfifo_fast state UP group default qlen 1000 link/ether 00:0c:29:6f:2c:7e brd ff:ff:ff:ff:ff:ff inet 192.168.123.189/24 brd 192.168.123.255 scope global dynamic ens33 valid_lft 86374sec preferred_lft 86374sec inet6 fe80::a6f6:f992:d490:23c4/64 scope link valid_lft forever preferred_lft forever</textarea><br>
+    <textarea id="inputData" rows="10" cols="50" onclick="clearInput()" onblur="replacePlaceholder()">请输入地址进行替换</textarea><br>
     <button onclick="extractAndReplace()">提取并修改 MAC 地址</button>
     <div id="outputMAC"></div>
 </body>
