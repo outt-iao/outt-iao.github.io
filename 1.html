@@ -7,41 +7,24 @@
   <ul>
     <li><a href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" class="link">页面 1</a></li>
 
-
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const links = document.querySelectorAll('.link');
+    var redirectedUrls = []; // 用于存储重定向的URL
 
-      links.forEach(function(link) {
-        link.addEventListener('click', function(event) {
-          // 阻止默认的跳转行为
-          event.preventDefault();
-
-          // 获取点击的链接地址
-          const url = link.href;
-
-          // 记录跳转信息
-          console.log('跳转到：', url);
-
-          // 在记录后进行页面跳转
-          window.location.href = url;
-        });
-      });
-
-      // 监听页面加载完成后的事件，页面跳转完成后执行获取最终链接并复制到剪贴板
-      window.addEventListener('load', function() {
-        const finalUrl = window.location.href;
-
-        // 复制最终跳转后的链接到剪贴板
-        navigator.clipboard.writeText(finalUrl)
-          .then(function() {
-            console.log('成功复制到剪贴板:', finalUrl);
-          })
-          .catch(function(err) {
-            console.error('无法复制到剪贴板:', err);
-          });
-      });
+    // 在地址栏变化时触发
+    window.addEventListener('popstate', function(event) {
+      var currentUrl = window.location.href;
+      redirectedUrls.push(currentUrl);
+      console.log('记录的重定向URL:', currentUrl);
     });
+
+    // 模拟地址栏变化（仅供示例使用，实际情况是页面跳转触发）
+    setTimeout(function() {
+      window.history.pushState({}, '', 'https://www.finalurl.com'); // 模拟最终跳转到的URL
+    }, 3000); // 模拟3秒后地址栏变化
+
+    // 在这里可以进行页面跳转，例如：
+    // window.location.href = 'https://www.finalurl.com';
   </script>
+
 </body>
 </html>
