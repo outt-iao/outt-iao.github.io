@@ -21,4 +21,11 @@ sudo pkill MPOS
 sudo killall MPOS
 ```
 
-
+# 云值守
+```
+#123456#21123#
+```
+![enter image description here](https://oos.admintop.top/raw/pic/11)
+![enter image description here](https://oos.admintop.top/raw/pic/12)
+![enter image description here](https://oos.admintop.top/raw/pic/13)
+![enter image description here](https://oos.admintop.top/raw/pic/14)
