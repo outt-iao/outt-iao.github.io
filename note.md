@@ -1,5 +1,3 @@
-[My Website](http://admintop.top/)
-[My Website](outt-iao.github.io)
 
 # ubuntu命令
 ```
