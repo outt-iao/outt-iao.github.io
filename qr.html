@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>QR Code and Barcode Generator</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <style>
+    /* 样式部分保持不变 */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    #container {
+      width: 60%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+
+    #content {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box; /* 让 padding 不会撑大输入框 */
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none; /* 去掉默认的输入框样式 */
+      resize: vertical; /* 允许垂直调整大小 */
+    }
+
+    .code-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .code {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #fff;
+      display: none; /* 隐藏初始时的两个方框 */
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <h1>条码生成工具</h1>
+
+    <textarea id="content" placeholder="输入内容以生成二维码/条形码" rows="4"></textarea>
+
+    <div class="code-container">
+      <div class="code" id="qrcode"></div>
+      <svg class="code" id="barcode"></svg>
+    </div>
+
+    <div>
+      <button onclick="generateCode('qrcode')">显示二维码</button>
+      <button onclick="generateCode('barcode')">显示条形码</button>
+    </div>
+  </div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+  <script>
+    var qrCodeDiv = document.getElementById('qrcode');
+    var barcodeSvg = document.getElementById('barcode');
+
+    function generateCode(type) {
+      var content = document.getElementById('content').value;
+
+      qrCodeDiv.style.display = 'none';
+      barcodeSvg.style.display = 'none';
+
+      if (type === 'qrcode') {
+        qrCodeDiv.innerHTML = ''; // 清空之前的内容
+        new QRCode(qrCodeDiv, {
+          text: content,
+          width: 200,
+          height: 200,
+        });
+        qrCodeDiv.style.display = 'block';
+      } else if (type === 'barcode') {
+        JsBarcode("#barcode", content, {
+          format: "CODE128",
+          width: 2,
+          height: 60,
+          displayValue: false
+        });
+        barcodeSvg.style.display = 'block';
+      }
+    }
+  </script>
+</body>
+</html>
