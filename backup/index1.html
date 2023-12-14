@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='index,nofollow' />
+    <title>远程控制软件</title>
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+            color: #000080;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: red;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            text-decoration: none; /* 去除悬停下划线 */
+        }
+    </style>
+</head>
+<body>
+
+<p style="text-indent:2em;font-size:20px"><a id="link1" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip" target="_blank">MPOS-ARM</a></p>
+
+<p style="text-indent:2em;font-size:20px"><a id="link2" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">MPOS-X86</a></p>
+
+<!-- 其他链接 -->
+
+<script type="text/javascript">
+    document.addEventListener("keydown", function(event) {
+        if (event.key >= '1' && event.key <= '9') {
+            var linkId = "link" + event.key;
+            var link = document.getElementById(linkId);
+            if (link) {
+                window.open(link.href, '_blank');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
