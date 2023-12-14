@@ -1,4 +1,3 @@
------------------------------------------------------------------------
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,19 +17,3 @@
   <script src="script.js"></script>
 </body>
 </html>
-
------------------------------------------------------------------------
-function calculateDate() {
-  const year = parseInt(document.getElementById('year').value);
-  const week = parseInt(document.getElementById('week').value);
-
-  const januaryFirst = new Date(year, 0, 1);
-  const daysOffset = (week - 1) * 7;
-  januaryFirst.setDate(januaryFirst.getDate() + daysOffset - januaryFirst.getDay());
-
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = `第 ${week} 周的日期是：${januaryFirst.getFullYear()}年${januaryFirst.getMonth() + 1}月${januaryFirst.getDate()}日`;
-}
------------------------------------------------------------------------
-
-这就是周数会少1周 ， 并且没有回车出结果功能 ， 备份第一份 不忘初心
