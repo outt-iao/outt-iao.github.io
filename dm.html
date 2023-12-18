@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>提取并复制代码</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 150px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        button {
+            display: block;
+            width: 80%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>在下方输入整个文件内容：</h2>
+    <textarea id="inputText" placeholder="将整个文件内容粘贴到这里"></textarea>
+    <button onclick="extractAndCopyCode()">提取并复制代码</button>
+
+    <script>
+        function extractAndCopyCode() {
+            const inputText = document.getElementById('inputText').value;
+
+            // 使用正则表达式匹配代码部分
+            const codePattern = /```(?:\w+)?\n([\s\S]+?)\n```/;
+            const codeMatches = inputText.match(codePattern);
+
+            // 如果匹配到代码部分，则复制到剪贴板
+            if (codeMatches && codeMatches.length > 1) {
+                const extractedCode = codeMatches[1];
+
+                // 创建 textarea 元素用于复制文本到剪贴板
+                const textarea = document.createElement('textarea');
+                textarea.value = extractedCode;
+                document.body.appendChild(textarea);
+
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+            } else {
+                // 如果未找到代码部分，你可以在控制台（Console）中看到未找到代码的提示信息
+                console.log('未找到代码部分。');
+            }
+        }
+    </script>
+</body>
+</html>
