@@ -1,1 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>提取参考答案</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
 
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        textarea {
+            width: 80%;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            margin-bottom: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+
+        #output {
+            margin-top: 20px;
+        }
+
+        #output h2 {
+            margin-bottom: 10px;
+        }
+
+        #output p {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>提取参考答案</h1>
+    <textarea id="textInput" placeholder="在此输入文本内容"></textarea><br>
+    <button onclick="extractAnswers()">提取参考答案</button>
+    <div id="output"></div>
+
+    <script>
+        function extractAnswers() {
+            const text = document.getElementById('textInput').value;
+
+            // 使用正则表达式匹配参考答案
+            const pattern = /\[参考答案：([A-D])\]/g;
+            const matches = text.match(pattern);
+
+            // 如果匹配到内容，则显示在页面上
+            if (matches) {
+                const outputDiv = document.getElementById('output');
+                outputDiv.innerHTML = '<h2>提取到的参考答案：</h2>';
+                matches.forEach(match => {
+                    outputDiv.innerHTML += `<p>${match}</p>`;
+                });
+            } else {
+                alert('未找到参考答案。');
+            }
+        }
+    </script>
+</body>
+</html>
