@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>前端代码渲染预览</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+        }
+
+        header {
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+
+        .container {
+            display: flex;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        #code-input {
+            width: 50%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            border: none;
+            resize: none;
+            font-size: 16px;
+            overflow-y: auto;
+        }
+
+        #preview {
+            width: 50%;
+            height: 100%;
+            overflow: auto;
+            background-color: #f4f4f4;
+            border-left: 1px solid #ccc;
+        }
+
+        #preview-frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+
+            #code-input, #preview {
+                width: 100%;
+                height: 50%;
+                border: none;
+                border-bottom: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>前端代码渲染预览</h1>
+    </header>
+    <div class="container">
+        <textarea id="code-input" placeholder="在这里输入 HTML/CSS/JavaScript 代码"></textarea>
+        <div id="preview">
+            <iframe id="preview-frame"></iframe>
+        </div>
+    </div>
+
+    <script>
+        const codeInput = document.getElementById('code-input');
+        const previewFrame = document.getElementById('preview-frame');
+
+        codeInput.addEventListener('input', updatePreview);
+
+        function updatePreview() {
+            const code = codeInput.value;
+            const previewDoc = previewFrame.contentDocument || previewFrame.contentWindow.document;
+            previewDoc.open();
+            previewDoc.write(code);
+            previewDoc.close();
+        }
+    </script>
+</body>
+</html>
