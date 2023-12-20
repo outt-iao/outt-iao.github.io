@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh_cn">
+<head>
+  <meta charset="UTF-8">
+  <title>box</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 视口标签 -->
+  <style>
+  <style>
+    /* 全局样式 */
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #d1d1e1; /* 设置背景为浅灰色 */
+    }
+    /* 导航栏样式 */
+    .navbar {
+      background-color: #333;
+      color: white;
+      padding: 25px; /* 增加导航栏大小 */
+      text-align: center;
+	  border-radius: 50px; /* 设置导航栏圆角为10像素 */
+    }
+    /* 链接样式 */
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin: 0 30px; /* 增加链接之间的间距 */
+      display: inline-block;
+      padding: 60px 30px; /* 调整每个链接的 padding 以增大可点击区域 */
+      transition: color 0.3s, transform 0.3s; /* 添加颜色和大小变化的过渡效果 */
+    }
+
+    /* 鼠标悬停样式 */
+    .navbar a:hover {
+      color: #ffcc00; /* 鼠标悬停时颜色变化 */
+      transform: scale(1.1); /* 鼠标悬停时大小变化 */
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="http://120.76.41.136/">首页</a>
+    <a href="http://120.76.41.136:9000">9000</a>
+    <a href="http://120.76.41.136:5244">5244</a>
+	  <a href="http://120.76.41.136:3888">留言板</a>
+	  <a href="http://120.76.41.136:3900">重装系统</a>
+    <a href="http://admintop.top/qr">二维码生成器</a> 
+    <a href="http://admintop.top/rq">日期计算</a>
+    <a href="http://admintop.top/mac">mac地址计算</a>
+	<a href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" title="打开f12，点击网络，打开这个链接即可得到，第一条内容查看">客服中心</a>
+  </div>
+
+  <script>
+    // 五十秒后跳转到百度
+    setTimeout(function() {
+      window.location.href = 'https://m.baidu.com/';
+    }, 60000);
+  </script>
+</body>
+</html>
