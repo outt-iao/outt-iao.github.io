@@ -133,7 +133,7 @@
 </div>
 
 <script type="text/javascript">
-	//数字按键跳转
+ //数字按键跳转
     document.addEventListener("keydown", function(event) {
         if (event.key >= '1' && event.key <= '9') {
             var linkId = "link" + event.key;
@@ -145,9 +145,8 @@
     });
 
     // 显示/隐藏悬浮链接
- var isLinksVisible = false; // 初始化链接状态为隐藏
-
-    document.getElementById("showAdditionalLinks").addEventListener("click", function() {
+	 var isLinksVisible = false; // 初始化链接状态为隐藏
+   	 document.getElementById("showAdditionalLinks").addEventListener("click", function() {
         var floatingLinks = document.getElementById("floatingLinks");
 
         if (!isLinksVisible) {
@@ -159,29 +158,11 @@
         }
 
         isLinksVisible = !isLinksVisible; // 更新链接状态
-    });
-	 // 跳转百度
+  	  });
+  // 跳转百度
         setTimeout(function() {
             window.location.href = "https://www.baidu.com";
         }, 60000); // 60秒后跳转
-//子域名跳转
-    window.onload = function() {
-      var subdomain = window.location.hostname.split('.')[0]; // 获取当前子域名
-
-      // 根据不同的子域名进行跳转
-      switch (subdomain) {
-        case '1':
-          window.location.href = 'https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip';
-          break;
-        case '2':
-          window.location.href = 'https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip'; // 360搜索链接
-          break;
-        default:
-          // 如果没有匹配的子域名，可以跳转到默认页面或显示错误信息等
-          document.getElementById('message').innerHTML = '未找到匹配的子域名';
-          break;
-      }
-    };
 	
 </script>
 
