@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name='robots' content='index,nofollow' />
+    <title>远程控制软件</title>
+    <style type="text/css">
+        a:link {
+            text-decoration: none;
+            color: #000080;
+            padding: 8px 12px;
+            border-radius: 5px;
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        a:hover {
+            color: red;
+            font-size: 1.1em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-2px);
+            text-decoration: none; /* 去除悬停下划线 */
+        }
+
+        .link-list {
+            text-indent: 2em;
+            font-size: 20px;
+        }
+
+        .link-list a {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="link-list">
+    <a id="link1" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip" target="_blank">①MPOS-ARM</a>
+    <a id="link2" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">②MPOS-X86</a>
+	<a id="link3" href="https://i.meiyijia.com.cn/" target="_blank">③美宜佳在线</a>
+	<a id="link4" href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" target="_blank">④客服</a>
+	<a id="link5" href="http://120.76.41.136:3888/" target="_blank">⑤留言</a>
+	<a id="link6" href="https://download.kugou.com/download/kugou_pc" target="_blank">⑥酷狗音乐</a>
+	<a id="link7" href="https://down.360safe.com/se/360se_setup.exe" target="_blank">⑦360安全浏览器</a>
+	<a id="link8" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">⑧向日葵(推荐)</a>
+    
+	<a href="https://oos.admintop.top/raw/rj/VNC32.exe" onclick="window.open('https://oos.admintop.top/raw/rj/PortScan.exe', '_blank');">PortScan&VNC32(链接1)</a>
+	<a id="link19" href="https://pinco.seewo.com/s/6e9f5b788b8c4bc29b991b8a886371d7" target="_blank">PortScan(链接2)</a>
+    
+	<a id="link0" href="https://pinco.seewo.com/s/d46d8e959d934734902496469460504b" target="_blank">VNC32(链接2)</a>
+    
+	<a  href="https://pinco.seewo.com/s/59374694e2f644b48c7d3b6832ecb359" target="_blank">UltraISO</a>
+    
+	<a  href="https://www.speedtest.cn/" target="_blank">测速网</a>
+    
+	<a  href="https://ko0.com/myj" target="_blank">网络剪贴板</a>
+    
+	<a  href="https://pinco.seewo.com/s/d7f1f246ea584ac1b32465187b74a9f9" target="_blank">前台自助驱动</a>
+    
+	<a  href="https://pinco.seewo.com/s/7a71de3d6d75484ab9e2c152b8361f44" target="_blank">电脑配置读取</a>
+    
+	<a  href="https://sunlogin.oray.com/download?categ=personal" target="_blank">向日葵</a>
+    	<a  href="https://pinco.seewo.com/s/dba9c7a107cd43048d81f68793e8d16e" target="_blank">AI升级文件</a>
+	<a  href="https://pinco.seewo.com/s/62552178d3d3489398bc2acdfa3304b7" target="_blank">鱼眼升级文件</a>
+    
+	<a  href="https://pinco.seewo.com/s/23eeea3c350a431bb34c80de8aed7747" target="_blank">医药软件</a>
+	<a  href="https://pinco.seewo.com/s/b854a9d1c27d4a4da3c043f318571e72" target="_blank">网络剪贴板</a>
+	<a href="https://pinco.seewo.com/s/b854a9d1c27d4a4da3c043f318571e72" onclick="window.open('https://pinco.seewo.com/s/4dfadb8a56424d6aa8d084172823bad6', '_blank');">K106云销售</a>
+	
+	<a  href="https://pinco.seewo.com/s/30abe3538d134913b62e7e815e4deb59" target="_blank">键盘按键测试软件</a>
+
+
+	
+    
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("keydown", function(event) {
+        if (event.key >= '1' && event.key <= '9') {
+            var linkId = "link" + event.key;
+            var link = document.getElementById(linkId);
+            if (link) {
+                window.open(link.href, '_blank');
+            }
+        }
+    });
+</script>
+
+</body>
+</html>
