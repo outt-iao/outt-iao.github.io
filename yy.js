@@ -3,6 +3,13 @@ const songs = [
   { title: '别来无恙', url: 'https://oos.admintop.top/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' }
   ,{ title: '稻香', url: 'https://oos.admintop.top/raw/public/%E7%A8%BB%E9%A6%99.flac' }
   ,{ title: '七里香', url: 'https://oos.admintop.top/raw/public/%E4%B8%83%E9%87%8C%E9%A6%99.flac' }
+
+,{ title: '侧脸', url: ' https://oos.admintop.top/raw/music/%E4%BA%8E%E6%9E%9C%20-%20%E4%BE%A7%E8%84%B8.mp3' }
+,{ title: '偏爱', url: 'https://oos.admintop.top/raw/music/%E5%BC%A0%E8%8A%B8%E4%BA%AC-%E5%81%8F%E7%88%B1.mp3' }
+,{ title: '我可以', url: 'https://oos.admintop.top/raw/music/%E6%88%BF%E4%B8%9C%E7%9A%84%E7%8C%AB%20-%20%E6%88%91%E5%8F%AF%E4%BB%A5.mp3' }
+,{ title: '倒数', url: 'https://oos.admintop.top/raw/music/%E9%82%93%E7%B4%AB%E6%A3%8B%20-%20%E5%80%92%E6%95%B0.mp3' }
+
+
   // 添加更多歌曲链接和标题
 ];
 
