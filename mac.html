@@ -20,6 +20,18 @@
       cursor: pointer;
       user-select: all;
     }
+    .notification {
+      display: none;
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f2f2f2;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      z-index: 999;
+    }
   </style>
   <script>
     function 替换内容() {
@@ -38,7 +50,16 @@
       选择器.removeAllRanges();
       选择器.addRange(范围);
       document.execCommand('copy');
-      alert('已复制到剪贴板: ' + element.innerText);
+
+      // Display div notification
+      var notification = document.getElementById('notification');
+      notification.innerText = '已复制到剪贴板: ' + element.innerText;
+      notification.style.display = 'block';
+
+      // Hide notification after 2 seconds
+      setTimeout(function() {
+        notification.style.display = 'none';
+      }, 2000);
     }
   </script>
 </head>
@@ -48,5 +69,8 @@
   <button onclick="替换内容()">执行替换</button>
   <p>替换后的内容为：</p>
   <p id="结果"></p>
+
+  <!-- Notification div -->
+  <div id="notification" class="notification"></div>
 </body>
 </html>
