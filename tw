@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>重装系统</title>
+<style>
+
+  /* 包裹文字和图片的容器 */
+  .content {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #b3b3e5; /* 设定背景色 */
+    border-radius: 8px; /* 圆角边框 */
+  }
+  .text {
+    padding-bottom: 20px;
+  }
+  .text h2 {
+    color: #333;
+    margin-bottom: 5px; /* 添加标题下方间距 */
+  }
+  .text p {
+    color: #666;
+  }
+  .image-container {
+    position: relative;
+  }
+  .image-description {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    background-color: rgba(255, 255, 255, 0.7); /* 图片描述的背景色 */
+    padding: 5px;
+    border-radius: 5px;
+    font-style: italic;
+    color: #333;
+  }
+</style>
+</head>
+<body>
+
+<div class="content">
+  <h2>步骤1、将这些按键记住，等会要用</h2>
+  <div class="text">
+    <p>图边上标记的所有都会用到</p>
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤1图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/1" >
+  </div>
+</div>
+
+<div class="content">
+  <h2>步骤2、将U盘插入收银机</h2>
+  <div class="text">
+    <p>开机的同时一直按<img src="https://oos.admintop.top/raw/pic/del.png">
+，不是按住，是一直按 进入图片这个界面就可以</p>
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤2图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/22" >
+  </div>
+</div>
+<div class="content">
+  <h2>步骤3、移动到如图所示</h2>
+  <div class="text">
+    <p>按<img src="https://oos.admintop.top/raw/pic/d.png">移动到boot,按<img src="https://oos.admintop.top/raw/pic/s.png">移动到USB,按<img src="https://oos.admintop.top/raw/pic/+.png">将USB移动到最上面，按<img src="https://oos.admintop.top/raw/pic/f10.png">保存重启</p>
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤3图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/33" >
+  </div>
+</div><div class="content">
+  <h2>步骤4、提示这个 按<img src="https://oos.admintop.top/raw/pic/enter"></h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤4图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/44" >
+  </div>
+</div><div class="content">
+  <h2>步骤5、提示这个 按<img src="https://oos.admintop.top/raw/pic/enter"></h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤5图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/55" >
+  </div>
+</div>
+</div><div class="content">
+  <h2>步骤6、等待一会提示这个 输入<img src="https://oos.admintop.top/raw/pic/y">再按<img src="https://oos.admintop.top/raw/pic/enter"></h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤6图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/7" >
+  </div>
+</div>
+
+
+</div><div class="content">
+  <h2>步骤7、提示这个 拔掉U盘选择重新开机</h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤7图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/8" >
+  </div>
+</div>
+
+</div><div class="content">
+  <h2>步骤8、提示这个 按<img src="https://oos.admintop.top/raw/pic/c"></h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤8图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/9" >
+  </div>
+</div>
+
+</div><div class="content">
+  <h2>步骤9、提示这个 按<img src="https://oos.admintop.top/raw/pic/d.png">再按<img src="https://oos.admintop.top/raw/pic/enter"></h2>
+  <div class="text">
+  </div>
+  <div class="image-container">
+    <div class="image-description">步骤9图片描述</div>
+    <img src="https://oos.admintop.top/raw/pic/10" >
+  </div>
+</div>
+</body>
+</html>
