@@ -163,9 +163,8 @@
         setTimeout(function() {
             window.location.href = "https://www.baidu.com";
         }, 60000); // 60秒后跳转
-// 清除本地存储
-	 localStorage.clear();
-  	sessionStorage.clear();
+// 动态删除浏览历史记录
+  history.replaceState({}, '', '/');
 </script>
 
 </body>
