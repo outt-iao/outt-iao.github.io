@@ -1,29 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>地址提取</title>
+  <title>mac地址复制</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 20px;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      background-color: #f4f4f4;
     }
-    #输入框 {
-      resize: both;
-      overflow: auto;
+
+    h1 {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    textarea {
       width: 80%;
       height: 150px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: both;
+      overflow: auto;
       min-width: 300px;
       min-height: 100px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
     }
-    .可复制 {
+
+    button {
+      width: 80%;
+      padding: 10px;
+      font-size: 16px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 5px;
       cursor: pointer;
-      user-select: all;
+      margin-bottom: 10px;
     }
+
+    button:hover {
+      background-color: #2980b9;
+    }
+
     .notification {
       display: none;
-      position: fixed;
-      top: 20px;
+      position: absolute;
+      bottom: 45%;
       left: 50%;
       transform: translateX(-50%);
       background-color: #f2f2f2;
@@ -34,6 +66,8 @@
     }
   </style>
   <script>
+    var notificationTimeout;
+
     function 替换内容() {
       var 输入内容 = document.getElementById("输入框").value;
       var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
@@ -51,26 +85,39 @@
       选择器.addRange(范围);
       document.execCommand('copy');
 
-      // Display div notification
+      // 显示复制成功的提示框
       var notification = document.getElementById('notification');
       notification.innerText = '已复制到剪贴板: ' + element.innerText;
       notification.style.display = 'block';
+    }
+    // 清空示例内容
+    function 清空示例内容() {
+      var 输入框 = document.getElementById('输入框');
+      if (输入框.value === '36:13:E8:B6:4D:8D') {
+        输入框.value = '';
+      }
+    }
 
-      // Hide notification after 2 seconds
-      setTimeout(function() {
-        notification.style.display = 'none';
-      }, 2000);
+   // 点击按钮后隐藏提示框
+    function 隐藏弹窗() {
+      var notification = document.getElementById('notification');
+      notification.style.display = 'none';
     }
   </script>
 </head>
 <body>
   <h1>mac地址提取</h1>
-  <textarea id="输入框" placeholder="输入内容"></textarea><br>
-  <button onclick="替换内容()">执行替换</button>
-  <p>替换后的内容为：</p>
+  <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()"></textarea><br>
+  <button onclick="替换内容(); 隐藏弹窗()">执行替换</button>
+  <p>点击下方文本可以复制,替换后的内容为：</p>
   <p id="结果"></p>
 
   <!-- Notification div -->
-  <div id="notification" class="notification"></div>
+  <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
+
+  <script>
+    // Set default example content in the textarea
+    document.getElementById('输入框').value = '36:13:E8:B6:4D:8D';
+  </script>
 </body>
 </html>
