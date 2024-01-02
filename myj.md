@@ -1,7 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Code Styling Example</title>
+  <style>
+    /* 添加自定义样式 */
+    pre {
+      background-color: #f4f4f4;
+      padding: 10px;
+      border-radius: 5px;
+      overflow-x: auto;
+    }
+    code {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 14px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
 
-# ubuntu命令
-```
-htop    //最直观的查看内存占用情况
+<!-- 在body中插入您想要的样式化代码块 -->
+<h1>ubuntu命令</h1>
+<pre><code>
+htop      //最直观的查看内存占用情况
 sudo chmod 777 /etc/hosts  //给hosts所有权限
 firefox    //打开火狐浏览器
 top -o %MEM  //内存的方式进行排序
@@ -14,26 +36,39 @@ wget -O 1.zip 1.admintop.top  //下载mpos文件重命名为1.zip , O为大写
 dir   //查看当前目录文件
 cat  //查看文件里面的内容一些文本
 cat /etc/hosts  //查看hosts的内容
-```
-# 收银机查看IP   
-1.mpos里面--->更多-系统设置-本机信息<br/>
-2.终端
-```
+</code></pre>
+<h1>收银机查看IP</h1>
+<pre><code>
+1.mpos里面—&gt;更多-系统设置-本机信息<br/> 
+2.终端执行
 ip a s  //列出当前系统中所有网络接口的配置信息
 ifconfig   //显示网络接口信息
 hostname -I   //查看ip
-```
-# mpos卡住无法退出
-```
-sudo pkill MPOS
-sudo killall MPOS
-```
+</code></pre>
+<h1>mpos卡住无法退出</h1>
+<pre><code>sudo pkill MPOS
+sudo killall MPOS</code></pre>
+<h1>网络地址</h1>
+<pre><code>
+https://i.ys7.com/statich5/public/qrcode/index.html?http://support.hikvision.com:8085?QD=04&SN=
+J12345
+MYJ12345
+DS-7608NB-K1 / 8P-M
+//萤石云扫码添加转换成二维码//2序列号3验证码4型号
+</code></pre>
+<pre><code>
+https://icsp.myj.com.cn/?timestamp=1690175165&sign=FC5351D3CD19B54C3CF46D7DA467F53B&CompanyCode=GD&Mobile=13988888888&RoleId=1&ShopCode=%E7%B2%A430000
+</code></pre>
+<h1>云值守</h1>
+<pre><code>#123456#21123#</code></pre>
+<p><img src="https://oos.admintop.top/raw/pic/11"
+alt="enter image description here" /> <img
+src="https://oos.admintop.top/raw/pic/12"
+alt="enter image description here" /> <img
+src="https://oos.admintop.top/raw/pic/13"
+alt="enter image description here" /> <img
+src="https://oos.admintop.top/raw/pic/14"
+alt="enter image description here" /></p>
 
-# 云值守
-```
-#123456#21123#
-```
-![enter image description here](https://oos.admintop.top/raw/pic/11)
-![enter image description here](https://oos.admintop.top/raw/pic/12)
-![enter image description here](https://oos.admintop.top/raw/pic/13)
-![enter image description here](https://oos.admintop.top/raw/pic/14)
+</body>
+</html>
