@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>侧边菜单</title>
+  <style>
+    /* 简单的样式，可根据需要进行修改 */
+    #sidebar {
+      width: 180px;
+      height: 100%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #333;
+      color: white;
+      padding: 20px;
+    }
+    #content {
+      margin-left: 220px; /* 留出空间以展示右侧内容 */
+      padding: 20px;
+    }
+    /* 鼠标悬停时的样式 */
+    .menu-item:hover {
+      cursor: pointer;
+      background-color: #555;
+    }
+    /* 新加的样式 */
+    #additionalContent {
+      position: fixed;
+      top: 0;
+      left: 220px;
+      width: calc(100% - 220px);
+      height: 100%;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+.chinese-text::before {
+    content: "\00BB"; /* Unicode编码代表»箭头图标 */
+    margin-right: 8px; /* 调整图标与文字之间的间距 */
+}
+
+.menu-item {
+    display: flex; /* 让图标和文字在同一行显示 */
+    align-items: center; /* 垂直居中对齐 */
+    margin-bottom: 10px; /* 可选：增加菜单项之间的间距 */
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div class="menu-item" onclick="showContent('功能1')"> <span class="chinese-text">二维码生成</span></div>
+    <div class="menu-item" onclick="showContent('功能2')"><span class="chinese-text">mac地址提取</span></div>
+    <div class="menu-item" onclick="showContent('功能3')"><span class="chinese-text">留言板</span></div>
+    <div class="menu-item" onclick="showContent('功能4')"><span class="chinese-text">日期计算</span></div>
+	<div class="menu-item" onclick="showContent('功能5')"><span class="chinese-text">首页</span></div>
+	<div class="menu-item" onclick="showContent('功能6')"><span class="chinese-text">iso</span></div>
+    <div class="menu-item" onclick="showContent('功能7')"><span class="chinese-text">测速网站</span></div>
+  </div>
+  <div id="content">
+    <p>点击左侧菜单查看功能</p>
+  </div>
+  
+  
+  <div id="additionalContent">
+    <iframe id="iframe1" src="http://admintop.top/qr" class="hidden"></iframe>
+    <iframe id="iframe2" src="http://admintop.top/mac" class="hidden"></iframe>
+    <iframe id="iframe3" src="http://120.76.41.136:3888/" class="hidden"></iframe>
+    <iframe id="iframe4" src="http://admintop.top/rq" class="hidden"></iframe>
+	<iframe id="iframe5" src="http://admintop.top" class="hidden"></iframe>
+	<iframe id="iframe6" src="http://admintop.top/iso" class="hidden"></iframe>
+	<iframe id="iframe7" src="http://admintop.top/test" class="hidden"></iframe>
+	
+  </div>
+
+  <script>
+    function showContent(content) {
+      document.getElementById('content').innerHTML = `<p>${content} 内容显示在这里</p>`;
+
+      const iframes = document.querySelectorAll('#additionalContent iframe');
+      iframes.forEach(iframe => {
+        iframe.classList.add('hidden');
+      });
+
+      document.getElementById(`iframe${content.charAt(2)}`).classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
