@@ -66,6 +66,7 @@
 	<div class="menu-item" onclick="showContent('功能5')"><span class="chinese-text">首页</span></div>
 	<div class="menu-item" onclick="showContent('功能6')"><span class="chinese-text">iso</span></div>
     <div class="menu-item" onclick="showContent('功能7')"><span class="chinese-text">测速网站</span></div>
+	  <div class="menu-item" onclick="showContent('功能8')"><span class="chinese-text">重装系统</span></div>
   </div>
   <div id="content">
     <p>点击左侧菜单查看功能</p>
@@ -80,7 +81,7 @@
 	<iframe id="iframe5" src="http://admintop.top/user" class="hidden"></iframe>
 	<iframe id="iframe6" src="http://admintop.top/iso" class="hidden"></iframe>
 	<iframe id="iframe7" src="http://admintop.top/test" class="hidden"></iframe>
-	
+	<iframe id="iframe7" src="http://admintop.top/cz" class="hidden"></iframe>
   </div>
 
   <script>
@@ -95,9 +96,9 @@
       document.getElementById(`iframe${content.charAt(2)}`).classList.remove('hidden');
     }
 
-// 默认显示 iframe1 的内容
+/*  默认显示 iframe1 的内容
     document.getElementById('iframe5').classList.remove('hidden');
-    currentIframe = document.getElementById('iframe5');
+    currentIframe = document.getElementById('iframe5'); /*
   </script>
 </body>
 </html>
