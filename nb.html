@@ -53,7 +53,9 @@
     margin-bottom: 10px; /* 可选：增加菜单项之间的间距 */
 }
 
-
+/*  默认显示 iframe1 的内容 放在js里面
+    document.getElementById('iframe5').classList.remove('hidden');
+    currentIframe = document.getElementById('iframe5'); */
 
   </style>
 </head>
@@ -95,10 +97,6 @@
 
       document.getElementById(`iframe${content.charAt(2)}`).classList.remove('hidden');
     }
-
-/*  默认显示 iframe1 的内容
-    document.getElementById('iframe5').classList.remove('hidden');
-    currentIframe = document.getElementById('iframe5'); /*
   </script>
 </body>
 </html>
