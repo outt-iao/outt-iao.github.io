@@ -40,7 +40,7 @@
             position: fixed;
             top: 1px;
             left: 380px;
-            background-color: #ffffff;
+            /* background-color: #ffffff; */
             border: 1px solid #ccc;
             padding: 10px;
             display: none; /* 初始隐藏 */
@@ -128,7 +128,7 @@
 	<a href="http://120.76.41.136">80</a>
     	<a href="http://120.76.41.136:9000">9000</a>
   	<a href="http://120.76.41.136:5244">5244</a>
-	<a href="http://120.76.41.136:3888">留言板</a>
+	<a id="link5" href="http://120.76.41.136:3888">⑤留言板</a>
 	<a href="http://admintop.top/nb">侧边菜单</a>
 	
 	
@@ -161,6 +161,12 @@
 
         isLinksVisible = !isLinksVisible; // 更新链接状态
   	  });
+
+// 跳转百度
+        setTimeout(function() {
+            window.location.href = "https://www.baidu.com";
+        }, 60000); // 60秒后跳转
+	
 </script>
 
 </body>
