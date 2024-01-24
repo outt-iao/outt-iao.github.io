@@ -55,7 +55,7 @@
     .notification {
       display: none;
       position: absolute;
-      bottom: 45%;
+      bottom: 80%;
       left: 50%;
       transform: translateX(-50%);
       background-color: #f2f2f2;
@@ -112,11 +112,10 @@
   <p>点击下方文本可以复制,替换后的内容为：</p>
   <p id="结果"></p>
 
-  <!-- Notification div -->
+ // div弹窗显示复制成功bottom属性设置弹窗高度
   <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
 
   <script>
-    // Set default example content in the textarea
     document.getElementById('输入框').value = '36:13:E8:B6:4D:8D';
   </script>
 </body>
