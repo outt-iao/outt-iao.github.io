@@ -5,6 +5,7 @@ index.php
 <head>
     <meta charset="UTF-8">
     <title>留言板</title>
+   <link rel="icon" href="http://netcut.cn/favicon.ico" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
     body {
@@ -194,6 +195,7 @@ p {
 
 </body>
 </html>
+
 -----------------------------------------
 
 
