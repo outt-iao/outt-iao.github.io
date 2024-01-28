@@ -81,9 +81,8 @@
 	
 	<a id="link2" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">②MPOS-X86</a>
 	
-	 <a data-arch="64" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">向日葵下载点我(64)</a>
-    <a data-arch="32" href="https://d.oray.com/sunlogin/windows/SunloginClient_15.3.0.61407.exe" target="_blank">向日葵下载点我(32)</a>
-	
+	 <a id="link3" href="#" target="_blank">向日葵下载点我(推荐)</a>
+	 
 	<a href="https://i.meiyijia.com.cn/" target="_blank">美宜佳在线</a>
 	
 	<a href="https://oos.admintop.top/raw/rj/VNC32.exe" target="_blank">vnc32</a>
@@ -178,31 +177,18 @@
   	  });
 
 
-var is64BitSystem = false;
 
-    if (window.navigator.platform == "Win32" || window.navigator.platform == "Win64") {
-        is64BitSystem = window.navigator.cpuClass === "x64" || window.navigator.platform === "Win64";
-    }
+//
+    var is64BitSystem = (window.navigator.userAgent.indexOf("WOW64") !== -1 || window.navigator.userAgent.indexOf("Win64") !== -1);
 
     // 根据系统架构更新"向日葵"链接
-
-    var link3_64 = document.querySelector('a[data-arch="64"]');
-    var link3_32 = document.querySelector('a[data-arch="32"]');
+    var link3 = document.getElementById("link3");
 
     if (is64BitSystem) {
-        // 显示64位链接，隐藏32位链接
-
-        link3_64.style.display = "none";
-        link3_32.style.display = "block";
+        link3.href = "https://client-api.oray.com/softwares/65/download?versionid=1734";
     } else {
-        // 显示32位链接，隐藏64位链接
-     
-        link3_64.style.display = "block";
-        link3_32.style.display = "none";
+        link3.href = "https://d.oray.com/sunlogin/windows/SunloginClient_15.3.0.61407.exe";
     }
-
-
-
 
 
 
