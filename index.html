@@ -178,8 +178,8 @@
 
 
 
-//
-    var is64BitSystem = (window.navigator.userAgent.indexOf("WOW64") !== -1 || window.navigator.userAgent.indexOf("Win64") !== -1);
+ // 检测系统是32位还是64位
+    var is64BitSystem = process.arch == 'x64' || window.navigator.userAgent.includes("WOW64") || window.navigator.userAgent.includes("Win64");
 
     // 根据系统架构更新"向日葵"链接
     var link3 = document.getElementById("link3");
