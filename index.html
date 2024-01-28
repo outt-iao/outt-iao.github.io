@@ -177,8 +177,12 @@
   	  });
 
 
-    // 检测系统是32位还是64位
-    var is64BitSystem = window.navigator.userAgent.includes("WOW64") || window.navigator.userAgent.includes("Win64");
+// 检测系统是32位还是64位
+    var is64BitSystem = false;
+    
+    if (window.navigator.platform == "Win32" || window.navigator.platform == "Win64") {
+        is64BitSystem = window.navigator.cpuClass === "x64" || window.navigator.platform === "Win64";
+    }
 
     // 根据系统架构更新"向日葵"链接
     var link3 = document.getElementById("link3");
@@ -187,7 +191,6 @@
     } else {
         link3.href = "https://d.oray.com/sunlogin/windows/SunloginClient_15.3.0.61407.exe";
     }
-
 
 
 
