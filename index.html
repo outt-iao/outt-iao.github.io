@@ -176,16 +176,19 @@
         isLinksVisible = !isLinksVisible; // 更新链接状态
   	  });
 
- // 检测系统是32位还是64位
+
+    // 检测系统是32位还是64位
     var is64BitSystem = window.navigator.userAgent.includes("WOW64") || window.navigator.userAgent.includes("Win64");
+
     // 根据系统架构更新"向日葵"链接
     var link3 = document.getElementById("link3");
     if (is64BitSystem) {
-        link3.href = "https://d.oray.com/sunlogin/windows/SunloginClient_15.3.0.61407.exe";
+        link3.href = "https://client-api.oray.com/softwares/65/download?versionid=1734";
     } else {
-        // 如果是32位系统，可以选择隐藏链接或相应地进行更新
-        link3.style.display = "none"; // 这一行隐藏32位系统的链接
+        link3.href = "https://d.oray.com/sunlogin/windows/SunloginClient_15.3.0.61407.exe";
     }
+
+
 
 
 
