@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: flex-start; /* 从左上角开始显示 */
+    }
+
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start; /* 图标从左上角开始 */
+    }
+
+    .icon {
+      width: none; /* 设置长方形图标的宽度，根据需要调整 */
+      height: 50px; /* 设置长方形图标的高度，根据需要调整 */
+      background-color: #3498db;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .icon:hover {
+      background-color: #2980b9;
+    }
+
+    .icon a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+  <script>
+    // 用于生成冷色调低调颜色
+    function generateRandomColor() {
+      const hue = Math.floor(Math.random() * 36) * 10; // 色相在0到350之间，每10度一档
+      const saturation = Math.floor(Math.random() * 21) + 30; // 饱和度在30%到50%之间
+      const lightness = Math.floor(Math.random() * 16) + 40; // 亮度在40%到55%之间
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    }
+
+    // 用于生成图标的数据
+    const iconsData = [
+     
+  { link: 'https://voidtools.com/zh-cn/downloads/', title: 'everything' },
+  { link: 'https://globalpotplayer.cn/', title: 'potplayer' },
+  { link: 'https://www.bandisoft.com/honeyview/', title: 'Honeyview' },
+  { link: 'https://www.bandisoft.com/bandizip/', title: 'bandizip' },
+  { link: 'https://github.com/notepad-plus-plus/notepad-plus-plus/releases/', title: 'notepad++' },
+  { link: 'https://gitee.com/cxasm/notepad--/releases/tag/v1.21', title: 'notepad(国产)' },
+  { link: 'https://www.hostbuf.com/t/988.html', title: 'FinalShell' },
+  { link: 'https://mobaxterm.mobatek.net/download-home-edition.html', title: 'MobaXterm' },
+  { link: 'https://www.filezilla.cn/download/server', title: 'filezilla_server' },
+  { link: 'https://www.filezilla.cn/download/client', title: 'filezilla_client' },
+  { link: 'http://iscute.cn/chfs', title: 'CuteHttpFileServer' },
+  { link: 'https://www.xshell.com/zh/free-for-home-school', title: 'xshell' },
+  { link: 'https://pinco.seewo.com/s/ba8e2bde496642e5b77014a9c050361a', title: 'winSCP' },
+  { link: 'https://pinco.seewo.com/s/4e442e4c02154053a64f7b143482eb17', title: 'IObit Unlocker(解锁正在运行)' },
+  { link: 'https://pinco.seewo.com/s/6a47074fc845429c9dfb1d0d7caa477e', title: 'Unlocker' },
+  { link: 'https://larsjung.de/h5ai/', title: 'h5ai' },
+  { link: 'https://alist.nn.ci/zh/', title: 'alist' },
+  { link: 'https://github.com/filebrowser/filebrowser', title: 'Filebrowser' },
+  { link: 'https://www.hikvision.com/content/dam/hikvision/cn/400%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%E5%8A%A9%E6%89%8B/400%E5%AF%86%E7%A0%81%E9%87%8D%E7%BD%AE%E5%8A%A9%E6%89%8B.rar', title: '400密码重置助手' },
+  { link: 'https://assets.hikvision.com/prd/public/all/files/202212/SADPTool.zip', title: '设备网络搜索官网版' },
+  { link: 'https://drive.ticklink.com/hcs/controller/hik-manage/fileDownload?link=0HPRDlKK', title: '设备搜索管理员版(云盘)' },
+  { link: 'https://drive.ticklink.com/hcs/controller/hik-manage/fileDownload?link=TbPJZFYF', title: '批量配置工具(有关闭密码保护)' },
+  { link: 'https://www.hikvision.com/cn/support/tools/hitools/', title: '海康工具软件' },
+  { link: 'https://partners.hikvision.com/support/password-reset', title: '海康密码重置管理员(网页)' },
+  { link: 'https://hkrobot.hikvision.com/servlet/WXShow?action=swf&sysNum=145716889796196&wxcId=121&FromUserName=oNNCAjjFwyYvJYxAScpJ-toR1iuc&question=%E6%91%84%E5%83%8F%E6%9C%BA%E8%A7%A3%E7%BB%91&fid=26027&sId=&MsgType=workflow', title: '录像机解绑' },
+  { link: 'https://hkrobot.hikvision.com/servlet/WXShow?action=swf&sysNum=145716889796196&wxcId=121&FromUserName=oNNCAjjFwyYvJYxAScpJ-toR1iuc&question=%E7%82%B9%E5%87%BB%E6%AD%A4%E5%A4%84&fid=15157&sId=&MsgType=workflow', title: '最新固件包下载' },
+  { link: 'https://go.microsoft.com/fwlink/?linkid=2110341', title: 'OneNote' },
+  { link: 'https://lanzyun.lanzouy.com/iCxaE08r3fod', title: '批量命名' },
+  { link: 'https://github.com/Fndroid/clash_for_windows_pkg/releases/', title: 'clash for windows' },
+  { link: 'https://plugin.speedtest.cn', title: '测速网' },
+  { link: 'http://test.ustc.edu.cn/', title: '科技大学' },
+  { link: 'https://hwydlied4.ll.tcdnos.com/myapp/1104466820/cos.release-40109/10040714_com.tencent.tmgp.sgame_a2607447_8.3.1.9_9bvyxa.apk?mkey=6480a8f2758807f5&f=580c&cip=117.136.33.0&proto=https&access_type=', title: '王者荣耀' },
+  { link: 'https://console.cloud.tencent.com/lighthouse/instance/detail?rid=1&id=lhins-hzljgx8n&tab=firewall', title: '腾讯云' },
+  { link: 'https://lightsail.aws.amazon.com/', title: '亚马逊云' },
+  { link: 'https://chat.openai.com/', title: 'chatgpt' },
+  { link: 'https://www.paopao.dog/#/login', title: '泡泡狗' },
+  { link: 'http://czzp.cn/', title: '潮州人才网' },
+  { link: 'http://www.521000.com/', title: '小乔流水' },
+  { link: 'https://pan.huang1111.cn/s/gMekHQ?path=%2F', title: 'huang盘' },
+  { link: 'https://www.123pan.com/s/8BFRVv-QXubd.html', title: '123盘' },
+  { link: 'https://excalidraw.com/', title: '画画' },
+  { link: 'https://itty.bitty.site/edit', title: '写写' },
+  { link: 'https://app.diagrams.net/', title: '流程图' },
+  { link: 'https://www.w3school.com.cn/tiy/t.asp?f=eg_html_a_href', title: '运行代码' },
+  { link: 'https://www.w3cschool.cn/tools/index?name=cpicker', title: '在线取色' },
+  { link: 'https://www.remove.bg/zh', title: '在线抠图' },
+  { link: 'https://zaixianwangyebianji.bmcx.com/', title: '网页编辑器' },
+  { link: 'https://maxiang.io/', title: 'MarkDown' },
+  { link: 'http://iqdb.org/', title: '以图搜图' },
+  { link: 'https://graph.baidu.com/pcpage/index?tpl_from=pc', title: '以图搜图百度' },
+  { link: 'https://yandex.com/images?', title: '以图搜图yandex' },
+  { link: 'https://www.google.com/imghp', title: '以图搜图google' },
+  { link: 'https://ykjtb.com/', title: '一块剪贴板' },
+  { link: 'https://ko0.com/', title: '网络剪贴板' },
+  { link: 'http://www.theworld.cn/v5/', title: '世界之窗(自动调用系统 IE11 内核)_v5' },
+  { link: 'http://www.theworld.cn/v3/', title: '世界之窗(自动调用系统 IE11 内核)_v3' },
+  { link: '', title: '360浏览器兼容模式 IE内核' },
+  { link: 'https://slser.com/', title: 'DBadmin穿透远程' },
+  { link: 'https://www.hicairo.com/post/59.html', title: 'Cloudflare反代教程' },
+  { link: 'https://www.iobit.com/downloadcenter.php?product=iobit-unlocker', title: 'IObit Unlocker强删文件' },
+  { link: 'http://www.xt800.cn/download', title: 'xt800' },
+  { link: 'https://github.com/leoFitz1024/wallhaven/releases/tag/v4.2.0', title: '壁纸' },
+  { link: 'https://pinco.seewo.com/s/eac284a38fc74c43a6a4eb560940435b', title: '桌面整理(酷呆桌面)' },
+  { link: 'https://lanzyun.lanzouj.com/ic7x22b', title: 'PartitionGuru(磁盘分区管理)' },
+  { link: 'https://pvz.tools/', title: '植物大战僵尸' },
+  { link: 'http://lonelystar.org/download.htm', title: '植物大战僵尸' },
+  { link: 'https://tieba.baidu.com/p/7635810239', title: '植物大战僵尸' }
+
+
+
+    ];
+
+    // 动态生成图标
+    iconsData.forEach(iconData => {
+      const iconContainer = document.createElement('div');
+      iconCon
