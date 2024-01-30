@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .icon-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #3498db; /* 默认颜色，可以根据实际需要调整 */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      cursor: pointer;
+      margin-bottom: 5px;
+    }
+
+    .icon:hover {
+      background-color: #2980b9;
+    }
+
+    .icon a {
+      text-decoration: none;
+      color: inherit;
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    // 用于生成图标的数据
+    const iconsData = [
+      { link: 'https://www.example1.com', title: 'Title 1' },
+      { link: 'https://www.example2.com', title: 'Title 2' },
+      // 添加更多图标的数据
+    ];
+
+    // 用于生成冷色调低调颜色
+    function generateRandomColor() {
+      const hue = Math.floor(Math.random() * 36) * 10; // 色相在0到350之间，每10度一档
+      const saturation = Math.floor(Math.random() * 21) + 30; // 饱和度在30%到50%之间
+      const lightness = Math.floor(Math.random() * 16) + 40; // 亮度在40%到55%之间
+      return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+    }
+
+    // 动态生成图标
+    iconsData.forEach((iconData, index) => {
+      const iconContainer = document.createElement('div');
+      iconContainer.classList.add('icon-container');
+
+      const icon = document.createElement('div');
+      icon.classList.add('icon');
+      icon.style.backgroundColor = generateRandomColor(); // 设置随机颜色
+      icon.onclick = () => window.location.href = iconData.link;
+
+      const link = document.createElement('a');
+      link.href = iconData.link;
+      link.textContent = iconData.title.charAt(0); // 使用标题的第一个字母作为图标内容
+
+      icon.appendChild(link);
+      iconContainer.appendChild(icon);
+
+      const title = document.createElement('p');
+      title.textContent = iconData.title;
+      iconContainer.appendChild(title);
+
+      document.body.appendChild(iconContainer);
+    });
+  </script>
+
+</body>
+</html>
