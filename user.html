@@ -130,4 +130,23 @@
     // 动态生成图标
     iconsData.forEach(iconData => {
       const iconContainer = document.createElement('div');
-      iconCon
+      iconContainer.classList.add('icon-container');
+
+      const icon = document.createElement('div');
+      icon.classList.add('icon');
+      icon.style.backgroundColor = generateRandomColor(); // 设置随机颜色
+      icon.onclick = () => window.location.href = iconData.link;
+
+      const link = document.createElement('a');
+      link.href = iconData.link;
+      link.textContent = iconData.title;
+
+      icon.appendChild(link);
+      iconContainer.appendChild(icon);
+      
+      document.body.appendChild(iconContainer);
+    });
+  </script>
+
+</body>
+</html>
