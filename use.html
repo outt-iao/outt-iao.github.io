@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>链接格式转换器</title>
+    <style>
+        /* 添加一些基本样式 */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+
+        input {
+            width: 50%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        pre {
+            cursor: pointer;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+    <script>
+        function convertAndDisplay() {
+            // 获取输入框中的链接和标题
+            var urlInput = document.getElementById("urlInput").value;
+            var titleInput = document.getElementById("titleInput").value;
+
+            // 格式化链接和标题为指定格式
+            var formattedLink = `{ link: '${urlInput}', title: '${titleInput}' }`;
+
+            // 显示格式化的输出
+            var outputElement = document.getElementById("output");
+            outputElement.innerText = formattedLink;
+
+            // 添加点击事件，使用户能够直接复制输出内容
+            outputElement.onclick = function() {
+                var selection = window.getSelection();
+                var range = document.createRange();
+                range.selectNodeContents(outputElement);
+                selection.removeAllRanges();
+                selection.addRange(range);
+                document.execCommand('copy');
+                alert('已复制到剪贴板！');
+                selection.removeAllRanges();
+            };
+        }
+    </script>
+</head>
+<body>
+    <h2>链接格式转换器</h2>
+    <label for="urlInput">输入link:</label>
+    <input type="text" id="urlInput" placeholder="https://example.com">
+<p></p>
+    <label for="titleInput">输入title:</label>
+    <input type="text" id="titleInput" placeholder="标题">
+
+    <button onclick="convertAndDisplay()">转换并显示</button>
+
+    <h3>格式化输出:</h3>
+    <!-- 输出内容添加一个 <pre> 元素，并为其设置 id 以便在脚本中引用 -->
+    <pre id="output"></pre>
+</body>
+</html>
