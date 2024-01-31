@@ -16,28 +16,36 @@
       background-color: #f4f4f4;
     }
 
-    h1 {
-      text-align: center;
-      margin: 20px 0;
+    #container {
+	  margin-top:100px;
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      align-items: left;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
     textarea {
-      width: 80%;
-      height: 150px;
+      width: 100%;
+      height: 100px;
       padding: 10px;
       font-size: 16px;
       border: 1px solid #ccc;
       border-radius: 5px;
       resize: both;
       overflow: auto;
-      min-width: 300px;
+      min-width: 100px;
       min-height: 100px;
       margin-bottom: 20px;
       box-sizing: border-box;
     }
 
     button {
-      width: 80%;
+      width: 120px;
       padding: 10px;
       font-size: 16px;
       background-color: #3498db;
@@ -46,6 +54,7 @@
       border-radius: 5px;
       cursor: pointer;
       margin-bottom: 10px;
+      box-sizing: border-box;
     }
 
     button:hover {
@@ -87,7 +96,7 @@
 
       // 显示复制成功的提示框
       var notification = document.getElementById('notification');
-      notification.innerText = '已复制到剪贴板: ' + element.innerText;
+      notification.innerText = '已复制: ' + element.innerText;
       notification.style.display = 'block';
     }
     // 清空示例内容
@@ -106,13 +115,16 @@
   </script>
 </head>
 <body>
-  <h1>mac地址提取</h1>
-  <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()"></textarea><br>
-  <button onclick="替换内容(); 隐藏弹窗()">执行替换</button>
-  <p>点击下方文本可以复制,替换后的内容为：</p>
-  <p id="结果"></p>
+ 
+  <div id="container">
+ <h3>地址替换</h3>
+    <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()"></textarea><br>
+    <button onclick="替换内容(); 隐藏弹窗()">执行替换</button>
+    <p>替换后的内容为：</p>
+    <p id="结果"></p>
+  </div>
 
-   <!-- div弹窗显示复制成功bottom属性设置弹窗高度 -->
+  <!-- div弹窗显示复制成功bottom属性设置弹窗高度 -->
   <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
 
   <script>
