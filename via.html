@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +10,22 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+	  margin-top: 20px; /* 调整上边距的数值，可以根据需要进行更改 */
+	background-color: #cccccc; /* 浅灰色，可以根据需要调整颜色 */
+	
     }
+
+
+
+	@media (min-width: 768px) {
+	  body {
+		margin-top: 100px; /* 调整上边距的数值，可以根据需要进行更改 */
+		margin-left: 20%; /* 左侧边距为20像素 */
+		margin-right: 20%; /* 右侧边距为20像素 */
+	  }
+	}
+
+
 
     .icon-container {
       display: flex;
@@ -18,8 +34,8 @@
     }
 
     .icon {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
       background-color: #3498db; /* 默认颜色，可以根据实际需要调整 */
       display: flex;
@@ -54,8 +70,14 @@
       { link: 'http://tdoa.tiandy.com:6001/demo/reportJsp/showReport.jsp?raq=/customer_repair.raq', title: '零方监控' },
       { link: 'http://120.76.41.136/', title: '留言板' },
       { link: 'http://admintop.top/', title: 'top' },
+
       
-      
+	  
+	  
+	  
+	  
+	  
+	  
       
       
       
@@ -97,6 +119,7 @@
 
       document.body.appendChild(iconContainer);
     });
+	
   </script>
 
 </body>
