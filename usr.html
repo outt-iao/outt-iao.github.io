@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,7 @@
     }
 
     .icon {
+	  padding: 0 25px; /* 设置左右内边距，根据需要调整 */
       width: none; /* 设置长方形图标的宽度，根据需要调整 */
       height: 50px; /* 设置长方形图标的高度，根据需要调整 */
       background-color: #3498db;
@@ -27,12 +29,17 @@
       color: #fff;
       cursor: pointer;
       margin-bottom: 5px;
+	
+
     }
 
-    .icon:hover {
-      background-color: #2980b9;
-    }
 
+	.icon:hover {
+	  background-color: #2980b9;
+	  transform: scale(1.1); /* 设置放大倍数，根据需要调整 */
+	  transition: background-color 0.3s ease, transform 0.3s ease; /* 添加过渡效果 */
+
+	}
     .icon a {
       text-decoration: none;
       color: inherit;
@@ -125,6 +132,14 @@
 
 
 
+
+
+
+
+
+
+
+      
     ];
 
     // 动态生成图标
