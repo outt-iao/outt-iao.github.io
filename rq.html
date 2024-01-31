@@ -5,66 +5,61 @@
   <title>日期计算</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
-    text-align: center;
-    background-color: #f4f4f4;
-  }
+	body {
+	  font-family: Arial, sans-serif;
+	  margin: 0;
+	  padding: 0;
+	  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  justify-content: flex-start;
+	  min-height: 100vh;
+	  background-color: #f4f4f4;
+	}
 
-  h1 {
-    margin-bottom: 30px;
-    color: #333;
-  }
+	input[type="text"],
+	input[type="number"] {
+	  padding: 10px;
+	  margin: 5px;
+	  width: 20%;
+	  box-sizing: border-box;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	}
 
-  label {
-    display: block;
-    margin-bottom: 10px;
-    font-weight: bold;
-    color: #555;
-  }
+	button {
+	  width: 20%;
+	  padding: 10px;
+	  font-size: 16px;
+	  background-color: #3498db;
+	  color: white;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  margin-bottom: 10px;
+	  box-sizing: border-box;
+	}
 
-  input[type="text"],
-  input[type="number"] {
-    padding: 10px;
-    margin: 5px;
-    width: 80%;
-    max-width: 300px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
+	button:hover {
+	  background-color: #2980b9;
+	}
 
-  button {
-    padding: 10px 20px;
-    font-size: 16px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
+	#result {
+	  margin-top: 20px;
+	  padding: 15px;
+	  font-size: 18px;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	  background-color: #fff;
+	  color: #333;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
 
-  button:hover {
-    background-color: #2980b9;
-  }
-
-  #result {
-    margin-top: 20px;
-    padding: 15px;
-    font-size: 18px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #fff;
-    color: #333;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
 </style>
 
 </head>
 <body>
-  <h1>日期计算</h1>
+  <h2>日期计算</h2>
 
   <label for="yearInput">年份：</label>
   <input type="text" id="yearInput" placeholder="输入年份"><br><br>
@@ -72,7 +67,7 @@
   <label for="weekInput">周数：</label>
   <input type="number" id="weekInput" placeholder="输入周数"><br><br>
 
-  <button onclick="compareDate()">计算日期</button><br><br>
+  <button onclick="compareDate()">计算</button><br><br>
 
   <div id="result"></div>
 
