@@ -1,16 +1,12 @@
 // 歌曲列表
 const songs = [
-  { title: '别来无恙', url: 'https://oos.admintop.top/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' }
-  ,{ title: '稻香', url: 'https://oos.admintop.top/raw/public/%E7%A8%BB%E9%A6%99.flac' }
-  ,{ title: '七里香', url: 'https://oos.admintop.top/raw/public/%E4%B8%83%E9%87%8C%E9%A6%99.flac' }
-
-,{ title: '侧脸', url: ' https://oos.admintop.top/raw/music/%E4%BA%8E%E6%9E%9C%20-%20%E4%BE%A7%E8%84%B8.mp3' }
-,{ title: '偏爱', url: 'https://oos.admintop.top/raw/music/%E5%BC%A0%E8%8A%B8%E4%BA%AC-%E5%81%8F%E7%88%B1.mp3' }
-,{ title: '我可以', url: 'https://oos.admintop.top/raw/music/%E6%88%BF%E4%B8%9C%E7%9A%84%E7%8C%AB%20-%20%E6%88%91%E5%8F%AF%E4%BB%A5.mp3' }
-,{ title: '倒数', url: 'https://oos.admintop.top/raw/music/%E9%82%93%E7%B4%AB%E6%A3%8B%20-%20%E5%80%92%E6%95%B0.mp3' }
-
-
-  // 添加更多歌曲链接和标题
+{ title: '测试声音', url: 'https://oos.admintop.top/raw/music/%E7%BE%8E%E5%AE%9C%E4%BD%B3%E9%97%A8%E9%93%83%E9%9F%B3%EF%BC%88%E7%BA%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%E3%80%8B%E6%88%90%E5%93%81.mp3' },
+{ title: '别来无恙', url: 'https://oos.admintop.top/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' },
+{ title: '我可以', url: 'https://oos.admintop.top/raw/music/%E6%88%91%E5%8F%AF%E4%BB%A5%20-%20%E6%88%BF%E4%B8%9C%E7%9A%84%E7%8C%AB.mp3' },
+{ title: '我好想你', url: 'https://oos.admintop.top/raw/music/%E6%88%91%E5%A5%BD%E6%83%B3%E4%BD%A0%20-%20%E6%BD%98%E5%B9%BF%E7%9B%8A.mp3' },
+{ title: '晚风', url: 'https://oos.admintop.top/raw/music/%E6%99%9A%E9%A3%8E%20-%207opy%20&%20BT07.mp3' },
+{ title: '致你', url: 'https://oos.admintop.top/raw/music/%E8%87%B4%E4%BD%A0%20-%20yihuik%E8%8B%A1%E6%85%A7.mp3' },
+  
 ];
 
 
