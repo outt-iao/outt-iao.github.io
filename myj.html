@@ -28,6 +28,8 @@ shutdown -h 0    /立即关机
 shutdown -r 0   //立即重启 linux只能分钟输入1是一分钟
 sleep 5 && sudo shutdown -r now  //5秒后执行这个重启命令
 fsck -t ext4 /dev/sda1 //一直输入y回车,t5以上的机器用于修复系统开机进入initramfs
+sudo nmcli networking on  //启用有线连接
+sudo nmcli networking off  //禁用有线连接
 htop      //最直观的查看内存占用情况
 sudo chmod 777 /etc/hosts  //给hosts所有权限
 firefox    //打开火狐浏览器
