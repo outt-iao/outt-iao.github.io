@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>nb菜单</title>
+  <style>
+    /* 样式内容 */
+    /* 全局样式 */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+#sidebar {
+  width: 220px;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #333;
+  color: #fff;
+  padding-top: 60px;
+  overflow-y: auto; /* 添加垂直滚动条 */
+}
+
+.menu-item {
+  padding: 15px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.menu-item:hover {
+  background-color: #555;
+}
+
+/* 添加分隔线样式 */
+.menu-item:not(:last-child) {
+  border-bottom: 1px solid #666;
+}
+
+/* 添加菜单项图标 */
+.menu-item::before {
+  content: "\25B6"; /* 使用箭头符号作为菜单项的图标 */
+  margin-right: 10px;
+  font-size: 12px;
+}
+
+/* 选中菜单项时的样式 */
+.menu-item.active {
+  background-color: #666;
+}
+
+/* 鼠标悬停时图标颜色变化 */
+.menu-item:hover::before {
+  color: #fff;
+}
+
+    /* 内容区样式 */
+    #content {
+      margin-left: 220px;
+      padding: 20px;
+	   height: 500px;
+    }
+    /* 附加内容区样式 */
+    #additionalContent {
+      position: fixed;
+      top: 0;
+      left: 220px;
+      width: calc(100% - 220px);
+      height: 100%;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+    .hidden {
+      display: none;
+    }
+    iframe {
+      width: 100%;
+
+      height: calc(100% - 20px); /* 考虑 padding 的高度 */
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h3>120.76.41.136</h3>
+  <div id="sidebar">
+    <div class="menu-item" onclick="showContent(1)"><span class="chinese-text">二维码生成</span></div>
+    <div class="menu-item" onclick="showContent(2)"><span class="chinese-text">mac地址提取</span></div>
+    <div class="menu-item" onclick="showContent(3)"><span class="chinese-text">alist</span></div>
+    <div class="menu-item" onclick="showContent(4)"><span class="chinese-text">日期计算</span></div>
+    <div class="menu-item" onclick="showContent(5)"><span class="chinese-text">首页</span></div>
+    <div class="menu-item" onclick="showContent(6)"><span class="chinese-text">iso</span></div>
+    <div class="menu-item" onclick="showContent(7)"><span class="chinese-text">测速网</span></div>
+    <div class="menu-item" onclick="showContent(8)"><span class="chinese-text">重装系统</span></div>
+    <div class="menu-item" onclick="showContent(9)"><span class="chinese-text">留言板</span></div>
+    <div class="menu-item" onclick="showContent(10)"><span class="chinese-text">书签</span></div>
+    <div class="menu-item" onclick="showContent(11)"><span class="chinese-text">myj</span></div>
+  </div>
+  <div id="content">
+    <iframe id="iframe" src="" class="hidden"></iframe>
+  </div>
+  <script>
+    function showContent(index) {
+      // 设置对应 iframe 的 src 属性
+      var iframe = document.getElementById('iframe');
+      iframe.src = getIframeSrc(index);
+      // 移除所有 iframe 的 hidden 类
+      var iframes = document.querySelectorAll('#additionalContent iframe');
+      iframes.forEach(function(iframe) {
+        iframe.classList.add('hidden');
+      });
+      // 移除当前 iframe 的 hidden 类
+      iframe.classList.remove('hidden');
+    }
+
+    // 获取对应 iframe 的 src
+    function getIframeSrc(index) {
+      switch (index) {
+        case 1:
+          return 'http://admintop.top/qr';
+        case 2:
+          return 'http://admintop.top/mac';
+        case 3:
+          return 'http://120.76.41.136:5244';
+        case 4:
+          return 'http://admintop.top/rq';
+        case 5:
+          return 'http://admintop.top';
+        case 6:
+          return 'http://admintop.top/iso';
+        case 7:
+          return 'https://test.ustc.edu.cn/';
+        case 8:
+          return 'http://120.76.41.136:10011/';
+        case 9:
+          return 'http://120.76.41.136';
+        case 10:
+          return 'http://admintop.top/via';
+        case 11:
+          return 'http://admintop.top/myj';
+        default:
+          return '';
+      }
+    }
+  </script>
+</body>
+</html>
