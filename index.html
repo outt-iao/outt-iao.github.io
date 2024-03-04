@@ -6,70 +6,114 @@
     <title>远程控制软件</title>
 	<link rel="icon" href="https://sunlogin.oray.com/favicon.ico" type="image/png">
     <style type="text/css">
-        a:link {
-            text-decoration: none;
-            color: #000080;
-            padding: 8px 12px;
-            border-radius: 5px;
-            background-color: #ffffff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+		a:link {
+			text-decoration: none; /* 链接样式：无下划线 */
+			color: #000080; /* 链接文字颜色 */
+			padding: 10px 10px; /* 内边距 */
+			border-radius: 90px; /* 圆角 */
+			background-color: #FCF8FF; /* 背景颜色 */
+			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
+			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
+		}
 
-        a:hover {
-            color: red;
-            font-size: 1.1em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            transform: translateY(-2px);
-            text-decoration: none; /* 去除悬停下划线 */
-        }
+
+		/* 当链接悬停时的样式 */
+		a:hover {
+			color: red; /* 文本颜色为红色 */
+			font-size: 1.1em; /* 字体大小为原来的 1.1 倍 */
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
+			transform: translateY(-2px); /* 垂直向上移动 2 像素 */
+			text-decoration: none; /* 去除悬停时的下划线 */
+		}
+
+		/* 链接列表的样式 */
 		.link-list {
-            text-indent: 1em;
-            font-size: 20px;
-        }
+			text-indent: 1em; /* 每行文本首行缩进 1em */
+			font-size: 18px; /* 文本大小为 20 像素 */
+		}
 
-        .link-list a {
-            display: block; /* 确保元素以块级显示 */
-			width: 320px; /* 设置宽度为 300 像素 */
-			height: 20px; /* 设置高度为 200 像素 */
-            margin-bottom: 3px;/* 设置每行之间的间隙 */
-			
-        }
-      
-        /* 悬浮链接样式 */
-        #floatingLinks {
-            position: fixed;
-            top: 1px;
-            left: 380px;
-            /* background-color: #ffffff; */
-            border: 1px solid #ccc;
-            padding: 10px;
-            display: none; /* 初始隐藏 */
-        }
+		/* 链接样式 */
+		.link-list a {
+			display: block; /* 将链接元素设置为块级元素 */
+			width: 300px; /* 设置宽度为 200 像素 */
+			height: 20px; /* 设置高度为 20 像素 */
+			margin-bottom: 8px; /* 设置下方间距为 8 像素 */
+		}
+
 		/* 悬浮链接样式 */
-        #floatingLinks a {
-            display: block; /* 确保元素以块级显示 */
-			width: 200px; /* 设置宽度为 300 像素 */
-			height: 20px; /* 设置高度为 200 像素 */
-            margin-bottom: 3px;/* 设置每行之间的间隙 */
-            color: #000080;
-            text-decoration: none;/* 去除下划线 */
-        }
+		#floatingLinks {
+			position: fixed; /* 固定定位 */
+			top: 1px; /* 距离顶部 1px */
+			left: 380px; /* 距离左侧 380px */
+			border: 1px solid #ccc; /* 边框为1像素实线，颜色为淡灰色 */
+			padding: 10px; /* 内边距为10像素 */
+			display: none; /* 初始隐藏 */
+		}
+
+		/* 悬浮链接样式 */
+		#floatingLinks a {
+			display: block; /* 将链接元素设置为块级元素 */
+			width: 200px; /* 设置宽度为 200 像素 */
+			height: 20px; /* 设置高度为 20 像素 */
+			margin-bottom: 3px; /* 设置下方间距为 3 像素 */
+			color: #000080; /* 文本颜色为深蓝色 */
+			text-decoration: none; /* 去除链接下划线 */
+		}
+
 		/* 美宜佳图标样式 */
 		#showAdditionalLinks {
-            position: fixed;
-            top: 20px;
-            right: 20%;
-            cursor: pointer;
-            z-index: 9999;
-            border: none; /* 移除边框 */
-            background: none; /* 移除背景 */
-        }
+			position: fixed; /* 固定定位 */
+			top: 20px; /* 距离顶部 20px */
+			right: 30%; /* 距离右侧 30% */
+			cursor: pointer; /* 光标样式为手型 */
+			z-index: 9999; /* 设置层级为最高 */
+			border: none; /* 去除边框 */
+			background: none; /* 去除背景 */
+		}
+
 		/* 悬浮链接样式 */
 		#floatingLinks.active {
             border: none; /* 删除边框 */
           /*  background-color: #fff;  更改背景色 */
         }
+		
+		.code-block {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+             width: 300px; /* 设置代码块的宽度 */
+            height: auto; /* 设置代码块的高度 */
+            background-color: #f0f0f0; /* 设置代码块背景颜色 */
+            padding: 10px; /* 设置代码块内边距 */
+            border: 1px solid #ccc; /* 设置代码块边框 */
+            font-family: monospace; /* 设置字体为等宽字体 */
+			 overflow: auto; /* 允许内容超出时滚动 */
+        }
+        .code-line {
+            cursor: pointer; /* 设置鼠标指针为手型 */
+            margin-bottom: 5px; /* 设置行间距 */
+        }
+      .code-line:nth-child(1) {
+            color: #FF5733;
+        }
+        .code-line:nth-child(2) {
+            color: #00CED1;
+        }
+        .code-line:nth-child(3) {
+            color: #5733FF;
+        }
+        .copy-success {
+            background-color: #28a745; /* 设置提醒背景颜色 */
+            color: #fff; /* 设置提醒文字颜色 */
+            padding: 5px 10px; /* 设置提醒内边距 */
+            border-radius: 5px; /* 设置提醒圆角 */
+            display: none; /* 默认隐藏提醒 */
+            position: absolute; /* 绝对定位 */
+            top: 0; /* 距离顶部距离 */
+            left: 0; /* 距离左侧距离 */
+            transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
+        }
+
 
     </style>
 </head>
@@ -153,10 +197,14 @@
   	<a href="http://120.76.41.136:5244">alist</a>
 	<a id="link5" href="http://120.76.41.136">⑤留言板</a>
 	<a href="http://admintop.top/nb">侧边菜单</a>
-	
-	
 </div>
-
+ <div class="code-block">
+        <!-- 放入你的代码 -->
+        <div class="code-line" onclick="copyToClipboard('@;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS &')"> @;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
+        <div class="code-line" onclick="copyToClipboard('@;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS')"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+        <div class="code-line" onclick="copyToClipboard('@;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update &')"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
+        <div class="copy-success" id="copySuccess">复制成功</div>
+    </div>
 <script type="text/javascript">
  //数字按键跳转
 	document.addEventListener("keydown", function(event) {
@@ -168,7 +216,7 @@
 			}
 		}
 	});
-
+//数字按键跳转
 
     // 显示/隐藏悬浮链接
 	 var isLinksVisible = false; // 初始化链接状态为隐藏
@@ -185,16 +233,34 @@
 
         isLinksVisible = !isLinksVisible; // 更新链接状态
   	  });
+	// 显示/隐藏悬浮链接
+	  
+//代码复制
+ function copyToClipboard(command) {
+            navigator.clipboard.writeText(command)
+                .then(() => {
+                    showSuccess();
+                })
+                .catch(err => {
+                    console.error('复制失败:', err);
+                });
+        }
 
-
-
+        function showSuccess() {
+            var successMessage = document.getElementById('copySuccess');
+            successMessage.style.display = 'block';
+            setTimeout(function() {
+                successMessage.style.display = 'none';
+            }, 2000); // 2秒后隐藏提醒
+        }
+//代码复制
  
 
 
 // 跳转百度
-        setTimeout(function() {
-            window.location.href = "https://www.baidu.com";
-        }, 600000); // 600秒后跳转
+        //  setTimeout(function() {
+         //   window.location.href = "https://www.baidu.com";
+     //   }, 600000); // 600秒后跳转
 	
 </script>
 
