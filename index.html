@@ -90,18 +90,10 @@
 	    overflow: auto; /* 允许内容超出时滚动 */
         }
         .code-line {
-            cursor: pointer; /* 设置鼠标指针为手型 */
+          /*  cursor: pointer;  设置鼠标指针为手型 */
             margin-bottom: 5px; /* 设置行间距 */
         }
-       .code-line:nth-child(1) {
-            color: #FF5733;
-        }
-        .code-line:nth-child(2) {
-            color: #00CED1;
-        }
-        .code-line:nth-child(3) {
-            color: #5733FF;
-        }
+
         .copy-success {
             background-color: #28a745; /* 设置提醒背景颜色 */
             color: #fff; /* 设置提醒文字颜色 */
@@ -164,12 +156,16 @@
 	<a id="link5" href="http://120.76.41.136">⑤留言板</a>
 	<a href="http://admintop.top/nb">侧边菜单</a>
 </div>
- <div class="code-block">
-        <div class="code-line" onclick="copyToClipboard('@;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS &')"> @;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
-        <div class="code-line" onclick="copyToClipboard('@;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS')"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
-        <div class="code-line" onclick="copyToClipboard('@;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update &')"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
-        <div class="copy-success" id="copySuccess">复制成功</div>
-    </div>
+<div class="code-block">
+    <button class="copy-button" onclick="copyCommand(0)">复制</button>
+    <div class="code-line"> @;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
+    <button class="copy-button" onclick="copyCommand(1)">复制</button>
+    <div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+    <button class="copy-button" onclick="copyCommand(2)">复制</button>
+    <div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
+    <div class="copy-success" id="copySuccess">复制成功</div>
+</div>
+
 <script type="text/javascript">
  //数字按键跳转
 	document.addEventListener("keydown", function(event) {
@@ -200,23 +196,25 @@
 	
 	  
 //代码复制
- function copyToClipboard(command) {
-            navigator.clipboard.writeText(command)
-                .then(() => {
-                    showSuccess();
-                })
-                .catch(err => {
-                    console.error('复制失败:', err);
-                });
-        }
+function copyCommand(index) {
+    var commandLines = document.querySelectorAll('.code-line');
+    var commandToCopy = commandLines[index].textContent.trim();
 
-        function showSuccess() {
-            var successMessage = document.getElementById('copySuccess');
-            successMessage.style.display = 'block';
-            setTimeout(function() {
-                successMessage.style.display = 'none';
-            }, 2000); // 2秒后隐藏提醒
-        }
+    var textarea = document.createElement('textarea');
+    textarea.value = commandToCopy;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    var copySuccess = document.getElementById('copySuccess');
+    copySuccess.style.display = 'block';
+
+    setTimeout(function() {
+        copySuccess.style.display = 'none';
+    }, 1500);
+}
+
 
 //禁止右键
 document.addEventListener('contextmenu', function (e) {
