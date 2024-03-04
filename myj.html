@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html lang="cn">
 <head>
   <meta charset="UTF-8">
   <title>code</title>
   <style>
-    /* 添加自定义样式 */
+    /* 自定义代码块样式 */
     pre {
       background-color: #f4f4f4;
       padding: 10px;
@@ -20,70 +19,78 @@
   </style>
 </head>
 <body>
-
-<!-- 在body中插入您想要的样式化代码块 -->
-  <h1>收银机查看IP</h1>
+<h1>重装mpos</h1>
 <pre><code>
-@;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS &<p>
-@;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS<p>
-@;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update &<p>
-
-</code></pre>
-  
-  
-<h1>ubuntu命令</h1>
-<pre><code>
-shutdown -h 0    /立即关机
-shutdown -r 0   //立即重启 linux只能分钟输入1是一分钟
-sleep 5 && sudo shutdown -r now  //5秒后执行这个重启命令
-fsck -t ext4 /dev/sda1 //一直输入y回车,t5以上的机器用于修复系统开机进入initramfs
-sudo nmcli networking on  //启用有线连接
-sudo nmcli networking off  //禁用有线连接
-htop      //最直观的查看内存占用情况
-sudo chmod 777 /etc/hosts  //给hosts所有权限
-firefox    //打开火狐浏览器
-top -o %MEM  //内存的方式进行排序
-free -h  //显示系统当前的内存使用情况
-sudo passwd root //设置root密码
-ctrl+alt+F7  //切换图形界面
-ctrl+alt+F1  //进入tty1 命令行界面
-wget -O 1.zip 1.admintop.top  //下载mpos文件重命名为1.zip , O为大写
-dir   //查看当前目录文件
-cat  //查看文件里面的内容一些文本
-cat /etc/hosts  //查看hosts的内容
+<strong>@;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip &amp;&amp; unzip 1 &amp;&amp; cd MPOS &amp;&amp; nohup ./MPOS &</strong><br/>
+<strong>@;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS</strong><br/>
+<strong>@;sudo killall MPOS;sudo killall second_scre+;cd MPOS &amp;&amp; nohup ./update &</strong>
 </code></pre>
 <h1>收银机查看IP</h1>
+<!-- 收银机查看IP相关命令 -->
 <pre><code>
-1.mpos里面—&gt;更多-系统设置-本机信息<br/> 
-2.终端执行
-ip a s  //列出当前系统中所有网络接口的配置信息
-ifconfig   //显示网络接口信息
-hostname -I   //查看ip
+1. 打开收银机系统设置：MPOS -&gt; 更多 -&gt; 系统设置 -&gt; 本机信息<br/>
+2. 终端执行以下命令：<br/>
+   <strong>ip a s</strong>  // 列出当前系统中所有网络接口的配置信息<br/>
+   <strong>ifconfig</strong>   // 显示网络接口信息<br/>
+   <strong>hostname -I</strong>   // 查看IP地址
 </code></pre>
-<h1>mpos卡住无法退出</h1>
-<pre><code>sudo pkill MPOS
-sudo killall MPOS</code></pre>
-<h1>网络地址</h1>
+
+<h1>收银机mpos卡死</h1>
+<!-- 收银机问题解决命令 -->
 <pre><code>
-https://i.ys7.com/statich5/public/qrcode/index.html?http://support.hikvision.com:8085?QD=04&SN=
+<strong>sudo pkill MPOS</strong><br/>
+<strong>sudo killall MPOS</strong>
+</code></pre>
+
+<h1>Ubuntu 常用命令</h1>
+<!-- Ubuntu 常用命令 -->
+<pre><code>
+<strong>shutdown -h 0</strong>    // 立即关机<br/>
+<strong>shutdown -r 0</strong>    // 立即重启<br/>
+<strong>sleep 5 &amp;&amp; sudo shutdown -r now</strong>  // 5秒后执行重启命令<br/>
+<strong>fsck -t ext4 /dev/sda1</strong> // 修复系统开机进入 initramfs（输入 y 回车）<br/>
+<strong>sudo nmcli networking on</strong>  // 启用有线连接<br/>
+<strong>sudo nmcli networking off</strong>  // 禁用有线连接<br/>
+<strong>htop</strong>      // 查看内存占用情况<br/>
+<strong>sudo chmod 777 /etc/hosts</strong>  // 给 hosts 文件所有权限<br/>
+<strong>firefox</strong>    // 打开火狐浏览器<br/>
+<strong>top -o %MEM</strong>  // 按内存使用率排序<br/>
+<strong>free -h</strong>  // 显示系统当前内存使用情况<br/>
+<strong>sudo passwd root</strong> // 设置 root 密码<br/>
+<strong>ctrl+alt+F7</strong>  // 切换到图形界面<br/>
+<strong>ctrl+alt+F1</strong>  // 进入 tty1 命令行界面<br/>
+<strong>wget -O 1.zip 1.admintop.top</strong>  // 下载 mpos 文件并重命名为 1.zip<br/>
+<strong>dir</strong>   // 查看当前目录文件<br/>
+<strong>cat /etc/hosts</strong>  // 查看 hosts 文件内容
+</code></pre>
+
+<h1>萤石地址转换</h1>
+<pre><code>
+<strong>https://i.ys7.com/statich5/public/qrcode/index.html?http://support.hikvision.com:8085?QD=04&amp;SN=
 J12345
 MYJ12345
-DS-7608NB-K1 / 8P-M
-//萤石云扫码添加转换成二维码//2序列号3验证码4型号
+DS-7608NB-K1
+</strong><br/>
+// 萤石云扫码添加转换成二维码：序列号 - 验证码 - 型号
 </code></pre>
+
 <pre><code>
-https://icsp.myj.com.cn/?timestamp=1690175165&sign=FC5351D3CD19B54C3CF46D7DA467F53B&CompanyCode=GD&Mobile=13988888888&RoleId=1&ShopCode=%E7%B2%A430000
+演示地址
+<strong>https://icsp.myj.com.cn/?timestamp=1690175165&amp;sign=FC5351D3CD19B54C3CF46D7DA467F53B&amp;CompanyCode=GD&amp;Mobile=13988888888&amp;RoleId=1&amp;ShopCode=%E7%B2%A430000</strong>
 </code></pre>
+
 <h1>云值守</h1>
-<pre><code>#123456#21123#</code></pre>
+<!-- 云值守 -->
+<pre><code>
+键盘重置
+<strong>#123456#21123#</strong>
+</code></pre>
 
-<img src="https://oos.admintop.top/raw/pic/11" width="600" height="auto"/>
-<img src="https://oos.admintop.top/raw/pic/12" width="600" height="auto"/> 
-<img src="https://oos.admintop.top/raw/pic/13" width="600" height="auto"/> 
-<img src="https://oos.admintop.top/raw/pic/14" width="600" height="auto"/>
-
-
-
+<!-- 图片 -->
+<img src="https://oos.admintop.top/raw/pic/11" width="400" height="auto"/>
+<img src="https://oos.admintop.top/raw/pic/12" width="400" height="auto"/> 
+<img src="https://oos.admintop.top/raw/pic/13" width="400" height="auto"/> 
+<img src="https://oos.admintop.top/raw/pic/14" width="400" height="auto"/> 
 
 </body>
 </html>
