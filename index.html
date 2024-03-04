@@ -30,12 +30,14 @@
 		.link-list {
 			text-indent: 1em; /* 每行文本首行缩进 1em */
 			font-size: 18px; /* 文本大小为 20 像素 */
+			margin-top: 10px; /* 将顶部外边距设置为 10 像素 */
+			margin-left: 2px; /* 将顶部外边距设置为 100 像素 */
 		}
 
 		/* 链接样式 */
 		.link-list a {
-			display: block; /* 将链接元素设置为块级元素 */
-			width: 300px; /* 设置宽度为 200 像素 */
+			display:block; /* 将链接元素设置为块级元素 */
+		    width: 300px;  设置宽度为 200 像素 */
 			height: 20px; /* 设置高度为 20 像素 */
 			margin-bottom: 8px; /* 设置下方间距为 8 像素 */
 		}
@@ -43,8 +45,8 @@
 		/* 悬浮链接样式 */
 		#floatingLinks {
 			position: fixed; /* 固定定位 */
-			top: 1px; /* 距离顶部 1px */
-			left: 25%; /* 距离左侧 380px */
+			top: 0; /* 距离顶部 1px */
+			left: 26%; /* 距离左侧 380px */
 			border: 1px solid #ccc; /* 边框为1像素实线，颜色为淡灰色 */
 			padding: 10px; /* 内边距为10像素 */
 			display: none; /* 初始隐藏 */
@@ -53,175 +55,175 @@
 		/* 悬浮链接样式 */
 		#floatingLinks a {
 			display: block; /* 将链接元素设置为块级元素 */
-			width: 200px; /* 设置宽度为 200 像素 */
+			width: 100px; /* 设置宽度为 200 像素 */
 			height: 20px; /* 设置高度为 20 像素 */
 			margin-bottom: 3px; /* 设置下方间距为 3 像素 */
-			color: #000080; /* 文本颜色为深蓝色 */
+			color: red; /* 文本颜色为深蓝色 */
 			text-decoration: none; /* 去除链接下划线 */
 		}
 
 		/* 美宜佳图标样式 */
 		#showAdditionalLinks {
 			position: fixed; /* 固定定位 */
-			top: 20px; /* 距离顶部 20px */
-			lift: 30%; /* 距离右侧 30% */
+			bottom: 0; /* 距离顶部 20px */
+			right: 0; /* 距离右侧 30% */
 			cursor: pointer; /* 光标样式为手型 */
-			z-index: 9999; /* 设置层级为最高 */
+			z-index: 999; /* 设置层级为最高 */
 			border: none; /* 去除边框 */
 			background: none; /* 去除背景 */
 		}
 
-	/* 悬浮链接样式 */
-	#floatingLinks.active {
-            border: none; /* 删除边框 */
-          /*  background-color: #fff;  更改背景色 */
-        }
-		
-	.code-block {
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 300px; /* 设置代码块的宽度 */
-            height: auto; /* 设置代码块的高度 */
-            background-color: #f0f0f0; /* 设置代码块背景颜色 */
-            padding: 10px; /* 设置代码块内边距 */
-            border: 1px solid #ccc; /* 设置代码块边框 */
-            font-family: monospace; /* 设置字体为等宽字体 */
-	    overflow: auto; /* 允许内容超出时滚动 */
-        }
-        .code-line {
-          /*  cursor: pointer;  设置鼠标指针为手型 */
-            margin-bottom: 5px; /* 设置行间距 */
-        }
+		/* 悬浮链接样式 */
+		#floatingLinks.active {
+				border: none; /* 删除边框 */
+			  /*  background-color: #fff;  更改背景色 */
+			}
+			
+		.code-block {
+				position: absolute;
+				top: 10px;
+				right: 10px;
+				width: 300px; /* 设置代码块的宽度 */
+				height: auto; /* 设置代码块的高度 */
+				background-color: #f0f0f0; /* 设置代码块背景颜色 */
+				padding: 10px; /* 设置代码块内边距 */
+				border: 1px solid #ccc; /* 设置代码块边框 */
+				font-family: monospace; /* 设置字体为等宽字体 */
+				overflow: auto; /* 允许内容超出时滚动 */
+			}
+		.code-line {
+			 /* cursor: pointer;  设置鼠标指针为手型 */
+				margin-bottom: 5px; /* 设置行间距 */
+			}
 
-        .copy-success {
-            background-color: #28a745; /* 设置提醒背景颜色 */
-            color: #fff; /* 设置提醒文字颜色 */
-            padding: 5px 10px; /* 设置提醒内边距 */
-            border-radius: 5px; /* 设置提醒圆角 */
-            display: none; /* 默认隐藏提醒 */
-            position: absolute; /* 绝对定位 */
-            top: 0; /* 距离顶部距离 */
-            left: 0; /* 距离左侧距离 */
-            transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
-        }
+		.copy-success {
+				background-color: #28a745; /* 设置提醒背景颜色 */
+				color: #fff; /* 设置提醒文字颜色 */
+				padding: 5px 10px; /* 设置提醒内边距 */
+				border-radius: 5px; /* 设置提醒圆角 */
+				display: none; /* 默认隐藏提醒 */
+				position: absolute; /* 绝对定位 */
+				top: 0; /* 距离顶部距离 */
+				left: 0; /* 距离左侧距离 */
+				transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
+			}
     </style>
 </head>
 <body>
 
-<div class="link-list">
-        <a id="link1" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip" target="_blank">①MPOS-ARM</a>
-	<a id="link2" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">②MPOS-X86</a>
-	<a id="link3" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">向日葵(推荐)</a>
-	<a href="https://i.meiyijia.com.cn/" target="_blank">美宜佳在线</a>
-	<a href="https://oos.admintop.top/raw/rj/VNC32.exe" target="_blank">vnc32</a>
-	<a href="https://oos.admintop.top/raw/rj/VNC64.exe" target="_blank">vnc64</a>
-	<a href="https://oos.admintop.top/raw/rj/LanSee.exe" target="_blank">lansee</a>
-	<a href="https://oos.admintop.top/raw/rj/Scan-Mac.exe" target="_blank">Scan-Mac</a>
-	<a href="https://oos.admintop.top/raw/rj/mPing.exe" target="_blank">mping</a>
-	<a href="https://oos.admintop.top/raw/rj/PortScan.exe" target="_blank">portscan</a>	
-	<a href="https://pinco.seewo.com/s/6e9f5b788b8c4bc29b991b8a886371d7" target="_blank">PortScan</a>
-	<a href="https://pinco.seewo.com/s/0d9019df35ee4ed9ab6558ae6ee61679" target="_blank">lansee</a>
-	<a href="https://pinco.seewo.com/s/79806b6164774e88907d0563956b1a81" target="_blank">vnc64</a>
-	<a href="https://pinco.seewo.com/s/d46d8e959d934734902496469460504b" target="_blank">VNC32</a>
-	<a  href="https://pinco.seewo.com/s/59374694e2f644b48c7d3b6832ecb359" target="_blank">UltraISO</a>
-	<a href="https://download.kugou.com/download/kugou_pc" target="_blank">酷狗音乐</a>
-	<a href="https://down.360safe.com/se/360se_setup.exe" target="_blank">360安全浏览器</a>
-	<a  href="https://www.speedtest.cn/" target="_blank">speedtest</a>
-	<a  href="https://10000.gd.cn/" target="_blank">广东电信测速</a>
-	<a  href="https://ko0.com/myj" target="_blank">网络剪贴板ko0</a>
-	<a  href="https://netcut.cn/myj" target="_blank">网络剪贴板netcut</a>
-	<a  href="https://www.xiaoluo.fun/paste" target="_blank">在线粘贴板</a>
-	<a  href="https://pinco.seewo.com/s/d7f1f246ea584ac1b32465187b74a9f9" target="_blank">前台自助驱动</a>
-	<a  href="https://sunlogin.oray.com/download?categ=personal" target="_blank">向日葵</a>
-    	<a  href="https://pinco.seewo.com/s/dba9c7a107cd43048d81f68793e8d16e" target="_blank">AI升级文件</a>
-	<a  href="https://pinco.seewo.com/s/62552178d3d3489398bc2acdfa3304b7" target="_blank">鱼眼升级文件</a>
-	<a  href="https://pinco.seewo.com/s/23eeea3c350a431bb34c80de8aed7747" target="_blank">医药软件</a>
-	<a href="https://pinco.seewo.com/s/b854a9d1c27d4a4da3c043f318571e72" target="_blank">iot_server.apk,4.41MB,1.1.0</a>
-	<a  href="https://pinco.seewo.com/s/4dfadb8a56424d6aa8d084172823bad6" target="_blank">自助收银生鲜.apk,29.93MB,1.0.1517</a>
-	<a  href="https://pinco.seewo.com/s/7a71de3d6d75484ab9e2c152b8361f44" target="_blank">电脑配置读取</a>
-	<a  href="https://pinco.seewo.com/s/30abe3538d134913b62e7e815e4deb59" target="_blank">键盘按键测试软件</a>
-	<a  href="http://ys-l.ysepan.com/615602717/525558407/TtUujRu55537H3N5HM7Kb8/%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E8%AF%BB%E5%8F%96v2.0.exe" target="_blank">配置读取</a>
+		<div class="link-list">
+			<a id="link1" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip" target="_blank">①MPOS-ARM</a>
+			<a id="link2" href="https://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">②MPOS-X86</a>
+			<a id="link3" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">③向日葵(推荐)</a>
+			<a href="https://i.meiyijia.com.cn/" target="_blank">美宜佳在线</a>
+			<a href="https://oos.admintop.top/raw/rj/VNC32.exe" target="_blank">vnc32</a>
+			<a href="https://oos.admintop.top/raw/rj/VNC64.exe" target="_blank">vnc64</a>
+			<a href="https://oos.admintop.top/raw/rj/LanSee.exe" target="_blank">lansee</a>
+			<a href="https://oos.admintop.top/raw/rj/Scan-Mac.exe" target="_blank">Scan-Mac</a>
+			<a href="https://oos.admintop.top/raw/rj/mPing.exe" target="_blank">mping</a>
+			<a href="https://oos.admintop.top/raw/rj/PortScan.exe" target="_blank">portscan</a>	
+			<a href="https://pinco.seewo.com/s/6e9f5b788b8c4bc29b991b8a886371d7" target="_blank">PortScan</a>
+			<a href="https://pinco.seewo.com/s/0d9019df35ee4ed9ab6558ae6ee61679" target="_blank">lansee</a>
+			<a  href="https://pinco.seewo.com/s/79806b6164774e88907d0563956b1a81" target="_blank">vnc64</a>
+			<a  href="https://pinco.seewo.com/s/d46d8e959d934734902496469460504b" target="_blank">VNC32</a>
+			<a  href="https://pinco.seewo.com/s/59374694e2f644b48c7d3b6832ecb359" target="_blank">UltraISO</a>
+			<a  href="https://download.kugou.com/download/kugou_pc" target="_blank">酷狗音乐</a>
+			<a  href="https://down.360safe.com/se/360se_setup.exe" target="_blank">360安全浏览器</a>
+			<a  href="https://www.speedtest.cn/" target="_blank">speedtest</a>
+			<a  href="https://10000.gd.cn/" target="_blank">广东电信测速</a>
+			<a  href="https://ko0.com/myj" target="_blank">网络剪贴板ko0</a>
+			<a  href="https://netcut.cn/myj" target="_blank">网络剪贴板netcut</a>
+			<a  href="https://www.xiaoluo.fun/paste" target="_blank">在线粘贴板</a>
+			<a  href="https://pinco.seewo.com/s/d7f1f246ea584ac1b32465187b74a9f9" target="_blank">前台自助驱动</a>
+			<a  href="https://sunlogin.oray.com/download?categ=personal" target="_blank">向日葵</a>
+			<a  href="https://pinco.seewo.com/s/dba9c7a107cd43048d81f68793e8d16e" target="_blank">AI升级文件</a>
+			<a  href="https://pinco.seewo.com/s/62552178d3d3489398bc2acdfa3304b7" target="_blank">鱼眼升级文件</a>
+			<a  href="https://pinco.seewo.com/s/23eeea3c350a431bb34c80de8aed7747" target="_blank">医药软件</a>
+			<a  href="https://pinco.seewo.com/s/b854a9d1c27d4a4da3c043f318571e72" target="_blank">iot_server.apk,4.41MB,1.1.0</a>
+			<a  href="https://pinco.seewo.com/s/4dfadb8a56424d6aa8d084172823bad6" target="_blank">自助收银生鲜.apk,29.93MB,1.0.1517</a>
+			<a  href="https://pinco.seewo.com/s/7a71de3d6d75484ab9e2c152b8361f44" target="_blank">电脑配置读取</a>
+			<a  href="https://pinco.seewo.com/s/30abe3538d134913b62e7e815e4deb59" target="_blank">键盘按键测试软件</a>
+			<a  href="http://ys-l.ysepan.com/615602717/525558407/TtUujRu55537H3N5HM7Kb8/%E7%94%B5%E8%84%91%E9%85%8D%E7%BD%AE%E8%AF%BB%E5%8F%96v2.0.exe" target="_blank">配置读取</a>
 
-   
-</div>
-<!-- 悬浮链接挂件 -->
-<img id="showAdditionalLinks" src="https://myj.com.cn/images/MYJlogo.png" alt="挂件" width="100px" height="100px">
-<!-- 悬浮额外链接 -->
-<div id="floatingLinks" >
-	<a id="link4" href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" title="打开f12，点击网络-保留日志,打开链接,搜索?">④客服中心</a>
+		   
+		</div>
+		<!-- 悬浮链接挂件 -->
+		<img id="showAdditionalLinks" src="https://myj.com.cn/images/MYJlogo.png" alt="挂件" width="100px" height="100px">
+		<!-- 悬浮额外链接 -->
+		<div id="floatingLinks" >
+			<a id="link4" href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" title="打开f12，点击网络-保留日志,打开链接,搜索?">④客服中心</a>
 
-   	<a href="http://120.76.41.136:9000">file</a>
-  	<a href="http://120.76.41.136:5244">alist</a>
-	<a id="link5" href="http://120.76.41.136">⑤留言板</a>
-	<a href="http://admintop.top/nb">侧边菜单</a>
-</div>
-<div class="code-block">
-    <button class="copy-button" onclick="copyCommand(0)">复制</button>
-    <div class="code-line"> @;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
-    <button class="copy-button" onclick="copyCommand(1)">复制</button>
-    <div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
-    <button class="copy-button" onclick="copyCommand(2)">复制</button>
-    <div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
-    <div class="copy-success" id="copySuccess">复制成功</div>
-</div>
+			<a href="http://120.76.41.136:9000">file</a>
+			<a href="http://120.76.41.136:5244">alist</a>
+			<a id="link5" href="http://120.76.41.136">⑤留言板</a>
+			<a href="http://admintop.top/nb">侧边菜单</a>
+		</div>
+		<div class="code-block">
+			<button class="copy-button" onclick="copyCommand(0)">复制</button>
+			<div class="code-line"> @;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
+			<button class="copy-button" onclick="copyCommand(1)">复制</button>
+			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+			<button class="copy-button" onclick="copyCommand(2)">复制</button>
+			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
+			<div class="copy-success" id="copySuccess">复制成功</div>
+		</div>
 
-<script type="text/javascript">
- //数字按键跳转
-	document.addEventListener("keydown", function(event) {
-    if (event.key >= '1' && event.key <= '9') {
-        var linkId = "link" + event.key;
-        var link = document.getElementById(linkId);
-        if (link) {
-            window.location.href = link.href;
-			}
+		<script type="text/javascript">
+		 //数字按键跳转
+			document.addEventListener("keydown", function(event) {
+			if (event.key >= '1' && event.key <= '9') {
+				var linkId = "link" + event.key;
+				var link = document.getElementById(linkId);
+				if (link) {
+					window.location.href = link.href;
+					}
+				}
+			});
+
+			// 显示/隐藏悬浮链接
+			 var isLinksVisible = false; // 初始化链接状态为隐藏
+			 document.getElementById("showAdditionalLinks").addEventListener("click", function() {
+				var floatingLinks = document.getElementById("floatingLinks");
+
+				if (!isLinksVisible) {
+					floatingLinks.style.display = "block";
+					floatingLinks.classList.add("active"); // 添加 active 类名
+				} else {
+					floatingLinks.style.display = "none";
+					floatingLinks.classList.remove("active"); // 移除 active 类名
+				}
+
+				isLinksVisible = !isLinksVisible; // 更新链接状态
+			  });
+			
+			  
+		//代码复制
+		function copyCommand(index) {
+			var commandLines = document.querySelectorAll('.code-line');
+			var commandToCopy = commandLines[index].textContent.trim();
+
+			var textarea = document.createElement('textarea');
+			textarea.value = commandToCopy;
+			document.body.appendChild(textarea);
+			textarea.select();
+			document.execCommand('copy');
+			document.body.removeChild(textarea);
+
+			var copySuccess = document.getElementById('copySuccess');
+			copySuccess.style.display = 'block';
+
+			setTimeout(function() {
+				copySuccess.style.display = 'none';
+			}, 1500);
 		}
-	});
-
-    // 显示/隐藏悬浮链接
-	 var isLinksVisible = false; // 初始化链接状态为隐藏
-   	 document.getElementById("showAdditionalLinks").addEventListener("click", function() {
-        var floatingLinks = document.getElementById("floatingLinks");
-
-        if (!isLinksVisible) {
-            floatingLinks.style.display = "block";
-            floatingLinks.classList.add("active"); // 添加 active 类名
-        } else {
-            floatingLinks.style.display = "none";
-            floatingLinks.classList.remove("active"); // 移除 active 类名
-        }
-
-        isLinksVisible = !isLinksVisible; // 更新链接状态
-  	  });
-	
-	  
-//代码复制
-function copyCommand(index) {
-    var commandLines = document.querySelectorAll('.code-line');
-    var commandToCopy = commandLines[index].textContent.trim();
-
-    var textarea = document.createElement('textarea');
-    textarea.value = commandToCopy;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textarea);
-
-    var copySuccess = document.getElementById('copySuccess');
-    copySuccess.style.display = 'block';
-
-    setTimeout(function() {
-        copySuccess.style.display = 'none';
-    }, 1500);
-}
 
 
-//禁止右键
-document.addEventListener('contextmenu', function (e) {
-    e.preventDefault();
-});
+		//禁止右键
+		document.addEventListener('contextmenu', function (e) {
+			e.preventDefault();
+		});
 
-</script>
+		</script>
 
 </body>
 </html>
