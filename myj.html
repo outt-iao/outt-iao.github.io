@@ -2,7 +2,7 @@
 <html lang="cn">
 <head>
   <meta charset="UTF-8">
-  <title>code</title>
+  <title>myj</title>
   <style>
     /* 自定义代码块样式 */
     pre {
@@ -16,16 +16,47 @@
       font-size: 14px;
       color: #333;
     }
+		.code-block {
+            background-color: #f0f0f0; /* 设置代码块背景颜色 */
+            padding: 10px; /* 设置代码块内边距 */
+            border: 1px solid #ccc; /* 设置代码块边框 */
+            font-family: monospace; /* 设置字体为等宽字体 */
+			overflow: auto; /* 允许内容超出时滚动 */
+        }
+        .code-line {
+            cursor: pointer; /*设置鼠标指针为手型 */
+            margin-bottom: 5px; /* 设置行间距 */
+        }
+
+        .copy-success {
+            background-color: #28a745; /* 设置提醒背景颜色 */
+            color: #fff; /* 设置提醒文字颜色 */
+            padding: 5px 10px; /* 设置提醒内边距 */
+            border-radius: 5px; /* 设置提醒圆角 */
+            display: none; /* 默认隐藏提醒 */
+            position: absolute; /* 绝对定位 */
+            top: 0; /* 距离顶部距离 */
+            left: 0; /* 距离左侧距离 */
+            transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
+        }
+        }
   </style>
 </head>
 <body>
-<h1>重装mpos</h1>
-<pre><code>
-<strong>@;rm -rf MPOS;wget -O 1 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip &amp;&amp; unzip 1 &amp;&amp; cd MPOS &amp;&amp; nohup ./MPOS &</strong><br/>
-<strong>@;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS</strong><br/>
-<strong>@;sudo killall MPOS;sudo killall second_scre+;cd MPOS &amp;&amp; nohup ./update &</strong>
-</code></pre>
-<h1>收银机查看IP</h1>
+<h1>MPOS</h1>
+	<div class="code-block">
+			<button class="copy-button" onclick="copyCommand(0)">复制</button>
+			<div class="code-line"> @;rm -rf MPOS;wget -O 1 i.admintop.top&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
+			<button class="copy-button" onclick="copyCommand(2)">复制</button>
+			<div class="code-line"> @;unzip index.html&&cd MPOS&&nohup ./MPOS &</div>
+			<button class="copy-button" onclick="copyCommand(1)">复制</button>
+			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+			<button class="copy-button" onclick="copyCommand(2)">复制</button>
+			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
+			<div class="copy-success" id="copySuccess">复制成功</div>
+		</div>
+
+<h1>查看IP</h1>
 <!-- 收银机查看IP相关命令 -->
 <pre><code>
 1. 打开收银机系统设置：MPOS -&gt; 更多 -&gt; 系统设置 -&gt; 本机信息<br/>
@@ -85,12 +116,35 @@ DS-7608NB-K1
 键盘重置
 <strong>#123456#21123#</strong>
 </code></pre>
+<div>
+<img src="https://oos.admintop.top/raw/pic/11" width="400" height="auto"/> <P>
+<img src="https://oos.admintop.top/raw/pic/12" width="400" height="auto"/> <P>
+<img src="https://oos.admintop.top/raw/pic/13" width="400" height="auto"/> <P>
+<img src="https://oos.admintop.top/raw/pic/14" width="400" height="auto"/> <P>
+</div>
 
-<!-- 图片 -->
-<img src="https://oos.admintop.top/raw/pic/11" width="400" height="auto"/>
-<img src="https://oos.admintop.top/raw/pic/12" width="400" height="auto"/> 
-<img src="https://oos.admintop.top/raw/pic/13" width="400" height="auto"/> 
-<img src="https://oos.admintop.top/raw/pic/14" width="400" height="auto"/> 
 
+<script>
+	function copyCommand(index) {
+    var commandLines = document.querySelectorAll('.code-line');
+    var commandToCopy = commandLines[index].textContent.trim();
+
+    var textarea = document.createElement('textarea');
+    textarea.value = commandToCopy;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textarea);
+
+    var copySuccess = document.getElementById('copySuccess');
+    copySuccess.style.display = 'block';
+
+    setTimeout(function() {
+        copySuccess.style.display = 'none';
+    }, 1500);
+}
+	
+	
+</script>
 </body>
 </html>
