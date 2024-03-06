@@ -6,6 +6,9 @@
     <title>远程控制软件</title>
 	<link rel="icon" href="https://sunlogin.oray.com/favicon.ico" type="image/png">
     <style type="text/css">
+	body{
+	background-color: #e5e5ff;  
+	}
 		a:link {
 			text-decoration: none; /* 链接样式：无下划线 */
 			color: #000080; /* 链接文字颜色 */
@@ -55,22 +58,23 @@
 		/* 悬浮链接样式 */
 		#floatingLinks a {
 			display: block; /* 将链接元素设置为块级元素 */
-			width: 100px; /* 设置宽度为 200 像素 */
-			height: 20px; /* 设置高度为 20 像素 */
+			width: 100px; 
+			height: 20px; 
 			margin-bottom: 3px; /* 设置下方间距为 3 像素 */
-			color: red; /* 文本颜色为深蓝色 */
+			color: red; 
 			text-decoration: none; /* 去除链接下划线 */
 		}
 
 		/* 美宜佳图标样式 */
 		#showAdditionalLinks {
-			position: fixed; /* 固定定位 */
-			bottom: 0; /* 距离顶部 20px */
-			right: 0; /* 距离右侧 30% */
-			cursor: pointer; /* 光标样式为手型 */
-			z-index: 999; /* 设置层级为最高 */
-			border: none; /* 去除边框 */
-			background: none; /* 去除背景 */
+			position: fixed; 
+			/* bottom: 0; 下top的反义词 */
+			right: 10px; 
+			top: 8px;
+			cursor: pointer; 
+			z-index: 999;
+			border: none; 
+			background: none; 
 		}
 
 		/* 悬浮链接样式 */
@@ -78,41 +82,14 @@
 				border: none; /* 删除边框 */
 			  /*  background-color: #fff;  更改背景色 */
 			}
-			
-		.code-block {
-				position: absolute;
-				top: 10px;
-				right: 10px;
-				width: 300px; /* 设置代码块的宽度 */
-				height: auto; /* 设置代码块的高度 */
-				background-color: #f0f0f0; /* 设置代码块背景颜色 */
-				padding: 10px; /* 设置代码块内边距 */
-				border: 1px solid #ccc; /* 设置代码块边框 */
-				font-family: monospace; /* 设置字体为等宽字体 */
-				overflow: auto; /* 允许内容超出时滚动 */
-			}
-		.code-line {
-			 /* cursor: pointer;  设置鼠标指针为手型 */
-				margin-bottom: 5px; /* 设置行间距 */
-			}
 
-		.copy-success {
-				background-color: #28a745; /* 设置提醒背景颜色 */
-				color: #fff; /* 设置提醒文字颜色 */
-				padding: 5px 10px; /* 设置提醒内边距 */
-				border-radius: 5px; /* 设置提醒圆角 */
-				display: none; /* 默认隐藏提醒 */
-				position: absolute; /* 绝对定位 */
-				top: 0; /* 距离顶部距离 */
-				left: 0; /* 距离左侧距离 */
-				transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
-			}
     </style>
 </head>
 <body>
 
 		<div class="link-list">
-
+			<a id="link1" href="http://120.76.41.136:5244/d/mpos-arm-0.7.9.0.zip" target="_blank">①ARM</a>
+			<a id="link2" href="http://120.76.41.136:5244/d/mpos-x86-0.7.9.0.zip" target="_blank">②X86</a>
 			<a id="link3" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">③向日葵(推荐)</a>
 			<a href="https://i.meiyijia.com.cn/" target="_blank">美宜佳在线</a>
 			<a href="https://oos.admintop.top/raw/rj/VNC32.exe" target="_blank">vnc32</a>
@@ -157,17 +134,7 @@
 			<a id="link5" href="http://120.76.41.136">⑤留言板</a>
 			<a href="http://admintop.top/nb">侧边菜单</a>
 		</div>
-		<div class="code-block">
-			<button class="copy-button" onclick="copyCommand(0)">复制</button>
-			<div class="code-line"> @;rm -rf MPOS;wget -O 1 i.admintop.top&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
-			<button class="copy-button" onclick="copyCommand(2)">复制</button>
-			<div class="code-line">unzip index.html&&cd MPOS&&nohup ./MPOS &</div>
-			<button class="copy-button" onclick="copyCommand(1)">复制</button>
-			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
-			<button class="copy-button" onclick="copyCommand(2)">复制</button>
-			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
-			<div class="copy-success" id="copySuccess">复制成功</div>
-		</div>
+	
 
 		<script type="text/javascript">
 		 //数字按键跳转
@@ -197,27 +164,6 @@
 				isLinksVisible = !isLinksVisible; // 更新链接状态
 			  });
 			
-			  
-		//代码复制
-		function copyCommand(index) {
-			var commandLines = document.querySelectorAll('.code-line');
-			var commandToCopy = commandLines[index].textContent.trim();
-
-			var textarea = document.createElement('textarea');
-			textarea.value = commandToCopy;
-			document.body.appendChild(textarea);
-			textarea.select();
-			document.execCommand('copy');
-			document.body.removeChild(textarea);
-
-			var copySuccess = document.getElementById('copySuccess');
-			copySuccess.style.display = 'block';
-
-			setTimeout(function() {
-				copySuccess.style.display = 'none';
-			}, 1500);
-		}
-
 
 		//禁止右键
 		document.addEventListener('contextmenu', function (e) {
