@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image MD5 Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .file-input-container {
+            margin-bottom: 20px;
+        }
+        /* 放大选择文件按钮 */
+        .file-input-container input[type="file"] {
+            font-size: 30px;
+        }
+        .image-preview-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .image-preview {
+            max-width: 200px;
+            max-height: 200px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        .image-preview img {
+            width: 100%;
+            height: auto;
+        }
+        .md5-result {
+            margin-top: 20px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+</head>
+<body>
+    <div class="file-input-container">
+        <!-- 修改了input[type="file"]的样式 -->
+        <input type="file" id="fileInput" multiple onchange="handleFileSelect(event)">
+    </div>
+    <div class="image-preview-container" id="imagePreviewContainer"></div>
+    <div class="md5-result">
+        <h3>MD5:</h3>
+        <ul id="md5Results"></ul>
+    </div>
+
+    <script>
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            const md5Results = document.getElementById('md5Results');
+            md5Results.innerHTML = '';
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            imagePreviewContainer.innerHTML = '';
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    const binaryString = event.target.result;
+                    const md5Hash = md5(binaryString);
+                    const md5Item = document.createElement('li');
+                    md5Item.textContent = md5Hash;
+                    md5Results.appendChild(md5Item);
+
+                    const imagePreview = document.createElement('div');
+                    imagePreview.classList.add('image-preview');
+                    const img = document.createElement('img');
+                    img.src = URL.createObjectURL(file);
+                    imagePreview.appendChild(img);
+                    imagePreviewContainer.appendChild(imagePreview);
+                };
+                reader.readAsBinaryString(file);
+            }
+        }
+
+        function md5(input) {
+            return CryptoJS.MD5(input).toString();
+        }
+    </script>
+</body>
+</html>
