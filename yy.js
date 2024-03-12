@@ -1,12 +1,11 @@
 // 歌曲列表
 const songs = [
-{ title: '测试声音', url: 'https://oos.admintop.top/raw/music/%E7%BE%8E%E5%AE%9C%E4%BD%B3%E9%97%A8%E9%93%83%E9%9F%B3%EF%BC%88%E7%BA%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%E3%80%8B%E6%88%90%E5%93%81.mp3' },
-{ title: '别来无恙', url: 'https://oos.admintop.top/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' },
-{ title: '我可以', url: 'https://oos.admintop.top/raw/music/%E6%88%91%E5%8F%AF%E4%BB%A5%20-%20%E6%88%BF%E4%B8%9C%E7%9A%84%E7%8C%AB.mp3' },
-{ title: '我好想你', url: 'https://oos.admintop.top/raw/music/%E6%88%91%E5%A5%BD%E6%83%B3%E4%BD%A0%20-%20%E6%BD%98%E5%B9%BF%E7%9B%8A.mp3' },
-{ title: '晚风', url: 'https://oos.admintop.top/raw/music/%E6%99%9A%E9%A3%8E%20-%207opy%20&%20BT07.mp3' },
-{ title: '致你', url: 'https://oos.admintop.top/raw/music/%E8%87%B4%E4%BD%A0%20-%20yihuik%E8%8B%A1%E6%85%A7.mp3' },
-  
+{ title: '测试声音', url: 'https://cfoos.pages.dev/raw/music/%E7%BE%8E%E5%AE%9C%E4%BD%B3%E9%97%A8%E9%93%83%E9%9F%B3%EF%BC%88%E7%BA%AF%E9%9F%B3%E4%B9%90%E7%89%88%EF%BC%89%E3%80%8B%E6%88%90%E5%93%81.mp3' },
+{ title: '别来无恙', url: 'https://cfoos.pages.dev/raw/music/%E5%88%AB%E6%9D%A5%E6%97%A0%E6%81%99.mp3' },
+{ title: '我可以', url: 'https://cfoos.pages.dev/raw/music/%E6%88%91%E5%8F%AF%E4%BB%A5%20-%20%E6%88%BF%E4%B8%9C%E7%9A%84%E7%8C%AB.mp3' },
+{ title: '我好想你', url: 'https://cfoos.pages.dev/raw/music/%E6%88%91%E5%A5%BD%E6%83%B3%E4%BD%A0%20-%20%E6%BD%98%E5%B9%BF%E7%9B%8A.mp3' },
+{ title: '晚风', url: 'https://cfoos.pages.dev/raw/music/%E6%99%9A%E9%A3%8E%20-%207opy%20&%20BT07.mp3' },
+{ title: '致你', url: 'https://cfoos.pages.dev/raw/music/%E8%87%B4%E4%BD%A0%20-%20yihuik%E8%8B%A1%E6%85%A7.mp3' },
 ];
 
 
