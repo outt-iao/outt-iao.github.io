@@ -1,21 +1,22 @@
+
 <!DOCTYPE html>
 <html lang="cn">
 <head>
   <meta charset="UTF-8">
   <title>myj</title>
   <style>
-    /* 自定义代码块样式 */
-    pre {
-      background-color: #f4f4f4;
-      padding: 10px;
-      border-radius: 5px;
-      overflow-x: auto;
-    }
-    code {
-      font-family: 'Courier New', Courier, monospace;
-      font-size: 14px;
-      color: #333;
-    }
+		/* 自定义代码块样式 */
+		pre {
+		  background-color: #f4f4f4;
+		  padding: 10px;
+		  border-radius: 5px;
+		  overflow-x: auto;
+		}
+		code {
+		  font-family: 'Courier New', Courier, monospace;
+		  font-size: 14px;
+		  color: #333;
+		}
 		.code-block {
             background-color: #f0f0f0; /* 设置代码块背景颜色 */
             padding: 10px; /* 设置代码块内边距 */
@@ -39,19 +40,48 @@
             left: 0; /* 距离左侧距离 */
             transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
         }
-        }
+        
+		/* 增加特定性 */
+		a {
+			background-color: #4CAF50;
+			color: white;
+			padding: 10px 20px;
+			text-decoration: none;
+			transition: background-color 0.5s ease;
+		}
+
+		/* 鼠标悬停时的样式 */
+		a:hover {
+			background-color: #45a049;
+		}
+
+		/* 鼠标点击时的样式 */
+		a:active {
+			background-color: #3e8e41;
+		}
+</style>
+		
   </style>
 </head>
 <body>
+<a href="https://kfwb.myj.com.cn/WeiXin/weihuyuan/First.aspx" target="_blank">客服工单</a>
+<a href="https://mposshop-gd.myj.com.cn/home/index" target="_blank">维护平台</a>
+<a href="http://120.76.41.136/" target="_blank">留言板</a><p>
+
 <h1>MPOS</h1>
+
+
+
 	<div class="code-block">
 			<button class="copy-button" onclick="copyCommand(0)">复制</button>
 			<div class="code-line"> @;rm -rf MPOS;wget -O 1 i.appmom.mom&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
-			<button class="copy-button" onclick="copyCommand(2)">复制</button>
-			<div class="code-line"> @;unzip index.html&&cd MPOS&&nohup ./MPOS &</div>
 			<button class="copy-button" onclick="copyCommand(1)">复制</button>
-			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+			<div class="code-line"> @;rm -rf MPOS;unzip 1&&cd MPOS&&nohup ./MPOS & </div>
 			<button class="copy-button" onclick="copyCommand(2)">复制</button>
+			<div class="code-line"> @;rm -rf MPOS;unzip index.html&&cd MPOS&&nohup ./MPOS &</div>
+			<button class="copy-button" onclick="copyCommand(3)">复制</button>
+			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS;./MPOS </div>
+			<button class="copy-button" onclick="copyCommand(4)">复制</button>
 			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;cd MPOS&&nohup ./update & </div>
 			<div class="copy-success" id="copySuccess">复制成功</div>
 		</div>
