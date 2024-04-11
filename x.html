@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>下载站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            border-radius: 10px;
+            background-color: #fff;
+            padding: 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        p {
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .download-btn {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin: 10px;
+        }
+
+        .download-btn:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>欢迎来到下载站</h1>
+        <p>请选择您需要下载的版本：</p>
+        <button class="download-btn" onclick="redirectToDownload('https://d.oray.com/sunlogin/windows/SunloginClient_%2015.3.2.62919_x64.exe')">向日葵64 (推荐)</button>
+        <button class="download-btn" onclick="redirectToDownload('https://d.oray.com/sunlogin/windows/SunloginClient_%2015.3.2.62919.exe')">向日葵32</button>
+    </div>
+
+    <script>
+        function redirectToDownload(url) {
+            window.location.href = url;
+        }
+    </script>
+</body>
+</html>
