@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>鼠标按钮测试</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  #mouse-area {
+    width: 500px;
+    height: 300px;
+    border: 2px solid #ccc;
+    margin: 50px auto;
+    position: relative;
+  }
+  .button-info {
+    margin-top: 20px;
+  }
+  .reset-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin-top: 20px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: background-color 0.3s;
+  }
+  .reset-button:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+  <h1>鼠标测试</h1>
+  <div id="mouse-area" oncontextmenu="return false;" onmousedown="recordMouseButton(event)">
+    将鼠标移动到此区域测试。
+  </div>
+
+  <div id="left-button-info" class="button-info"></div>
+  <div id="right-button-info" class="button-info"></div>
+  <div id="middle-button-info" class="button-info"></div>
+  <div id="unknown-button-info" class="button-info"></div>
+
+  <button class="reset-button" onclick="resetClickCounts()">重置按钮点击次数</button>
+
+  <script>
+    let leftClickCount = 0;
+    let rightClickCount = 0;
+    let middleClickCount = 0;
+    let unknownClickCount = 0;
+
+    function recordMouseButton(event) {
+      event.preventDefault(); // 屏蔽原始功能
+      const buttonInfo = document.getElementById(getButtonInfoId(event.buttons));
+      if (event.buttons === 1) {
+        leftClickCount++;
+        buttonInfo.textContent = '左键点击，点击次数：' + leftClickCount;
+      } else if (event.buttons === 2) {
+        rightClickCount++;
+        buttonInfo.textContent = '右键点击，点击次数：' + rightClickCount;
+      } else if (event.buttons === 4) {
+        middleClickCount++;
+        buttonInfo.textContent = '中键点击，点击次数：' + middleClickCount;
+      } else {
+        unknownClickCount++;
+        buttonInfo.textContent = '未知按钮点击，点击次数：' + unknownClickCount;
+      }
+    }
+
+    function resetClickCounts() {
+      leftClickCount = 0;
+      rightClickCount = 0;
+      middleClickCount = 0;
+      unknownClickCount = 0;
+      updateButtonInfo();
+    }
+
+    function getButtonInfoId(buttons) {
+      switch (buttons) {
+        case 1:
+          return 'left-button-info';
+        case 2:
+          return 'right-button-info';
+        case 4:
+          return 'middle-button-info';
+        default:
+          return 'unknown-button-info';
+      }
+    }
+
+    function updateButtonInfo() {
+      document.getElementById('left-button-info').textContent = '左键点击，点击次数：' + leftClickCount;
+      document.getElementById('right-button-info').textContent = '右键点击，点击次数：' + rightClickCount;
+      document.getElementById('middle-button-info').textContent = '中键点击，点击次数：' + middleClickCount;
+      document.getElementById('unknown-button-info').textContent = '未知按钮点击，点击次数：' + unknownClickCount;
+    }
+  </script>
+</body>
+</html>
