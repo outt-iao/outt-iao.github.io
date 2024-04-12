@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具tool</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column; 
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px; /* 设置上外边距为20px */
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            margin: 5px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #ff8080;
+            border-radius: 5px;
+        }
+		#iframeContainer {
+			width: 60%;
+			height: 60%;
+			border: 1px solid #ccc;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2); /* 添加左上和右下方的阴影效果 */
+		}
+		@media only screen and (max-width: 768px) {
+		#iframeContainer {
+			width: 100%; /* 当屏幕宽度小于等于768px时，设置宽度为100% */
+		}
+	}
+
+
+
+        iframe {
+            width: 100%; /* 设置iframe宽度为80% */
+            height: 100%; /* 设置iframe高度为100% */
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/lb')">声音测试</a></li>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/mouse')">鼠标测试</a></li>
+		<li><a href="#" onclick="loadWebsite('https://www.zfrontier.com/lab/keyboardTester')">键盘测试</a></li>
+        <!-- 在这里可以继续添加其他网站的链接 -->
+    </ul>
+
+    <div id="iframeContainer"></div>
+
+    <script>
+        function loadWebsite(url) {
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+
+            var container = document.getElementById("iframeContainer");
+            container.innerHTML = "";
+            container.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
