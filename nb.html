@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>工具tool</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            flex-direction: column; 
+        }
+
+		ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			position: absolute;
+			left: 0;
+			top: 50%; /* 垂直居中 */
+			transform: translateY(-50%); /* 通过transform调整垂直位置 */
+			z-index: 1; /* 确保ul在iframe上面显示 */
+			<!-- background-color: #fff; /* 设置背景色 */ -->
+			padding: 20px;
+			width: 8%; /* 设置宽度 */
+		}
+		
+		li {
+			margin-bottom: 5px;
+			width: 100%; /* 让列表项占满整个宽度 */
+			
+		}
+
+		a {
+			display: block;
+			padding: 9px 9px;
+			margin: 5px 10px; /* 调整垂直方向的外边距，水平方向保持为0 */
+			text-decoration: none;
+			color: #fff;
+			background-color: #ff8080;
+			border-radius: 5px;
+			width: 120px; /* 让链接填充整个列表项的宽度 */
+			 white-space: nowrap; /* 防止文字换行 */
+		}
+
+		#iframeContainer {
+			width: 60%;
+			height: 90%;
+			border: 1px solid #ccc;
+			display: flex;
+			justify-content: flex-start; /* 将iframe左对齐 */
+			align-items: center;
+			box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
+			position: relative; /* 设置为相对定位 */
+		}
+
+		@media only screen and (max-width: 768px) {
+			  #iframeContainer {
+				width: 80%;
+				height: 100%;
+				margin-left: auto; /* 将内容右对齐 */
+			}
+			
+			a {
+				<!-- background-color: transparent; /* 移除背景颜色 */ -->
+				<!-- color: black; /* 设置文字颜色为黑色 */ -->
+				padding: 2px 1px; /* 文字间距 , 文字和左边的距离*/
+				margin: 5px 0px;/* 文字间距 , 文字和左边的距离*/
+				width: 60px;
+			}
+		
+		
+		
+		
+		}
+		
+
+		iframe {
+			width: 100%;
+			height: 100%;
+			border: none;
+		}
+
+    </style>
+</head>
+<body>
+
+    <ul>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/qr')">二维码生成</a></li>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/mac')">mac提取</a></li>
+		<li><a href="#" onclick="loadWebsite('http://120.76.41.136:5244')">alist</a></li>
+		<li><a href="#" onclick="loadWebsite('http://appmom.mom/rq')">日期计算</a></li>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/')">首页</a></li>
+		<li><a href="#" onclick="loadWebsite('http://appmom.mom/iso')">iso</a></li>
+		<li><a href="#" onclick="loadWebsite('http://appmom.mom/test')">测速网</a></li>
+        <li><a href="#" onclick="loadWebsite('http://appmom.mom/cz')">重装系统</a></li>
+		<li><a href="#" onclick="loadWebsite('http://120.76.41.136')">留言板</a></li>
+		<li><a href="#" onclick="loadWebsite('http://appmom.mom/via')">书签</a></li>
+        <!-- 在这里可以继续添加其他网站的链接 -->
+    </ul>
+
+    <div id="iframeContainer"></div>
+
+    <script>
+        function loadWebsite(url) {
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+
+            var container = document.getElementById("iframeContainer");
+            container.innerHTML = "";
+            container.appendChild(iframe);
+        }
+    </script>
+</body>
+</html>
