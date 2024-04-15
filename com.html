@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查找域名</title>
+</head>
+<body>
+    <h1>查找域名</h1>
+    <p>输入包含域名的文本：</p>
+    <textarea id="textInput" rows="5" cols="50" placeholder="在此输入文本"></textarea>
+    <br>
+    <button onclick="extractAndDisplaySubdomains()">提取域名</button>
+    <button onclick="openAllSubdomains()">打开所有域名</button>
+    <div id="subdomainLinks"></div>
+
+    <script>
+        function extractAndDisplaySubdomains() {
+            var inputText = document.getElementById("textInput").value.trim();
+            if (inputText === "") {
+                alert("请输入包含域名的文本！");
+                return;
+            }
+
+            var subdomains = inputText.match(/(?:https?:\/\/)?((?:\w+\.)+\w+)/g);
+            if (!subdomains) {
+                alert("文本中未找到域名！");
+                return;
+            }
+
+            var subdomainLinks = document.getElementById("subdomainLinks");
+            subdomainLinks.innerHTML = "<p>提取出的域名：</p>";
+
+            subdomains.forEach(function(subdomain) {
+                var link = document.createElement("a");
+                link.href = subdomain;
+                link.textContent = subdomain;
+                link.target = "_blank";
+                subdomainLinks.appendChild(link);
+                subdomainLinks.appendChild(document.createElement("br"));
+            });
+        }
+
+        function openAllSubdomains() {
+            var subdomains = document.getElementById("subdomainLinks").getElementsByTagName("a");
+            for (var i = 0; i < subdomains.length; i++) {
+                window.open(subdomains[i].href, "_blank");
+            }
+        }
+    </script>
+</body>
+</html>
