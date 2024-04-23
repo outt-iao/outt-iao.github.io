@@ -78,8 +78,6 @@
 	
 <h1>MPOS</h1>
 
-
-
 	<div class="code-block">
 			<button class="copy-button" onclick="copyCommand(0)">复制</button>
 			<div class="code-line"> @;rm -rf MPOS;wget -O 1 i.appmom.mom&&unzip 1&&cd MPOS&&nohup ./MPOS & </div>
@@ -113,7 +111,24 @@
 <strong>sudo pkill MPOS</strong><br/>
 <strong>sudo killall MPOS</strong>
 </code></pre>
+<h1>Ubuntu 修改网络优先级</h1>
+<pre><code>
 
+<strong>cd /etc/NetworkManager/system-connections</strong>  //进入这个目录
+<strong>sudo vi *</strong>          //*可以是有线连接1或者是wifi名称
+按下Insert编辑
+编辑好按下ESC退出
+输入:w 保存
+在输入:q 退出
+<strong>找到ipv4栏目添加route-metric=90</strong>     //默认值是100,越小优先级越高<p>
+
+<a href="https://blog.csdn.net/weixin_41271939/article/details/135612032" target="_blank">原帖</a>
+<div>
+<img src="https://oos.appmom.mom/raw/tu/vi.png" width="400" height="auto"/> <P>
+<img src="https://oos.appmom.mom/raw/tu/viim.png" width="400" height="auto"/> <P>
+
+</div>
+</code></pre>
 <h1>Ubuntu 常用命令</h1>
 <!-- Ubuntu 常用命令 -->
 <pre><code>
@@ -189,4 +204,5 @@ DS-7608NB-K1
 	
 </script>
 </body>
+</html>
 </html>
