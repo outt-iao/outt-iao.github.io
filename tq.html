@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>答案提取</title>
+    <script>
+        function extractAnswers() {
+            // 获取输入框中的文本
+            var inputText = document.getElementById("inputText").value;
+            
+            // 使用正则表达式提取所有参考答案
+            var regex = /\[参考答案：([A-D])\]/g;
+            var matches = inputText.matchAll(regex);
+            var answers = [];
+            
+            // 遍历匹配结果，将参考答案添加到数组中
+            for (const match of matches) {
+                answers.push(match[1]);
+            }
+            
+            // 如果找到了参考答案，则显示在页面上，每五个换行一次
+            if (answers.length > 0) {
+                var answerString = "参考答案：<br>";
+                for (var i = 0; i < answers.length; i++) {
+                    answerString += answers[i];
+                    if ((i + 1) % 5 === 0) {
+                        answerString += "<br>";
+                    } else {
+                        answerString += " ";
+                    }
+                }
+                document.getElementById("answers").innerHTML = answerString;
+            } else {
+                document.getElementById("answers").innerText = "未找到参考答案";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>问题输入和答案提取</h1>
+    <textarea id="inputText" rows="10" cols="50" placeholder="在此输入问题和选项"></textarea>
+    <br>
+    <button onclick="extractAnswers()">提取答案</button>
+    <br>
+    <div id="answers"></div>
+</body>
+</html>
