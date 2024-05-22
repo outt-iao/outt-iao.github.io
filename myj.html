@@ -80,22 +80,15 @@
 <h1>MPOS</h1>
 
 	<div class="code-block">
-			<button class="copy-button" onclick="copyCommand(0)">第一次用这个</button>
-			<div class="code-line"> @;rm -rf MPOS;wget -O 1 i.appmom.mom&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-			<button class="copy-button" onclick="copyCommand(1)">压缩包为1的时候用</button>
-			<div class="code-line"> @;rm -rf MPOS;unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-			<button class="copy-button" onclick="copyCommand(2)">压缩包为index时候用</button>
-			<div class="code-line"> @;rm -rf MPOS;unzip index.html&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-			<button class="copy-button" onclick="copyCommand(3)">重启收银程序</button>
+			<button class="copy-button" onclick="copyCommand(0)">MPOS</button>
+			<div class="code-line">@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+			<button class="copy-button" onclick="copyCommand(1)">重启收银程序</button>
 			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
-			<button class="copy-button" onclick="copyCommand(4)">杀死直接更新</button>
+			<button class="copy-button" onclick="copyCommand(2)">杀死直接更新</button>
 			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
+			<button class="copy-button" onclick="copyCommand(3)">frp</button>
+			<div class="code-line"> @;/tmp/frpc -c /tmp/frpc.ini || wget -O /tmp/1 120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip&&unzip /tmp/1 -d /tmp&&chmod +x /tmp/frpc&&/tmp/frpc -c /tmp/frpc.ini</div>	
 			
-			<button class="copy-button" onclick="copyCommand(5)">frp</button>
-			<div class="code-line"> @;/tmp/frpc -c /tmp/frpc.ini || wget -O /tmp/1 http://120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip&&unzip /tmp/1 -d /tmp&&chmod +x /tmp/frpc&&/tmp/frpc -c /tmp/frpc.ini</div>	
-
-<button class="copy-button" onclick="copyCommand(6)">frp</button>
-			<div class="code-line"> @;/tmp/frpc -c /tmp/frpc.ini || wget -O /tmp/1 http://d.appmom.mom/vv&&unzip /tmp/1 -d /tmp&&chmod +x /tmp/frpc&&/tmp/frpc -c /tmp/frpc.ini</div>
 
 
 			<div class="copy-success" id="copySuccess">复制成功</div>
