@@ -82,6 +82,8 @@
 	<div class="code-block">
 			<button class="copy-button" onclick="copyCommand(0)">MPOS</button>
 			<div class="code-line">@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+			<button class="copy-button" onclick="copyCommand(0)">VNC连接不了但是ip正确</button>
+			<div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
 			<button class="copy-button" onclick="copyCommand(1)">重启收银程序</button>
 			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
 			<button class="copy-button" onclick="copyCommand(2)">杀死直接更新</button>
@@ -98,6 +100,7 @@
 <h1>查看IP</h1>
 <!-- 收银机查看IP相关命令 -->
 <pre><code>
+	ps -ef | grep vino-server  //查看运行路径
 1. 打开收银机系统设置：MPOS -&gt; 更多 -&gt; 系统设置 -&gt; 本机信息<br/>
 2. 终端执行以下命令：<br/>
    <strong>ip a s</strong>  // 列出当前系统中所有网络接口的配置信息<br/>
