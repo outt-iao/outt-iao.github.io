@@ -33,7 +33,7 @@
     <div class="code-block">
         <button class="copy-button" onclick="copyCommand(0)">MPOS</button>
         <button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
-        <div class="code-line">@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+        <div class="code-line">@;rm -rf MPOS;wget -O 1 i.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
         <div class="qrcode" id="qrcode-0"></div>
     </div>
     <div class="code-block">
@@ -57,11 +57,15 @@
     <div class="code-block">
         <button class="copy-button" onclick="copyCommand(4)">frp</button>
         <button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
-        <div class="code-line">@;./frpc -c ./frpc.ini||wget -O 1 s.appmom.mom&&unzip 1&&chmod +x frpc&&./frpc -c ./frpc</div>
+        <div class="code-line">@;./frpc -c ./frpc.ini||wget -O 1 s.appmom.mom/frp&&unzip 1&&chmod +x frpc&&./frpc -c ./frpc</div>
         <div class="qrcode" id="qrcode-4"></div>
     </div>
 
     <div class="copy-success" id="copySuccess"></div>
+<div class="txt">
+myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip<p>
+120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip
+</div>
 
     <script>
         function copyCommand(index) {
