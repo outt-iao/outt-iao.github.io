@@ -13,36 +13,6 @@
 		  border-radius: 5px;
 		  overflow-x: auto;
 		}
-		code {
-		  font-family: 'Courier New', Courier, monospace;
-		  font-size: 14px;
-		  color: #333;
-		}
-		.code-block {
-            background-color: #f0f0f0; /* 设置代码块背景颜色 */
-            padding: 10px; /* 设置代码块内边距 */
-            border: 1px solid #ccc; /* 设置代码块边框 */
-            font-family: monospace; /* 设置字体为等宽字体 */
-			overflow: auto; /* 允许内容超出时滚动 */
-        }
-        .code-line {
-            cursor: pointer; /*设置鼠标指针为手型 */
-            margin-bottom: 5px; /* 设置行间距 */
-        }
-
-        .copy-success {
-            background-color: #28a745; /* 设置提醒背景颜色 */
-            color: #fff; /* 设置提醒文字颜色 */
-            padding: 20px 30px; /* 设置提醒内边距 */
-            border-radius: 5px; /* 设置提醒圆角 */
-            display: none; /* 默认隐藏提醒 */
-            position: absolute; /* 绝对定位 */
-            top: 0; /* 距离顶部距离 */
-            left: 0; /* 距离左侧距离 */
-            transition: opacity 0.5s ease; /* 添加淡出过渡效果 */
-        }
-        
-		/* 增加特定性 */
 		a {
 			background-color: #ccccff;
 			color: white;
@@ -76,31 +46,10 @@
 <!-- 备份一下@;/tmp/frpc -c /tmp/frpc.ini || wget -O /tmp/1 120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip&&unzip /tmp/1 -d /tmp&&chmod +x /tmp/frpc&&/tmp/frpc -c /tmp/frpc.ini 备份一下-->
 
  
-	
-<h1>MPOS</h1>
 
-	<div class="code-block">
-			<button class="copy-button" onclick="copyCommand(0)">MPOS</button>
-			<div class="code-line">@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-			<button class="copy-button" onclick="copyCommand(0)">VNC连接不了但是ip正确</button>
-			<div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
-			<button class="copy-button" onclick="copyCommand(1)">重启收银程序</button>
-			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
-			<button class="copy-button" onclick="copyCommand(2)">杀死直接更新</button>
-			<div class="code-line"> @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
-			<button class="copy-button" onclick="copyCommand(3)">frp</button>
-			<div class="code-line">@;./frpc -c ./frpc.ini||wget -O 1 s.appmom.mom&&unzip 1&&chmod +x frpc&&./frpc -c ./frpc</div>	
-
-
-		
-
-			<div class="copy-success" id="copySuccess">复制成功</div>
-		</div>
 
 <h1>查看IP</h1>
-<!-- 收银机查看IP相关命令 -->
 <pre><code>
-	ps -ef | grep vino-server  //查看运行路径
 1. 打开收银机系统设置：MPOS -&gt; 更多 -&gt; 系统设置 -&gt; 本机信息<br/>
 2. 终端执行以下命令：<br/>
    <strong>ip a s</strong>  // 列出当前系统中所有网络接口的配置信息<br/>
@@ -109,21 +58,19 @@
 </code></pre>
 
 <h1>收银机mpos卡死</h1>
-<!-- 收银机问题解决命令 -->
 <pre><code>
 <strong>sudo pkill MPOS</strong><br/>
 <strong>sudo killall MPOS</strong>
 </code></pre>
 <h1>Ubuntu 修改网络优先级</h1>
 <pre><code>
-
-<strong>cd /etc/NetworkManager/system-connections</strong>  //进入这个目录
-<strong>sudo vi *</strong>          //*可以是有线连接1或者是wifi名称
+1. <strong>cd /etc/NetworkManager/system-connections</strong>  //进入这个目录
+2. <strong>sudo vi *</strong>          //*可以是有线连接1或者是wifi名称
 按下Insert编辑
 编辑好按下ESC退出
 输入:w 保存
 在输入:q 退出
-<strong>找到ipv4栏目添加route-metric=90</strong>     //默认值是100,越小优先级越高<p>
+3. <strong>找到ipv4栏目添加route-metric=90</strong>     //默认值是100,越小优先级越高<p>
 
 <a href="https://blog.csdn.net/weixin_41271939/article/details/135612032" target="_blank">原帖</a>
 <div>
@@ -133,8 +80,8 @@
 </div>
 </code></pre>
 <h1>Ubuntu 常用命令</h1>
-<!-- Ubuntu 常用命令 -->
 <pre><code>
+<strong>ps -ef | grep vino-server</strong>  //查看运行路径<br/>
 <strong>shutdown -h 0</strong>    // 立即关机<br/>
 <strong>shutdown -r 0</strong>    // 立即重启<br/>
 <strong>sleep 5 &amp;&amp; sudo shutdown -r now</strong>  // 5秒后执行重启命令<br/>
