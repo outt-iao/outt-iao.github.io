@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>终端命令</title>
+<style>
+.code-block {
+margin-bottom: 20px;
+}
+.code-line {
+margin-bottom: 10px;
+font-family: monospace;
+}
+.copy-success {
+display: none;
+position: fixed;
+top: 20px;
+left: 20px;
+background-color: green;
+color: white;
+padding: 10px;
+border-radius: 5px;
+z-index: 1000;
+}
+.qrcode {
+margin-top: 10px;
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+<div class="code-block">
+<button class="copy-button" onclick="copyCommand(0)">MPOS</button>
+<button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
+<div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+<div class="qrcode" id="qrcode-0"></div>
+</div>
+<div class="code-block">
+<button class="copy-button" onclick="copyCommand(1)">VNC连接不了但是ip正确</button>
+<button class="qr-button" onclick="generateQRCode(1)">生成二维码</button>
+<div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
+<div class="qrcode" id="qrcode-1"></div>
+</div>
+<div class="code-block">
+<button class="copy-button" onclick="copyCommand(2)">重启收银程序</button>
+<button class="qr-button" onclick="generateQRCode(2)">生成二维码</button>
+<div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
+<div class="qrcode" id="qrcode-2"></div>
+</div>
+<div class="code-block">
+<button class="copy-button" onclick="copyCommand(3)">杀死直接更新</button>
+<button class="qr-button" onclick="generateQRCode(3)">生成二维码</button>
+<div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
+<div class="qrcode" id="qrcode-3"></div>
+</div>
+<div class="code-block">
+<button class="copy-button" onclick="copyCommand(4)">frp</button>
+<button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
+<div class="code-line">@;./frpc -c ./frpc.ini||wget -O 1 s.appmom.mom/frp&&unzip 1&&chmod +x frpc&&./frpc -c ./frpc</div>
+<div class="qrcode" id="qrcode-4"></div>
+</div>
+
+<div class="copy-success" id="copySuccess"></div>
+
+<script>
+function copyCommand(index) {
+const codeLines = document.getElementsByClassName('code-line');
+const textToCopy = codeLines[index].textContent.trim();
+navigator.clipboard.writeText(textToCopy).then(() => {
+const copySuccess = document.getElementById('copySuccess');
+copySuccess.innerHTML = `复制成功: ${textToCopy}`;
+copySuccess.style.display = 'block';
+setTimeout(() => {
+copySuccess.style.display = 'none';
+}, 2000);
+});
+}
+
+function generateQRCode(index) {
+const codeLines = document.getElementsByClassName('code-line');
+const textToGenerate = codeLines[index].textContent.trim();
+const qrcodeContainer = document.getElementById(`qrcode-${index}`);
+qrcodeContainer.innerHTML = "";
+new QRCode(qrcodeContainer, textToGenerate);
+}
+</script>
+</body>
+</html>
