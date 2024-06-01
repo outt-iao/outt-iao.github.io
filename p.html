@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>摄像头供电计算器</title>
+    <script>
+        function calculate() {
+            // 获取输入值
+            var resistance = parseFloat(document.getElementById("resistance").value);
+            var power = parseFloat(document.getElementById("power").value);
+            var supplyVoltage = parseFloat(document.getElementById("supplyVoltage").value);
+            var current = 0;
+
+            // 计算电流，如果功率已知
+            if (power > 0) {
+                current = power / supplyVoltage;
+            } else {
+                // 如果功率未知，则使用电压和电流计算功率
+                var deviceVoltage = parseFloat(document.getElementById("deviceVoltage").value);
+                var deviceCurrent = parseFloat(document.getElementById("deviceCurrent").value);
+                power = deviceVoltage * deviceCurrent;
+                current = power / supplyVoltage;
+            }
+
+            // 计算电压降
+            var voltageDrop = current * resistance;
+
+            // 计算摄像头实际获得的电压
+            var actualVoltage = supplyVoltage - voltageDrop;
+
+            // 显示计算结果
+            document.getElementById("current").textContent = current.toFixed(3) + " A";
+            document.getElementById("voltageDrop").textContent = voltageDrop.toFixed(3) + " V";
+            document.getElementById("actualVoltage").textContent = actualVoltage.toFixed(3) + " V";
+
+            // 判断是否能带动摄像头
+            if (actualVoltage >= 9 && actualVoltage <= 15) {
+                document.getElementById("result").textContent = "可以带动摄像头";
+            } else {
+                document.getElementById("result").textContent = "不能带动摄像头";
+            }
+        }
+
+        function togglePowerInput() {
+            var powerInput = document.getElementById("powerInput");
+            var voltageCurrentInput = document.getElementById("voltageCurrentInput");
+            if (document.getElementById("knownPower").checked) {
+                powerInput.style.display = "block";
+                voltageCurrentInput.style.display = "none";
+            } else {
+                powerInput.style.display = "none";
+                voltageCurrentInput.style.display = "block";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>摄像头供电计算器</h1>
+    <form onsubmit="event.preventDefault(); calculate();">
+        <label for="resistance">电线阻值 (欧姆):</label>
+        <input type="number" id="resistance" step="0.01" required><br><br>
+
+        <input type="radio" id="knownPower" name="powerOption" value="knownPower" checked onclick="togglePowerInput()"> 已知功率
+        <input type="radio" id="unknownPower" name="powerOption" value="unknownPower" onclick="togglePowerInput()"> 不知道功率<br><br>
+
+        <div id="powerInput">
+            <label for="power">摄像头最大功率 (瓦):</label>
+            <input type="number" id="power" step="0.1"><br><br>
+        </div>
+
+        <div id="voltageCurrentInput" style="display: none;">
+            <label for="deviceVoltage">设备电压 (伏):</label>
+            <input type="number" id="deviceVoltage" step="0.1"><br><br>
+            <label for="deviceCurrent">设备电流 (安培):</label>
+            <input type="number" id="deviceCurrent" step="0.01"><br><br>
+        </div>
+
+        <label for="supplyVoltage">供电电压 (伏):</label>
+        <input type="number" id="supplyVoltage" step="0.1" required><br><br>
+
+        <input type="submit" value="计算">
+    </form>
+    <h2>计算结果</h2>
+    <p>电流: <span id="current"></span></p>
+    <p>电压降: <span id="voltageDrop"></span></p>
+    <p>摄像头实际获得的电压: <span id="actualVoltage"></span></p>
+    <h2 id="result"></h2>
+</body>
+</html>
