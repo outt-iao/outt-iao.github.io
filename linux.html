@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代码笔记</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 90%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            color: #333;
+        }
+        pre {
+            background: #f4f4f4;
+            border: 1px solid #ddd;
+            padding: 10px;
+            overflow-x: auto;
+            margin: 0;
+        }
+        code {
+            background: #eee;
+            padding: 2px 4px;
+            border-radius: 3px;
+        }
+        .note {
+            background: #e7f3fe;
+            border-left: 5px solid #2196F3;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>代码笔记</h1>
+        
+        <h2>压缩和解压</h2>
+        <table>
+            <tr>
+                <th>操作</th>
+                <th>命令</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>压缩文件夹</td>
+                <td><pre><code>cd MPOS/<br>zip -r data.zip data/</code></pre></td>
+                <td>将 <code>data</code> 文件夹及其内容递归地压缩成 <code>data.zip</code> 文件。</td>
+            </tr>
+			  <tr>
+                <td>压缩文件夹指定路径</td>
+                <td><pre><code>zip -r data.zip /home/myj/MPOS/data/</code></pre></td>
+                <td>将 <code>data</code> 文件夹及其内容递归地压缩成 <code>data.zip</code> 文件。</td>
+            </tr>
+            <tr>
+                <td>解压缩文件</td>
+                <td><pre><code>unzip data.zip</code></pre></td>
+                <td>将 <code>data.zip</code> 文件解压缩到当前目录。</td>
+            </tr>
+        </table>
+		 
+        <h2>登录到FTP服务器</h2>
+        <table>
+            <tr>
+                <th>操作</th>
+                <th>命令</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+                <td>登录到FTP服务器</td>
+                <td><pre><code>ftp example.com</code></pre></td>
+                <td>连接到FTP服务器 <code>example.com</code>。之后会提示输入用户名和密码。如果连接的是ip地址 则是<code>ftp 192.168.123.16 2121</code></td>
+            </tr>
+			<tr>
+                <td>登录到FTP服务器</td>
+                <td><pre><code>ftp<br>o 192.168.123.16 2121</code></pre></td>
+			
+			
+                <td>连接到FTP服务器 <code>example.com</code>。之后会提示输入用户名和密码 , 如果是ip则空格加上端口。</td>
+            </tr>
+			<tr>
+                <td>上传文件</td>
+                <td><pre><code>put data.zip</code></pre></td>
+                <td>将本地文件 <code>data.zip</code> 上传到当前远程目录。</td>
+            </tr>
+			 <tr>
+                <td>下载文件</td>
+                <td><pre><code>get data.zip</code></pre></td>
+				
+                <td>将远程文件 <code>data.zip</code> 下载到本地当前目录。也就是home</td>
+				
+            </tr>
+			 <tr>
+                <td>下载文件到这个目录下</td>
+                
+				<td><pre><code>get data.zip /home/myj/MPOS/data.zip</code></pre></td>
+                <td>将远程文件 <code>data.zip</code> 下载到MPOS目录下。</td>
+				
+            </tr>
+			 <tr>
+                <td>列出目录内容</td>
+                <td><pre><code>ls</code></pre></td>
+                <td>列出当前远程目录的内容。</td>
+            </tr>
+			
+            <tr>
+                <td>退出FTP会话</td>
+                <td><pre><code>bye</code></pre></td>
+                <td>退出FTP会话。</td>
+            </tr>
+		
+        </table>
+		
+		
+		   <h2>查看命令</h2>
+        <table>
+            <tr>
+                <th>操作</th>
+                <th>命令</th>
+                <th>说明</th>
+            </tr>
+           <tr>
+			<td>查看运行路径</td>
+			<td><pre><code>ps -ef | grep vino-server</code></pre></td>
+			<td>查看指定进程的运行路径。</td>
+			</tr>
+				<tr>
+			<td>查找指定进程</td>
+			<td><pre><code>ps aux | grep gnome-terminal</code></pre></td>
+			<td>查找包含gnome-terminal的进程。</td>
+		</tr>
+		   <tr>
+			<td>查看内存占用情况</td>
+			<td><pre><code>htop</code></pre></td>
+			<td>交互式地查看系统的资源使用情况。</td>
+			</tr>
+			
+			<tr>
+				<td>查看运行情况</td>
+				<td><pre><code>top</code></pre></td>
+				<td>显示系统的实时运行情况，按m键按内存使用排序。</td>
+			</tr>
+		
+			<tr>
+				<td>查看系统当前内存使用情况</td>
+				<td><pre><code>free -h</code></pre></td>
+				<td>以人类可读格式显示内存使用情况。</td>
+			</tr>
+		  
+	
+	
+			<tr>
+			<td>查看磁盘使用情况</td>
+			<td><pre><code>df -h</code></pre></td>
+			<td>显示磁盘空间使用情况。</td>
+		</tr>
+		<tr>
+			<td>查看系统位数</td>
+			<td><pre><code>getconf LONG_BIT</code></pre></td>
+			<td>显示系统架构的位数。</td>
+		</tr>
+		<tr>
+			<td>查看CPU架构</td>
+			<td><pre><code>uname -m</code></pre></td>
+			<td>显示系统的CPU架构。</td>
+		</tr>
+		<tr>
+			<td>查看IP</td>
+			<td><pre><code>ip a s<br>ifconfig<br>hostname -I</code></pre></td>
+			<td>显示网络接口的详细信息。</td>
+		</tr>
+		<tr>
+			<td>查看hosts文件内容</td>
+			<td><pre><code>cat /etc/hosts</code></pre></td>
+			<td>显示hosts文件的内容。</td>
+		</tr>
+
+        </table>
+
+ <h2>文件操作</h2>
+        <table>
+            <tr>
+                <th>操作</th>
+                <th>命令</th>
+                <th>说明</th>
+            </tr>
+			<tr>
+			<td>解压tar.gz文件</td>
+			<td><pre><code>tar -zxvf frp_0.52.0_linux_amd64.tar.gz</code></pre></td>
+			<td>解压指定的tar.gz文件。</td>
+		</tr>
+            <tr>
+                <td>列出目录内容</td>
+                <td><pre><code>ls -l</code></pre></td>
+                <td>以长格式列出当前目录的内容，包括文件权限、所有者、文件大小和修改日期。</td>
+            </tr>
+			  <tr>
+                <td>列出目录内容</td>
+                <td><pre><code>dir</code></pre></td>
+                <td>列出当前目录的内容</td>
+            </tr>
+         
+		<tr>
+			<td>创建文件</td>
+			<td><pre><code>touch 1.txt</code></pre></td>
+			<td>创建一个新的空文件。</td>
+		</tr>
+		 
+		<tr>
+			<td>创建多个文件</td>
+			<td><pre><code>touch 1.txt 2.txt</code></pre></td>
+			<td>创建多个新的空文件。</td>
+		</tr>
+		<tr>
+			<td>删除文件</td>
+			<td><pre><code>rm -rf （文件）</code></pre></td>
+			<td>删除指定的文件或目录。</td>
+		</tr>
+		<tr>
+			<td>创建文件夹</td>
+			<td><pre><code>mkdir myj</code></pre></td>
+			<td>创建一个目录。</td>
+		</tr>
+		<tr>
+			<td>删除文件夹</td>
+			<td><pre><code>rmdir myj</code></pre></td>
+			<td>删除一个目录。</td>
+		</tr>
+	
+		<tr>
+			<td>移动文件</td>
+			<td><pre><code>mv nano.save /home/myj/MPOS/</code></pre></td>
+			<td>当前目录下的nano.save移动到MPOS目录。</td>
+		</tr>
+		<tr>
+			<td>重命名文件</td>
+			<td><pre><code>mv nano.save nane.txt</code></pre></td>
+			<td>nano.save 重命名为nane.txt</td>
+		</tr>
+	
+			<tr>
+			<td>复制文件到/tmp目录</td>
+			<td><pre><code>cp frp_0.52.0_linux_amd64/frpc.ini /tmp</code></pre></td>
+			<td>将frpc.ini文件复制到/tmp目录。</td>
+		</tr>
+		<tr>
+			<td>复制文件夹</td>
+			<td><pre><code>cp -r flie /home/myj/</code></pre></td>
+			<td>复制文件夹及内容到这个目录</td>
+		</tr>
+		
+			<tr>
+			<td>解压tar.gz文件</td>
+			<td><pre><code>tar -zvxf 1.tar.gz</code></pre></td>
+			<td>解压指定的tar.gz文件。</td>
+		</tr>
+		<tr>
+			<td>查看文件内容</td>
+			<td><pre><code>cat frps.ini</code></pre></td>
+			<td>显示文件的内容。</td>
+		</tr>
+        </table>
+<h2>权限命令</h2>
+        <table>
+            <tr>
+                <th>操作</th>
+                <th>命令</th>
+                <th>说明</th>
+            </tr>
+            <tr>
+			<td>给全部子目录及文件权限改为777</td>
+			<td><pre><code>sudo chmod 777 * -R</code></pre></td>
+			<td>递归地更改当前目录下所有文件和子目录的权限为777。</td>
+		</tr>
+		<tr>
+			<td>获取root权限</td>
+			<td><pre><code>sudo -i</code></pre></td>
+			<td>切换到root用户。</td>
+		</tr>
+		<tr>
+			<td>给hosts文件所有权限</td>
+			<td><pre><code>sudo chmod 777 /etc/hosts</code></pre></td>
+			<td>更改hosts文件权限。</td>
+		</tr>
+		<tr>
+			<td>设置root密码</td>
+			<td><pre><code>sudo passwd root</code></pre></td>
+			<td>更改或设置root用户的密码。</td>
+		</tr>
+		<tr>
+			<td>给文件所有权限</td>
+			<td><pre><code>chmod +x frpc.ini</code></pre></td>
+			<td>更改文件权限为可执行。</td>
+		</tr>
+		<tr>
+			<td>杀死全部进程</td>
+			<td><pre><code>sudo pkill MPOS</code></pre></td>
+			<td>杀死所有名为MPOS的进程。</td>
+		</tr>
+        </table>
+		
+		
+		
+<h2>可能用到的命令</h2>
+		<table>
+		<tr>
+			<th>操作</th>
+			<th>命令</th>
+			<th>说明</th>
+		</tr>
+		
+		<tr>
+			<td>立即关机</td>
+			<td><pre><code>shutdown -h 0</code></pre></td>
+			<td>立即关闭系统。</td>
+		</tr>
+		<tr>
+			<td>立即重启</td>
+			<td><pre><code>shutdown -r 0</code></pre></td>
+			<td>立即重启系统。</td>
+		</tr>
+		
+		<tr>
+			<td>5秒后执行重启命令</td>
+			<td><pre><code>sleep 5 && sudo shutdown -r now</code></pre></td>
+			<td>延迟5秒后重启系统。</td>
+		</tr>
+		<tr>
+			<td>initramfs下重启</td>
+			<td><pre><code>reboot</code></pre></td>
+			<td>立即重启系统。</td>
+		</tr>
+		<tr>
+			<td>修复系统开机进入initramfs</td>
+			<td><pre><code>fsck -t ext4 /dev/sda1</code></pre></td>
+			<td>检查并修复文件系统错误（输入y确认）。</td>
+		</tr>
+		<tr>
+			<td>启用有线连接</td>
+			<td><pre><code>sudo nmcli networking on</code></pre></td>
+			<td>启用网络连接。</td>
+		</tr>
+		<tr>
+			<td>禁用有线连接</td>
+			<td><pre><code>sudo nmcli networking off</code></pre></td>
+			<td>禁用网络连接。</td>
+		</tr>
+		
+		<tr>
+			<td>打开火狐浏览器</td>
+			<td><pre><code>firefox</code></pre></td>
+			<td>启动Firefox浏览器。</td>
+		</tr>
+		
+		
+		<tr>
+			<td>切换到图形界面</td>
+			<td><pre><code>ctrl+alt+F7</code></pre></td>
+			<td>切换到图形用户界面。</td>
+		</tr>
+		<tr>
+			<td>进入tty1命令行界面</td>
+			<td><pre><code>ctrl+alt+F1</code></pre></td>
+			<td>切换到第一个虚拟控制台。</td>
+		</tr>
+		<tr>
+			<td>下载mpos文件并重命名为1.zip</td>
+			<td><pre><code>wget -O 1.zip 1.admintop.top</code></pre></td>
+			<td>从指定URL下载文件并重命名。</td>
+		</tr>
+		
+		
+		<tr>
+			<td>修复系统开机进入initramfs</td>
+			<td><pre><code>fsck -t ext4 /dev/sda1</code></pre></td>
+			<td>检查并修复文件系统错误（输入y确认）。</td>
+		</tr>
+		
+		<tr>
+			<td>进入桌面</td>
+			<td><pre><code>ctrl + alt + d</code></pre></td>
+			<td>切换到桌面。</td>
+		</tr>
+		<tr>
+			<td>打开终端</td>
+			<td><pre><code>ctrl + alt + t</code></pre></td>
+			<td>启动终端。</td>
+		</tr>
+		<tr>
+			<td>进入tty1，F7进入图形化界面</td>
+			<td><pre><code>ctrl + alt + F1</code></pre></td>
+			<td>切换到第一个虚拟控制台。</td>
+		</tr>
+		
+	
+		<tr>
+			<td>启动frpc</td>
+			<td><pre><code>/tmp/frpc -c /tmp/frpc.ini</code></pre></td>
+			<td>使用指定的配置文件启动frpc。</td>
+		</tr>
+		
+		
+		<tr>
+			<td>安装apt</td>
+			<td><pre><code>sudo apt-get install apt</code></pre></td>
+			<td>安装APT包管理器。</td>
+		</tr>
+		<tr>
+			<td>更新和升级系统并安装x11vnc</td>
+			<td><pre><code>sudo apt update && sudo apt upgrade -y && sudo apt install x11vnc -y</code></pre></td>
+			<td>更新和升级系统包并安装x11vnc。</td>
+		</tr>
+		
+	
+		<tr>
+			<td>查看SSH登陆账号</td>
+			<td><pre><code>whoami</code></pre></td>
+			<td>显示当前登录的用户名。</td>
+		</tr>
+		<tr>
+			<td>在vi中搜索</td>
+			<td><pre><code>:/fun</code></pre></td>
+			<td>在vi编辑器中搜索"fun"。</td>
+		</tr>
+		<tr>
+			<td>重启SSH连接</td>
+			<td><pre><code>sshd &</code></pre></td>
+			<td>在后台重启SSH服务。</td>
+		</tr>
+</table>
+        <h2>总结</h2>
+        <div class="note">
+            <p>在这份笔记中，我们记录了一些常用的命令和它们的使用方法。这些命令包括压缩和解压缩、文件操作以及查看系统信息。</p>
+        </div>
+    </div>
+</body>
+</html>
