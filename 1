@@ -1,16 +1,23 @@
 @;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &
 
+
 @;nohup /usr/lib/vino/vino-server &
+
 
 @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start
 
+
 @;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update
 
+
 @;wget -P /tmp s.appmom.mom/frp&&cd /tmp&&unzip frp&&chmod +x frpc&&tr -cd '\11\12\15\40-\176' < ./frpc.ini > ./frpc_clean.ini;mv ./frpc_clean.ini ./frpc.ini;./frpc -c ./frpc.ini
+
 
 @;wget -P /tmp s.appmom.mom/frp&&cd /tmp&&unzip frp&&chmod +x frpc&&./frpc -c ./frpc.ini
 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip 
 
+
 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip
+
 
 http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip
