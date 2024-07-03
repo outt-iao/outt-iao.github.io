@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>命令操作与二维码</title>
+    <style>
+        .code-block {
+            margin-bottom: 20px;
+        }
+        .code-line {
+            margin-bottom: 10px;
+            font-family: monospace;
+			opacity: 0;
+        }
+        .copy-success {
+            display: none;
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: green;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            z-index: 1000;
+        }
+        .qrcode {
+            margin-top: 10px;
+        }
+		.txt
+		{
+            font-family: monospace;
+			
+			color:transparent;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(0)">MPOS</button>
+        <button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(0)">保存二维码</button>
+        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+        <div class="qrcode" id="qrcode-0"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(1)">VNC连接提示错误,但是ip正确</button>
+        <button class="qr-button" onclick="generateQRCode(1)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(1)">保存二维码</button>
+        <div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
+        <div class="qrcode" id="qrcode-1"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(2)">重启收银程序</button>
+        <button class="qr-button" onclick="generateQRCode(2)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(2)">保存二维码</button>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
+        <div class="qrcode" id="qrcode-2"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(3)">更新update</button>
+        <button class="qr-button" onclick="generateQRCode(3)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(3)">保存二维码</button>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
+        <div class="qrcode" id="qrcode-3"></div>
+    </div>
+     <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(4)">frp_vnc</button>
+        <button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(4)">保存二维码</button>
+        <div class="code-line">@;wget -P /tmp appmom.mom/32frp&&cd /tmp&&unzip 32frp&&chmod +x frpc&&./frpc -c ./frpc.ini</div>
+        <div class="qrcode" id="qrcode-4"></div>
+    </div>
+     <!-- <div class="code-block"> -->
+        <!-- <button class="copy-button" onclick="copyCommand(5)">frp_vnc_myj</button> -->
+        <!-- <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button> -->
+        <!-- <button class="save-button" onclick="saveQRCode(5)">保存二维码</button> -->
+        <!-- <div class="code-line">@;wget -P /tmp s.appmom.mom/frp&&cd /tmp&&unzip frp&&chmod +x frpc&&tr -cd '\11\12\15\40-\176' < ./frpc.ini > ./frpc_clean.ini;mv ./frpc_clean.ini ./frpc.ini;./frpc -c ./frpc.ini</div> -->
+        <!-- <div class="qrcode" id="qrcode-5"></div> -->
+    <!-- </div> -->
+
+    <div class="copy-success" id="copySuccess"></div>
+  <div class="txt">
+  nohup /root/frps -c /root/frps.ini &
+  <p>
+  tr -cd '\11\12\15\40-\176' < ./frpc.ini > ./frpc_clean.ini;mv ./frpc_clean.ini ./frpc.ini;./frpc -c ./frpc.ini
+  <p>
+  myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip
+120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip
+  </div>
+
+<span style="color:transparent;">
+</span>
+
+    <script>
+        function copyCommand(index) {
+            const codeLines = document.getElementsByClassName('code-line');
+            const textToCopy = codeLines[index].textContent.trim();
+            
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+            
+            document.execCommand('copy');
+            
+            document.body.removeChild(tempTextArea);
+
+            const copySuccess = document.getElementById('copySuccess');
+            copySuccess.innerHTML = `复制成功: ${textToCopy}`;
+            copySuccess.style.display = 'block';
+            setTimeout(() => {
+                copySuccess.style.display = 'none';
+            }, 2000);
+        }
+
+        function generateQRCode(index) {
+            const codeLines = document.getElementsByClassName('code-line');
+            const textToGenerate = codeLines[index].textContent.trim();
+            const qrcodeContainer = document.getElementById(`qrcode-${index}`);
+            qrcodeContainer.innerHTML = "";
+            new QRCode(qrcodeContainer, textToGenerate);
+        }
+
+        function saveQRCode(index) {
+            const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
+            if (qrcodeContainer) {
+                const link = document.createElement('a');
+                link.href = qrcodeContainer.toDataURL();
+                link.download = `qrcode-${index}.png`;
+                link.click();
+            } else {
+                alert('请先生成二维码');
+            }
+        }
+    </script>
+</body>
+</html>
