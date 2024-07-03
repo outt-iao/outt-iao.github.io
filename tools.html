@@ -96,19 +96,30 @@
       margin-bottom: 20px;
       box-sizing: border-box;
     }
-
-    .notification {
-      display: none;
-      position: absolute;
-      bottom: 80%;
-      left: 50%;
-      transform: translateX(-50%);
-      background-color: #f2f2f2;
-      padding: 10px 20px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-      z-index: 999;
-    }
+#content,
+#yearInput,
+#weekInput,
+#输入框 {
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  resize: vertical;
+}
+.notification {
+  display: none;
+  position: absolute;
+  background-color: #d4edda; /* 设置背景为绿色 */
+  color: #155724; /* 设置文字颜色为深绿色 */
+  padding: 10px 20px;
+  border: 1px solid #c3e6cb; /* 设置边框颜色 */
+  border-radius: 5px;
+  z-index: 999;
+}
   </style>
 </head>
 <body>
@@ -127,6 +138,7 @@
 
   <div class="container">
     <h2>日期计算</h2>
+   
     <label for="yearInput">年份：</label>
     <input type="text" id="yearInput" placeholder="输入年份"><br><br>
     <label for="weekInput">周数：</label>
@@ -138,7 +150,7 @@
   <div class="container">
     <h3>地址替换</h3>
     <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()">36:13:E8:B6:4D:8D</textarea><br>
-    <button onclick="替换内容(); 隐藏弹窗()">执行替换</button>
+    <button onclick="替换内容();">执行替换</button>
     <p>替换后的内容为：</p>
     <p id="结果"></p>
   </div>
@@ -150,6 +162,7 @@
   <script>
     var qrCodeDiv = document.getElementById('qrcode');
     var barcodeSvg = document.getElementById('barcode');
+    var notificationTimeout;
 
     function generateCode(type) {
       var content = document.getElementById('content').value;
@@ -223,7 +236,7 @@
       var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
       var 结果 = document.getElementById("结果");
       结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
-        return '<span class="可复制" onclick="复制文本(this)">' + item + '</span>';
+        return '<spanclass="可复制" onclick="复制文本(this)">' + item + '</span>';
       }).join('<br>');
     }
 
@@ -235,13 +248,16 @@
       选择器.addRange(范围);
       document.execCommand('copy');
 
+      var rect = element.getBoundingClientRect();
       var notification = document.getElementById('notification');
       notification.innerText = '已复制: ' + element.innerText;
+      notification.style.top = (rect.top - 30) + 'px'; // 将弹窗显示在复制文本的上方
+      notification.style.left = rect.left + 'px';
       notification.style.display = 'block';
       clearTimeout(notificationTimeout);
       notificationTimeout = setTimeout(function() {
         notification.style.display = 'none';
-      }, 2000);
+      }, 1000); // 1秒后消失
     }
 
     function 清空示例内容() {
@@ -251,10 +267,6 @@
       }
     }
 
-    function 隐藏弹窗() {
-      var notification = document.getElementById('notification');
-      notification.style.display = 'none';
-    }
   </script>
 </body>
 </html>
