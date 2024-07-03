@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>工具整合</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 60%;
+      padding: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      margin-top: 20px;
+    }
+
+    #content {
+      width: 100%;
+      padding: 20px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      outline: none;
+      resize: vertical;
+    }
+
+    .code-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .code {
+      border: 1px solid #ccc;
+      padding: 20px;
+      background-color: #fff;
+      display: none;
+    }
+
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-right: 10px;
+    }
+
+    input[type="text"],
+    input[type="number"] {
+      padding: 10px;
+      margin: 5px;
+      width: 20%;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    #result {
+      margin-top: 20px;
+      padding: 15px;
+      font-size: 18px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #fff;
+      color: #333;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      resize: both;
+      overflow: auto;
+      min-width: 100px;
+      min-height: 100px;
+      margin-bottom: 20px;
+      box-sizing: border-box;
+    }
+
+    .notification {
+      display: none;
+      position: absolute;
+      bottom: 80%;
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: #f2f2f2;
+      padding: 10px 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      z-index: 999;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h4>转二维码</h4>
+    <textarea id="content" placeholder="输入内容" rows="4"></textarea>
+    <div class="code-container">
+      <div class="code" id="qrcode"></div>
+      <svg class="code" id="barcode"></svg>
+    </div>
+    <div>
+      <button onclick="generateCode('qrcode')">显示二维码</button>
+      <button onclick="generateCode('barcode')">显示条形码</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>日期计算</h2>
+    <label for="yearInput">年份：</label>
+    <input type="text" id="yearInput" placeholder="输入年份"><br><br>
+    <label for="weekInput">周数：</label>
+    <input type="number" id="weekInput" placeholder="输入周数"><br><br>
+    <button onclick="compareDate()">计算</button><br><br>
+    <div id="result"></div>
+  </div>
+
+  <div class="container">
+    <h3>地址替换</h3>
+    <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()">36:13:E8:B6:4D:8D</textarea><br>
+    <button onclick="替换内容(); 隐藏弹窗()">执行替换</button>
+    <p>替换后的内容为：</p>
+    <p id="结果"></p>
+  </div>
+
+  <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
+
+  <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
+  <script>
+    var qrCodeDiv = document.getElementById('qrcode');
+    var barcodeSvg = document.getElementById('barcode');
+
+    function generateCode(type) {
+      var content = document.getElementById('content').value;
+      qrCodeDiv.style.display = 'none';
+      barcodeSvg.style.display = 'none';
+
+      if (type === 'qrcode') {
+        qrCodeDiv.innerHTML = '';
+        new QRCode(qrCodeDiv, {
+          text: content,
+          width: 200,
+          height: 200,
+        });
+        qrCodeDiv.style.display = 'block';
+      } else if (type === 'barcode') {
+        JsBarcode("#barcode", content, {
+          format: "CODE128",
+          width: 2,
+          height: 60,
+          displayValue: false
+        });
+        barcodeSvg.style.display = 'block';
+      }
+    }
+
+    function getDateFromYearWeek(year, week) {
+      var januaryFirst = new Date(year, 0, 1);
+      var firstDayOfWeekOne = januaryFirst.getDay() - 1;
+      var weekOneStart = januaryFirst;
+      if (firstDayOfWeekOne > 3) {
+        weekOneStart.setDate(januaryFirst.getDate() + 8 - firstDayOfWeekOne);
+      } else {
+        weekOneStart.setDate(januaryFirst.getDate() - firstDayOfWeekOne);
+      }
+      var targetDate = new Date(weekOneStart.getTime() + ((week - 1) * 7) * 24 * 60 * 60 * 1000);
+      return targetDate;
+    }
+
+    function compareDate() {
+      var yearInput = document.getElementById('yearInput').value;
+      var year = parseInt(yearInput);
+      if (yearInput.length === 2) {
+        year += 2000;
+      }
+      var week = parseInt(document.getElementById('weekInput').value);
+      var targetDate = getDateFromYearWeek(year, week);
+
+      var date1 = new Date('2012-07-09');
+      var date2 = new Date('2014-04-28');
+      var date3 = new Date('2016-11-22');
+      var date4 = new Date('2018-09-05');
+      var result = '';
+
+      if (targetDate > date1 && targetDate <= date2) {
+        result = '推荐安装 \'BSJ_D425_SATA250_20120709\'';
+      } else if (targetDate > date2 && targetDate <= date3) {
+        result = '推荐安装 \'BSJ_N2_TOUCH_500G_20140428\'';
+      } else if (targetDate > date3 && targetDate <= date4) {
+        result = '推荐安装 \'BSJ_CAPTOUCH_500G_20161122\'';
+      } else {
+        var month = targetDate.getMonth() + 1;
+        var day = targetDate.getDate();
+        result = '日期是：' + targetDate.getFullYear() + '年' + (month < 10 ? '0' + month : month) + '月' + (day < 10 ? '0' + day : day) + '日';
+      }
+
+      document.getElementById('result').innerText = result + '，日期是：' + targetDate.getFullYear() + '年' + (targetDate.getMonth() + 1) + '月' + targetDate.getDate() + '日';
+    }
+
+    function 替换内容() {
+      var 输入内容 = document.getElementById("输入框").value;
+      var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
+      var 结果 = document.getElementById("结果");
+      结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
+        return '<span class="可复制" onclick="复制文本(this)">' + item + '</span>';
+      }).join('<br>');
+    }
+
+    function 复制文本(element) {
+      var 选择器 = window.getSelection();
+      var 范围 = document.createRange();
+      范围.selectNodeContents(element);
+      选择器.removeAllRanges();
+      选择器.addRange(范围);
+      document.execCommand('copy');
+
+      var notification = document.getElementById('notification');
+      notification.innerText = '已复制: ' + element.innerText;
+      notification.style.display = 'block';
+      clearTimeout(notificationTimeout);
+      notificationTimeout = setTimeout(function() {
+        notification.style.display = 'none';
+      }, 2000);
+    }
+
+    function 清空示例内容() {
+      var 输入框 = document.getElementById('输入框');
+      if (输入框.value === '36:13:E8:B6:4D:8D') {
+        输入框.value = '';
+      }
+    }
+
+    function 隐藏弹窗() {
+      var notification = document.getElementById('notification');
+      notification.style.display = 'none';
+    }
+  </script>
+</body>
+</html>
