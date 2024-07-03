@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script>
+		var _hmt = _hmt || [];
+		(function() {
+		  var hm = document.createElement("script");
+		  hm.src = "https://hm.baidu.com/hm.js?c7d621969f7610187256e4a7c0915353";
+		  var s = document.getElementsByTagName("script")[0]; 
+		  s.parentNode.insertBefore(hm, s);
+		})();
+	</script>
+    <title>工具tool</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        nav {
+            display: none; /* 默认隐藏 */
+            width: 100%;
+            background-color: #fff; /* 白色背景 */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 添加阴影使其更明显 */
+            z-index: 1000; /* 确保导航栏在最上层 */
+            overflow-x: auto; /* 当内容溢出时显示水平滚动条 */
+            white-space: nowrap; /* 禁止换行 */
+        }
+
+        nav ul {
+            display: inline-flex;
+            justify-content: flex-start; /* 左对齐 */
+            padding: 10px 0;
+            margin: 0;
+            list-style: none;
+        }
+
+        nav li {
+            margin: 0 5px; /* 设置水平间距 */
+        }
+
+        nav a {
+            display: block;
+            padding: 10px 20px;
+            text-decoration: none;
+            color: white;
+            background-color: #ff8080;
+            border-radius: 5px;
+            white-space: nowrap; /* 防止文字换行 */
+            text-align: center;
+        }
+
+        nav a:hover {
+            background-color: #ff6666;
+        }
+
+        #iframeContainer {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2), -2px -2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media only screen and (max-width: 768px) {
+            nav a {
+                padding: 5px 10px;
+                margin: 2px 0;
+                width: auto;
+            }
+        }
+
+        #showAdditionalLinks {
+            position: fixed;
+            top: 5px; /* 使图片距离顶部有一点间隔 */
+            right: 20px; /* 使图片距离右侧有一点间隔 */
+            cursor: pointer;
+            z-index: 1001; /* 确保图片在导航栏之上 */
+            border: none;
+            background: none;
+        }
+    </style>
+</head>
+<body>
+
+    <nav id="navBar">
+        <ul>
+			<li><a href="#" onclick="loadWebsite('http://appmom.mom/sy')">首页</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/t')">终端执行</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/linux')">代码笔记</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/tools')">工具整合</a></li>
+            <li><a href="#" onclick="loadWebsite('http://120.76.41.136:5244')">alist</a></li>
+            <li><a href="#" onclick="loadWebsite('http://120.76.41.136:10012')">留言板</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/via')">常用网站</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/cz')">重装教程</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/md5')">图片查md5</a></li>
+            <li><a href="#" onclick="loadWebsite('http://appmom.mom/use')">生成链接</a></li>
+        </ul>
+    </nav>
+
+    <div id="iframeContainer"></div>
+    <img id="showAdditionalLinks" src="https://myj.com.cn/images/MYJlogo.png" alt="挂件" width="50px" height="50px">
+
+    <script>
+        function loadWebsite(url) {
+            var iframe = document.createElement("iframe");
+            iframe.src = url;
+
+            var container = document.getElementById("iframeContainer");
+            container.innerHTML = "";
+            container.appendChild(iframe);
+        }
+
+        document.getElementById('showAdditionalLinks').onclick = function() {
+            var navBar = document.getElementById('navBar');
+            if (navBar.style.display === "none" || navBar.style.display === "") {
+                navBar.style.display = "block";
+            } else {
+                navBar.style.display = "none";
+            }
+        };
+
+        // 默认加载第一个页面
+        window.onload = function() {
+            loadWebsite('http://appmom.mom/sy');
+        }
+    </script>
+</body>
+</html>
