@@ -6,13 +6,19 @@
     <title>命令操作与二维码</title>
     <style>
         .code-block {
+            border: 1px solid #ddd;
+            padding: 15px;
             margin-bottom: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
         }
+
         .code-line {
             margin-bottom: 10px;
             font-family: monospace;
-			opacity: 0;
+            opacity: 0;
         }
+
         .copy-success {
             display: none;
             position: fixed;
@@ -24,14 +30,55 @@
             border-radius: 5px;
             z-index: 1000;
         }
+
         .qrcode {
             margin-top: 10px;
         }
-		.txt
-		{
+
+        .txt {
             font-family: monospace;
-			
-			color:transparent;
+            color: transparent;
+        }
+
+        .code-block button {
+            margin: 5px;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-button {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .copy-button:hover {
+            background-color: #45a049;
+        }
+
+        .qr-button {
+            background-color: #2196F3;
+            color: white;
+        }
+
+        .qr-button:hover {
+            background-color: #0b7dda;
+        }
+
+        .save-button {
+            background-color: #f44336;
+            color: white;
+        }
+
+        .save-button:hover {
+            background-color: #da190b;
+        }
+
+        span {
+            color: transparent;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
