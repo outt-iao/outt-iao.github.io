@@ -61,7 +61,7 @@
     <div class="container">
         <h1>代码笔记</h1>
         
-        <h2>压缩和解压</h2>
+        <h2>1.压缩和解压</h2>
         <table>
             <tr>
                 <th>操作</th>
@@ -70,7 +70,7 @@
             </tr>
             <tr>
                 <td>压缩文件夹</td>
-                <td><pre><code>cd MPOS/<br>zip -r data.zip data/</code></pre></td>
+                <td><pre><code>cd MPOS;<br>zip -r data.zip data/</code></pre></td>
                 <td>将 <code>data</code> 文件夹及其内容递归地压缩成 <code>data.zip</code> 文件。</td>
             </tr>
 			  <tr>
@@ -85,24 +85,34 @@
             </tr>
         </table>
 		 
-        <h2>登录到FTP服务器</h2>
+        <h2>2.登录到FTP服务器</h2>
         <table>
             <tr>
                 <th>操作</th>
                 <th>命令</th>
                 <th>说明</th>
             </tr>
+
+			<tr>
+                <td>支持tab补全</td>
+                <td><pre><code>sudo apt install lftp;<br>lftp myj@120.76.41.136</code></pre></td>
+                <td>回车提示口令:,输入密码即可。如果端口不是21则需要这样写<br><code>lftp myj@120.76.41.136 2121</code>myj是ftp账号</td>
+          	  </tr>
+
+
+
+		
             <tr>
-                <td>登录到FTP服务器</td>
-                <td><pre><code>ftp example.com</code></pre></td>
-                <td>连接到FTP服务器 <code>example.com</code>。之后会提示输入用户名和密码。如果连接的是ip地址 则是<code>ftp 192.168.123.16 2121</code></td>
+                <td>不支持tab补全</td>
+                <td><pre><code>ftp 120.76.41.136 2121</code></pre></td>
+                <td>端口是21可不写</td>
             </tr>
 			<tr>
-                <td>登录到FTP服务器</td>
-                <td><pre><code>ftp<br>o 192.168.123.16 2121</code></pre></td>
+                <td>分开输入</td>
+                <td><pre><code>ftp;<br>o 120.76.41.136 2121</code></pre></td>
 			
 			
-                <td>连接到FTP服务器 <code>example.com</code>。之后会提示输入用户名和密码 , 如果是ip则空格加上端口。</td>
+                <td>o是小写哦</td>
             </tr>
 			<tr>
                 <td>上传文件</td>
@@ -138,7 +148,7 @@
         </table>
 		
 		
-		   <h2>查看命令</h2>
+		   <h2>3.查看命令</h2>
         <table>
             <tr>
                 <th>操作</th>
@@ -212,7 +222,7 @@
 
         </table>
 
- <h2>文件操作</h2>
+ <h2>4.文件操作</h2>
         <table>
             <tr>
                 <th>操作</th>
@@ -295,7 +305,7 @@
 			<td>显示文件的内容。</td>
 		</tr>
         </table>
-<h2>权限命令</h2>
+<h2>5.权限命令</h2>
         <table>
             <tr>
                 <th>操作</th>
@@ -336,7 +346,7 @@
 		
 		
 		
-<h2>可能用到的命令</h2>
+<h2>6.可能用到的命令</h2>
 		<table>
 		<tr>
 			<th>操作</th>
@@ -440,11 +450,11 @@
 			<td><pre><code>sudo apt-get install apt</code></pre></td>
 			<td>安装APT包管理器。</td>
 		</tr>
-		<tr>
-			<td>更新和升级系统并安装x11vnc</td>
-			<td><pre><code>sudo apt update && sudo apt upgrade -y && sudo apt install x11vnc -y</code></pre></td>
-			<td>更新和升级系统包并安装x11vnc。</td>
-		</tr>
+		<!-- <tr> -->
+			<!-- <td>更新和升级系统并安装x11vnc</td> -->
+			<!-- <td><pre><code>sudo apt update&&sudo apt upgrade -y&&sudo apt install x11vnc -y</code></pre></td> -->
+			<!-- <td>更新和升级系统包并安装x11vnc。</td> -->
+		<!-- </tr> -->
 		
 	
 		<tr>
