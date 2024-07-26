@@ -85,40 +85,41 @@
 </head>
 <body>
     <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(0)">MPOS</button>
+        <button class="copy-button" onclick="copyCommand(0)">MPOS_x86</button>
         <button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
         <button class="save-button" onclick="saveQRCode(0)">保存二维码</button>
         <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
         <div class="qrcode" id="qrcode-0"></div>
     </div>
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(1)">VNC连接提示错误,但是ip正确</button>
+	  <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(1)">MPOS_arm</button>
         <button class="qr-button" onclick="generateQRCode(1)">生成二维码</button>
         <button class="save-button" onclick="saveQRCode(1)">保存二维码</button>
-        <div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
+        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/arm&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
         <div class="qrcode" id="qrcode-1"></div>
     </div>
     <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(2)">重启收银程序</button>
+        <button class="copy-button" onclick="copyCommand(2)">VNC连接提示错误,但是ip正确</button>
         <button class="qr-button" onclick="generateQRCode(2)">生成二维码</button>
         <button class="save-button" onclick="saveQRCode(2)">保存二维码</button>
-        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
+        <div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
         <div class="qrcode" id="qrcode-2"></div>
     </div>
     <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(3)">更新update</button>
+        <button class="copy-button" onclick="copyCommand(3)">重启收银程序</button>
         <button class="qr-button" onclick="generateQRCode(3)">生成二维码</button>
         <button class="save-button" onclick="saveQRCode(3)">保存二维码</button>
-        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
         <div class="qrcode" id="qrcode-3"></div>
     </div>
-     <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(4)">frp_vnc</button>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(4)">更新update</button>
         <button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
         <button class="save-button" onclick="saveQRCode(4)">保存二维码</button>
-        <div class="code-line">@;wget -P /tmp appmom.mom/32frp&&cd /tmp&&unzip 32frp&&chmod +x frpc&&./frpc -c ./frpc.ini</div>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
         <div class="qrcode" id="qrcode-4"></div>
     </div>
+   
     <div class="code-block">
         <button class="copy-button" onclick="copyCommand(5)">frp_vnc</button>
         <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button>
@@ -126,14 +127,22 @@
         <div class="code-line">@;wget -qO- appmom.mom/1 | bash</div>
         <div class="qrcode" id="qrcode-5"></div>
     </div>
-     <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(6)">frp_vnc</button>
-        <button class="qr-button" onclick="generateQRCode(6)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(6)">保存二维码</button>
-        <div class="code-line">@;wget -qO- http://120.76.41.136:9000/api/public/dl/CsDrxUHH/1 | bash
-</div>
-        <div class="qrcode" id="qrcode-6"></div>
-    </div>
+     <!-- <div class="code-block"> -->
+        <!-- <button class="copy-button" onclick="copyCommand(7)">frp_vnc</button> -->
+        <!-- <button class="qr-button" onclick="generateQRCode(7)">生成二维码</button> -->
+        <!-- <button class="save-button" onclick="saveQRCode(7)">保存二维码</button> -->
+        <!-- <div class="code-line">@;wget -qO- http://120.76.41.136:9000/api/public/dl/CsDrxUHH/1 | bash -->
+		<!-- <div class="qrcode" id="qrcode-7"></div> -->
+	<!-- </div> -->
+        
+     <!-- <div class="code-block"> -->
+        <!-- <button class="copy-button" onclick="copyCommand(5)">frp_vnc</button> -->
+        <!-- <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button> -->
+        <!-- <button class="save-button" onclick="saveQRCode(5)">保存二维码</button> -->
+        <!-- <div class="code-line">@;wget -P /tmp appmom.mom/32frp&&cd /tmp&&unzip 32frp&&chmod +x frpc&&./frpc -c ./frpc.ini</div> -->
+        <!-- <div class="qrcode" id="qrcode-5"></div> -->
+    <!-- </div> -->
+	
      <!-- <div class="code-block"> -->
         <!-- <button class="copy-button" onclick="copyCommand(5)">frp_vnc_myj</button> -->
         <!-- <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button> -->
