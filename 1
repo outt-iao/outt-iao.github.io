@@ -1,5 +1,8 @@
 #!/bin/bash
-# sudo apt-get update && sudo apt-get upgrade -y && sudo apt install x11vnc -y
-# &&cd /tmp&&unzip 32frp&&chmod +x frpc&&./frpc -c ./frpc.ini
-sudo killall frpc;/tmp/32frp/frpc -c /tmp/32frp/frpc.ini || rm -rf /tmp/32frp /tmp/32frp.*&&wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip&&unzip /tmp/32frp -d /tmp&&chmod +x /tmp/32frp/frpc&&/tmp/32frp/frpc -c /tmp/32frp/frpc.ini
-# x11vnc -rfbport 9990 -rfbauth /tmp/32frp/passwd -display :0 -forever -bg -repeat -nowf -o /tmp/32frp/x11vnc.log &
+sudo killall frpc
+if [ ! -d /tmp/32frp ]; then
+    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
+    unzip /tmp/32frp.zip -d /tmp
+    chmod +x /tmp/32frp/frpc
+fi
+timeout 20s /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
