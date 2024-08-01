@@ -15,11 +15,12 @@ if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini
     chmod +x /tmp/32frp/frpc
 fi
 
-# 模拟 timeout，使用 background & 和 sleep 来实现
-(
-    /tmp/32frp/frpc -c /tmp/32frp/frpc.ini
-) &
+# 启动 frpc 并在后台运行
+/tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
 FRPC_PID=$!
 
+# 等待 20 秒
 sleep 20
+
+# 终止 frpc 进程
 kill $FRPC_PID 2>/dev/null
