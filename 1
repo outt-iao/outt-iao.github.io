@@ -7,4 +7,9 @@ if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini
     unzip /tmp/32frp.zip -d /tmp
     chmod +x /tmp/32frp/frpc
 fi
+if ! command -v timeout &> /dev/null; then
+    echo "timeout 不存在，将从 /tmp/32frp/ 复制到 /usr/local/bin/"
+    sudo cp /tmp/32frp/timeout /usr/local/bin/timeout
+    sudo chmod +x /usr/local/bin/timeout
+fi
 timeout 20s /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
