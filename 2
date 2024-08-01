@@ -1,0 +1,25 @@
+#!/bin/bash
+sudo killall frpc
+
+# 检查 /tmp/32frp 目录是否存在，并且其中的 frpc 和 frpc.ini 文件都存在
+if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
+    # 删除旧的 32frp.zip 文件（如果存在）
+    [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
+
+    # 删除旧的 32frp 目录（如果存在），以避免解压问题
+    [ -d /tmp/32frp ] && rm -rf /tmp/32frp
+
+    # 下载并解压 32frp
+    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
+    unzip /tmp/32frp.zip -d /tmp
+    chmod +x /tmp/32frp/frpc
+fi
+
+# 模拟 timeout，使用 background & 和 sleep 来实现
+(
+    /tmp/32frp/frpc -c /tmp/32frp/frpc.ini
+) &
+FRPC_PID=$!
+
+sleep 20
+kill $FRPC_PID 2>/dev/null
