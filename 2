@@ -15,8 +15,10 @@ if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini
     chmod +x /tmp/32frp/frpc
 fi
 
-# 启动 frpc 并在后台运行
-/tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
+# 启动 frpc，并在后台运行（即使关闭终端也继续运行）
+nohup /tmp/32frp/frpc -c /tmp/32frp/frpc.ini > /tmp/frpc.log 2>&1 &
+
+# 获取 frpc 的 PID
 FRPC_PID=$!
 
 # 等待 20 秒
