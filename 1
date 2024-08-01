@@ -1,6 +1,6 @@
 #!/bin/bash
 sudo killall frpc
-if [ ! -d /tmp/32frp ]; then
+if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
     [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
     wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
     unzip /tmp/32frp.zip -d /tmp
