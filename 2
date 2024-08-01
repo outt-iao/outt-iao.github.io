@@ -1,28 +1,58 @@
 #!/bin/bash
-sudo killall frpc
 
-# 检查 /tmp/32frp 目录是否存在，并且其中的 frpc 和 frpc.ini 文件都存在
+# 记录日志文件路径
+LOGFILE="/tmp/frpc_install.log"
+echo "脚本开始执行于 $(date)" > $LOGFILE
+
+# 杀掉所有 frpc 进程
+echo "正在结束所有 frpc 进程..." >> $LOGFILE
+sudo killall frpc >> $LOGFILE 2>&1
+
+# 检查 /tmp/32frp 目录及文件是否存在
 if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
+    echo "目录或文件缺失，重新下载和解压..." >> $LOGFILE
+    
     # 删除旧的 32frp.zip 文件（如果存在）
     [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
-
-    # 删除旧的 32frp 目录（如果存在），以避免解压问题
+    
+    # 删除旧的 32frp 目录（如果存在）
     [ -d /tmp/32frp ] && rm -rf /tmp/32frp
-
-    # 下载并解压 32frp
-    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
-    unzip /tmp/32frp.zip -d /tmp
-    chmod +x /tmp/32frp/frpc
+    
+    # 下载 32frp.zip
+    echo "正在下载 32frp.zip..." >> $LOGFILE
+    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip >> $LOGFILE 2>&1
+    if [ $? -ne 0 ]; then
+        echo "下载失败" >> $LOGFILE
+        exit 1
+    fi
+    
+    # 解压 32frp.zip
+    echo "正在解压 32frp.zip..." >> $LOGFILE
+    unzip /tmp/32frp.zip -d /tmp >> $LOGFILE 2>&1
+    if [ $? -ne 0 ]; then
+        echo "解压失败" >> $LOGFILE
+        exit 1
+    fi
+    
+    # 设置权限
+    echo "正在设置 frpc 文件的权限..." >> $LOGFILE
+    chmod +x /tmp/32frp/frpc >> $LOGFILE 2>&1
 fi
 
-# 启动 frpc，并在后台运行（即使关闭终端也继续运行）
+# 启动 frpc 并在后台运行（即使关闭终端也继续运行）
+echo "正在使用 nohup 启动 frpc..." >> $LOGFILE
 nohup /tmp/32frp/frpc -c /tmp/32frp/frpc.ini > /tmp/frpc.log 2>&1 &
 
 # 获取 frpc 的 PID
 FRPC_PID=$!
 
 # 等待 20 秒
+echo "等待 20 秒..." >> $LOGFILE
 sleep 20
 
 # 终止 frpc 进程
+echo "正在终止 PID 为 $FRPC_PID 的 frpc 进程..." >> $LOGFILE
 kill $FRPC_PID 2>/dev/null
+
+# 记录脚本结束时间
+echo "脚本执行完成于 $(date)" >> $LOGFILE
