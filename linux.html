@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -98,10 +99,6 @@
                 <td><pre><code>sudo apt install lftp;<br>lftp myj@120.76.41.136</code></pre></td>
                 <td>回车提示口令:,输入密码即可。如果端口不是21则需要这样写<br><code>lftp myj@120.76.41.136 2121</code>myj是ftp账号</td>
           	  </tr>
-
-
-
-		
             <tr>
                 <td>不支持tab补全</td>
                 <td><pre><code>ftp 120.76.41.136 2121</code></pre></td>
@@ -155,6 +152,19 @@
                 <th>命令</th>
                 <th>说明</th>
             </tr>
+				<tr>
+				<td>查看内存大小</td>
+				<td><pre><code>free -m</code></pre></td>
+				
+			</tr>
+				<tr>
+			<td>查看cpu型号</td>
+			<td><pre><code>cat /proc/cpuinfo</code></pre></td>
+			</tr>
+				<tr>
+			<td>查看登录用户名</td>
+			<td><pre><code>w</code></pre></td>
+			</tr>
            <tr>
 			<td>查看运行路径</td>
 			<td><pre><code>ps -ef | grep vino-server</code></pre></td>
@@ -185,15 +195,6 @@
 				<td><pre><code>top</code></pre></td>
 				<td>显示系统的实时运行情况，按m键按内存使用排序。</td>
 			</tr>
-		
-			<tr>
-				<td>查看系统当前内存使用情况</td>
-				<td><pre><code>free -h</code></pre></td>
-				<td>以人类可读格式显示内存使用情况。</td>
-			</tr>
-		  
-	
-	
 			<tr>
 			<td>查看磁盘使用情况</td>
 			<td><pre><code>df -h</code></pre></td>
