@@ -16,7 +16,6 @@ if! command -v timeout &> /dev/null; then
 fi
 
 if! pgrep -f "/usr/lib/vino/vino-server" > /dev/null; then
-     echo "vnc未启动,将自动启动"
     /usr/lib/vino/vino-server &
 fi
 
