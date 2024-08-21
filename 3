@@ -1,0 +1,55 @@
+#!/bin/bash
+
+# 设置变量
+TMP_DIR="/tmp/32frp"
+ZIP_FILE="${TMP_DIR}.zip"
+FRP_DOWNLOAD_URL="120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip"
+
+# 停止 frpc 进程
+sudo killall frpc
+
+# 检查并处理 32frp 相关文件
+if [! -d "$TMP_DIR" ] || [! -f "${TMP_DIR}/frpc" ] || [! -f "${TMP_DIR}/frpc.ini" ]; then
+    if [ -f "$ZIP_FILE" ]; then
+        rm "$ZIP_FILE"
+    fi
+    if [ -d "$TMP_DIR" ]; then
+        rm -rf "$TMP_DIR"
+    fi
+    echo "下载并解压 32frp 文件..."
+    if! wget -P /tmp "$FRP_DOWNLOAD_URL"; then
+        echo "下载 32frp.zip 失败！"
+        exit 1
+    fi
+    if! unzip "$ZIP_FILE" -d /tmp; then
+        echo "解压 32frp.zip 失败！"
+        exit 1
+    fi
+    chmod +x "${TMP_DIR}/frpc"
+fi
+
+# 检查并处理 timeout 命令
+if! command -v timeout &> /dev/null; then
+    echo "timeout 不存在，将从 /tmp/32frp/ 复制到 /usr/local/bin/"
+    if! sudo cp "${TMP_DIR}/timeout" /usr/local/bin/timeout; then
+        echo "复制 timeout 文件失败！"
+        exit 1
+    fi
+    sudo chmod +x /usr/local/bin/timeout
+fi
+
+# 检查 vino-server 是否正在运行
+if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
+    echo "vino-server 正在运行。"
+else
+    echo "vino-server 未运行，正在启动..."
+    # 这里可以考虑使用 systemd 或其他服务管理工具来启动 vino-server
+    # 或者使用更合适的启动方式，避免使用 nohup
+    /usr/lib/vino/vino-server &
+fi
+
+# 设置超时时间为一小时
+TIMEOUT="1h"
+
+# 启动 frpc
+timeout "$TIMEOUT" "${TMP_DIR}/frpc" -c "${TMP_DIR}/frpc.ini" &
