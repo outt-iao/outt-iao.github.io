@@ -4,7 +4,7 @@ if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
     echo "vino-server 正在运行。"
 else
     echo "vino-server 未运行，正在启动..."
-    /usr/lib/vino/vino-server &
+    nohup /usr/lib/vino/vino-server &
 fi
 if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
     [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
