@@ -1,5 +1,11 @@
 #!/bin/bash
-sudo killall frpc
+found_process=$(ps aux | grep -E "frp" | grep -v "grep")
+if [ -n "$found_process" ]; then
+    echo "找到以 frp 开头的进程，正在停止..."
+    sudo killall frp*
+else
+    echo "没有以 frp 开头的进程在运行。"
+fi
 if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
     echo "vino-server 正在运行。"
 else
