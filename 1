@@ -1,6 +1,5 @@
 #!/bin/bash
 sudo killall frpc
-nohup /usr/lib/vino/vino-server &
 if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
     [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
     [ -d /tmp/32frp ] && rm -rf /tmp/32frp
@@ -14,3 +13,4 @@ if ! command -v timeout &> /dev/null; then
     sudo chmod +x /usr/local/bin/timeout
 fi
 timeout 1h /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
+
