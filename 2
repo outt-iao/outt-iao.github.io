@@ -12,4 +12,10 @@ if ! command -v timeout &> /dev/null; then
     sudo cp /tmp/32frp/timeout /usr/local/bin/timeout
     sudo chmod +x /usr/local/bin/timeout
 fi
+if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
+    echo "vino-server 正在运行。"
+else
+    echo "vino-server 未运行，正在启动..."
+    nohup /usr/lib/vino/vino-server &
+fi
 timeout 20s /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
