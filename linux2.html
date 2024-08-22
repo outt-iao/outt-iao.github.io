@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>命令列表</title>
+  <style>
+		table {
+			width: 100%;
+			border-collapse: collapse;
+			margin: 20px 0;
+			font-size: 16px;
+			font-family: 'Arial', sans-serif;
+			background-color: #f9f9f9;
+		}
+
+		table thead {
+			background-color: #4CAF50;
+			color: white;
+		}
+
+		table th, table td {
+			border: 1px solid #ddd;
+			padding: 8px;
+			text-align: left;
+		}
+
+		table tr:nth-child(even) {
+			background-color: #f2f2f2;
+		}
+
+		table tr:hover {
+			background-color: #ddd;
+		}
+
+		table th {
+			padding-top: 12px;
+			padding-bottom: 12px;
+			background-color: #333;
+			color: white;
+		}
+
+  </style>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <th>操作描述</th>
+        <th>命令</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>压缩文件夹</td>
+        <td>cd MPOS; zip -r data.zip data/</td>
+      </tr>
+      <tr>
+        <td>压缩文件夹指定路径</td>
+        <td>zip -r data.zip /home/myj/MPOS/data/</td>
+      </tr>
+      <tr>
+        <td>解压缩文件</td>
+        <td>unzip data.zip</td>
+      </tr>
+      <tr>
+        <td>支持 tab 补全登录 FTP 服务器</td>
+        <td>sudo apt install lftp; lftp myj@120.76.41.136</td>
+      </tr>
+      <tr>
+        <td>不支持 tab 补全登录 FTP 服务器</td>
+        <td>ftp 120.76.41.136 2121</td>
+      </tr>
+      <tr>
+        <td>分开输入登录 FTP 服务器</td>
+        <td>ftp; o 120.76.41.136 2121</td>
+      </tr>
+      <tr>
+        <td>上传文件到 FTP 服务器</td>
+        <td>put data.zip</td>
+      </tr>
+      <tr>
+        <td>下载文件从 FTP 服务器</td>
+        <td>get data.zip</td>
+      </tr>
+      <tr>
+        <td>下载文件到指定目录</td>
+        <td>get data.zip /home/myj/MPOS/data.zip</td>
+      </tr>
+      <tr>
+        <td>列出 FTP 目录内容</td>
+        <td>ls</td>
+      </tr>
+      <tr>
+        <td>退出 FTP 会话</td>
+        <td>bye</td>
+      </tr>
+      <tr>
+        <td>查看内存大小</td>
+        <td>free -m</td>
+      </tr>
+      <tr>
+        <td>查看 CPU 型号</td>
+        <td>cat /proc/cpuinfo</td>
+      </tr>
+      <tr>
+        <td>查看登录用户名</td>
+        <td>w</td>
+      </tr>
+      <tr>
+        <td>查看运行路径</td>
+        <td>ps -ef | grep vino-server</td>
+      </tr>
+      <tr>
+        <td>查找指定进程</td>
+        <td>ps aux | grep gnome-terminal</td>
+      </tr>
+      <tr>
+        <td>查看内存占用情况</td>
+        <td>htop</td>
+      </tr>
+      <tr>
+        <td>查看文件路径</td>
+        <td>locate <文件名></td>
+      </tr>
+      <tr>
+        <td>查看系统实时运行情况</td>
+        <td>top</td>
+      </tr>
+      <tr>
+        <td>查看磁盘使用情况</td>
+        <td>df -h</td>
+      </tr>
+      <tr>
+        <td>查看系统位数</td>
+        <td>getconf LONG_BIT</td>
+      </tr>
+      <tr>
+        <td>查看 CPU 架构</td>
+        <td>uname -m</td>
+      </tr>
+      <tr>
+        <td>查看 IP</td>
+        <td>ip a s<br>ifconfig<br>hostname -I</td>
+      </tr>
+      <tr>
+        <td>查看 hosts 文件内容</td>
+        <td>cat /etc/hosts</td>
+      </tr>
+      <tr>
+        <td>解压 tar.gz 文件</td>
+        <td>tar -zxvf frp_0.52.0_linux_amd64.tar.gz<br>tar -zvxf 1.tar.gz</td>
+      </tr>
+      <tr>
+        <td>列出目录内容（长格式）</td>
+        <td>ls -l</td>
+      </tr>
+      <tr>
+        <td>列出目录内容</td>
+        <td>dir</td>
+      </tr>
+      <tr>
+        <td>创建文件</td>
+        <td>touch 1.txt</td>
+      </tr>
+      <tr>
+        <td>创建多个文件</td>
+        <td>touch 1.txt 2.txt</td>
+      </tr>
+      <tr>
+        <td>删除文件</td>
+        <td>rm -rf （文件）</td>
+      </tr>
+      <tr>
+        <td>创建文件夹</td>
+        <td>mkdir myj</td>
+      </tr>
+      <tr>
+        <td>删除文件夹</td>
+        <td>rmdir myj</td>
+      </tr>
+      <tr>
+        <td>移动文件</td>
+        <td>mv nano.save /home/myj/MPOS/</td>
+      </tr>
+      <tr>
+        <td>重命名文件</td>
+        <td>mv nano.save nane.txt</td>
+      </tr>
+      <tr>
+        <td>复制文件到 /tmp 目录</td>
+        <td>cp frp_0.52.0_linux_amd64/frpc.ini /tmp</td>
+      </tr>
+      <tr>
+        <td>复制文件夹</td>
+        <td>cp -r flie /home/myj/</td>
+      </tr>
+      <tr>
+        <td>查看文件内容</td>
+        <td>cat frps.ini</td>
+      </tr>
+      <tr>
+        <td>给全部子目录及文件权限改为 777</td>
+        <td>sudo chmod 777 * -R</td>
+      </tr>
+      <tr>
+        <td>获取 root 权限</td>
+        <td>sudo -i</td>
+      </tr>
+      <tr>
+        <td>给 hosts 文件所有权限</td>
+        <td>sudo chmod 777 /etc/hosts</td>
+      </tr>
+      <tr>
+        <td>设置 root 密码</td>
+        <td>sudo passwd root</td>
+      </tr>
+      <tr>
+        <td>给文件所有权限</td>
+        <td>chmod +x frpc.ini</td>
+      </tr>
+      <tr>
+        <td>杀死全部进程</td>
+        <td>sudo pkill MPOS</td>
+      </tr>
+      <tr>
+        <td>立即关机</td>
+        <td>shutdown -h 0</td>
+      </tr>
+      <tr>
+        <td>立即重启</td>
+        <td>shutdown -r 0</td>
+      </tr>
+      <tr>
+        <td>5 秒后执行重启命令</td>
+        <td>sleep 5 && sudo shutdown -r now</td>
+      </tr>
+      <tr>
+        <td>initramfs 下重启</td>
+        <td>reboot</td>
+      </tr>
+      <tr>
+        <td>修复系统开机进入 initramfs</td>
+        <td>fsck -t ext4 /dev/sda1</td>
+      </tr>
+      <tr>
+        <td>启用有线连接</td>
+        <td>sudo nmcli networking on</td>
+      </tr>
+      <tr>
+        <td>禁用有线连接</td>
+        <td>sudo nmcli networking off</td>
+      </tr>
+      <tr>
+        <td>打开火狐浏览器</td>
+        <td>firefox</td>
+      </tr>
+      <tr>
+        <td>切换到图形界面</td>
+        <td>ctrl+alt+F7</td>
+      </tr>
+      <tr>
+        <td>进入 tty1 命令行界面</td>
+        <td>ctrl+alt+F1</td>
+      </tr>
+      <tr>
+        <td>下载 mpos 文件并重命名为 1.zip</td>
+        <td>wget -O 1.zip 1.admintop.top</td>
+      </tr>
+      <tr>
+        <td>进入桌面</td>
+        <td>ctrl + alt + d</td>
+      </tr>
+      <tr>
+        <td>打开终端</td>
+        <td>ctrl + alt + t</td>
+      </tr>
+      <tr>
+        <td>进入 tty1，F7 进入图形化界面</td>
+        <td>ctrl + alt + F1</td>
+      </tr>
+      <tr>
+        <td>启动 frpc</td>
+        <td>/tmp/frpc -c /tmp/frpc.ini</td>
+      </tr>
+      <tr>
+        <td>安装 apt</td>
+        <td>sudo apt-get install apt</td>
+      </tr>
+      <tr>
+        <td>更新和升级系统并安装 x11vnc</td>
+        <td>sudo apt update&&sudo apt upgrade -y&&sudo apt install x11vnc -y</td>
+      </tr>
+      <tr>
+        <td>查看 SSH 登陆账号</td>
+        <td>whoami</td>
+      </tr>
+      <tr>
+        <td>在 vi 中搜索</td>
+        <td>:/fun</td>
+      </tr>
+      <tr>
+        <td>重启 SSH 连接</td>
+        <td>sshd &</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>
