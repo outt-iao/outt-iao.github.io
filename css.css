@@ -1,0 +1,405 @@
+
+/*--- reset start ---*/
+body, div, h1, p, ul, li {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+}
+ul, li {
+	list-style: none;
+}
+img {
+	border: none;
+	display: block;
+}
+a, a:visited {	
+  color: #79A325;
+  background: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: #73471B;
+  background: inherit;
+}
+.clearfloat {
+	zoom: 1;
+}
+.clearfloat:after {
+	display: block;
+	clear: both;
+	content: "";
+	visibility: hidden;
+	height: 0;
+}
+/*--- reset end ---*/
+
+body {
+  background: #CCC;
+  font: 12px/170% 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #6B6B6B; 
+  text-align: center;	
+}
+
+/*--- headers ---*/
+h1, h3 {
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-serif;
+  font-weight: Bold; 	
+  padding: 10px;		
+  color: #444;
+}
+h1 {
+  font-size: 2.9em;
+}
+h3 {
+  font-size: 1.6em;
+  font-weight: normal;
+  padding: 16px 10px 4px 10px;
+}
+
+/*--- Paragraph ---*/
+p { padding: 12px 10px;	}
+
+/*--- Lists ---*/
+ul {
+  margin: 10px 20px;
+  padding: 0 20px;
+}
+
+/*---LAYOUT---*/ 
+.wrap {
+	position: relative;
+	width: 952px;
+	background: #FFF url(images/wrap.gif) repeat-y center top;
+	margin: 40px auto 30px auto;
+	text-align: left;	
+}
+.header {
+	position: relative;
+	width: 952px;
+	height: 245px;
+	background: #8AB84B url(images/header.jpg) no-repeat;	
+	color: #fff;	
+	padding: 0;	
+	margin: 0;	
+}
+.header .logo-text a {
+	position: absolute;
+	margin: 0; 
+    padding: 0;
+	font: bold 66px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-serif;
+	letter-spacing: -5px;
+	color: #332616;
+	top: 75px; 
+    left: 55px;	
+}
+.header .slogan {
+	position: absolute;
+	margin: 0; 
+	padding: 0;
+	font: bold 15px 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-serif;
+	color: #322815;
+	letter-spacing: -0.5px;
+	top: 148px; 
+    left: 150px;		
+}
+
+/*--- Navigation ---*/
+.nav {
+  width: 952px;
+  height: 50px;
+  background: #988060 url(images/nav.gif) no-repeat;		
+}
+.nav ul {
+	float: left;	
+	margin: 5px 0 0 0;
+	height: 45px;
+	padding: 0 0 0 40px;					
+}
+.nav ul li {
+	float: left;
+	padding: 0 0 0 10px;		
+}
+.nav ul li a {
+	float: left;
+	padding: 0 15px 0 5px;
+	color: #FFF;
+	font: bold 15px/45px 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;	
+}
+.nav ul li a:hover, .nav ul li a:active {
+	color: #E7FAA9;	
+}
+.nav .current {
+	background: transparent url(images/left-tab.gif) no-repeat;	
+}
+.nav .current a {	
+	color: #4B3D2C;
+	background: transparent url(images/right-tab.gif) no-repeat right top;	
+}
+
+/*--- search navigation ---*/
+.search_nav{
+  width: 263px;
+  height: 296px;
+  padding: 20px 0 0 50px; 
+}
+.search_nav ul{
+  margin: auto;
+  display: block; 
+}
+.search_nav ul li{
+  display: block;
+  width: auto;
+  height: 29px;
+  line-height: 29px;
+}
+.search_nav ul li a{
+  height: 29px;
+  display: block; 
+  width: 263px;
+  padding: 0 0 0 35px; 
+  margin: 7px 0;
+  color: #d4f0ba;
+  background: url(images/search_nav.gif) no-repeat center;
+  background-position: 0px 0px;
+}
+.search_nav a:hover{
+  height:29px;
+  display:block;
+  width:263px;
+  color: #d4f0ba;
+  padding:0 0 0 35px;
+  margin:7px 0; 
+  background:url(images/search_nav_a.gif) no-repeat center;
+  background-position:0px 0px;
+}
+.search_nav .current{
+  height:29px;
+  display:block;
+  width:263px;
+  color: #d4f0ba;
+  padding:0 0 0 35px;
+  margin:7px 0; 
+  background:url(images/search_nav_a.gif) no-repeat center;
+  background-position:0px 0px;
+}
+
+/*--- listbar menu ---*/
+.listbar {
+	position: relative;
+	margin: 0 auto;
+	width: 900px;
+}
+.listbar h3 {
+	color: #51432F;
+  font: bold 1.9em 'Trebuchet MS', 'Helvetica Neue', Arial, Sans-serif;
+  letter-spacing: 2px;
+	text-align: center;
+}
+.listbar .listmenu {
+
+}
+.listbar .listmenu li {
+  padding: 10px;
+  text-align: center;
+  border-bottom: 1px solid #E8E8E8;
+}
+.listbar .listmenu li a {
+  color: #739A23;
+  font-size: 1.2em;
+}
+.listbar .listmenu li a:hover {
+  color: #000;
+  background:none;
+}
+.listbar .box {
+  float:left;
+  width: 225px;
+}
+
+/* footer */
+.footer {
+	width: 100%;
+	padding: 30px 0;
+	background: #CCC url(images/footer-bottom.gif) no-repeat;			
+
+}
+
+
+
+/* index */
+.link-list {
+  margin: 20px auto;
+  padding: 20px;
+  width: 90%;
+  background: #FFF;
+  border: 1px solid #E8E8E8;
+  border-radius: 5px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.link-list a {
+  display: block;
+  margin: 8px 0;
+  padding: 10px;
+  font-size: 1.1em;
+  font-family: 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
+  color: #739A23;
+  background-color: #f5f5f5;
+  border-radius: 3px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link-list a:hover {
+  color: #FFF;
+  background-color: #8AB84B;
+}
+
+.link-list a:active {
+  background-color: #6B8E23;
+}
+
+.link-list a:first-of-type {
+  margin-top: 0;
+}
+
+.link-list a:last-of-type {
+  margin-bottom: 0;
+}
+
+
+
+
+/* shop */
+.copy-success {
+    display: none;
+    position: fixed;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50; /* 绿色背景代表成功 */
+    color: white; /* 白色文字 */
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 16px;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+/* code-block 样式 */
+.code-block {
+    background-color: #f4f4f4; /* 淡灰色背景 */
+    border: 1px solid #ddd; /* 边框为淡灰色 */
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px 28px;
+}
+
+.code-block button {
+    background-color: #007BFF; /* 蓝色按钮背景 */
+    color: white; /* 白色文字 */
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.code-block button:hover {
+    background-color: #0056b3; /* 按钮背景在悬停时变为深蓝色 */
+}
+
+.code-line {
+    font-family: 'Courier New', Courier, monospace; /* 等宽字体 */
+    background-color: #fff; /* 白色背景 */
+    border: 1px solid #ddd; /* 边框为淡灰色 */
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 10px;
+    overflow-x: auto; /* 支持横向滚动 */
+}
+
+.qrcode {
+    margin-top: 10px;
+}
+.txt_niubi {
+    background-color: #f5f5f5; /* 与页面其他部分一致的浅灰色背景 */
+    border: 1px solid #ddd; /* 边框颜色与整体设计保持一致 */
+    padding: 15px; /* 添加一些内边距让内容不贴边 */
+    font-size: 14px; /* 调整字体大小以匹配页面整体风格 */
+    line-height: 1.6; /* 提高行间距，使文本更易读 */
+    color: #333; /* 字体颜色与页面其他文本一致 */
+    margin: 20px 28px; /* 在上下方添加间距 */
+    border-radius: 5px; /* 添加圆角以使设计更柔和 */
+    word-break: break-all; /* 防止长文本溢出 */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* 添加轻微阴影 */
+}
+
+
+/* learn */
+.container {
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px; /* Reduced padding */
+    margin: 15px auto; /* Slightly smaller margin */
+    width: 90%; /* Adjusted width */
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* Reduced font size */
+    line-height: 1.4; /* Adjusted line height */
+}
+
+.container h2, .container h3, .container h4 {
+    font-size: 16px; /* Smaller heading sizes */
+    margin-bottom: 10px;
+}
+
+.container textarea, 
+.container input[type="text"], 
+.container input[type="number"] {
+    width: calc(100% - 20px);
+    padding: 8px; /* Smaller input padding */
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-size: 13px; /* Adjusted font size */
+}
+
+.container button {
+    padding: 8px 15px; /* Reduced button padding */
+    margin-top: 10px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 13px; /* Adjusted button font size */
+}
+
+.container button:hover {
+    background-color: #0056b3;
+}
+
+.container .code-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.container #result, 
+.container #结果 {
+    margin-top: 10px;
+    font-size: 13px; /* Adjusted font size */
+}
+
+
+
+
+
+
+
+
