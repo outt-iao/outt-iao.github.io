@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="zh-Hans">
 <head>
-<title>xxx:gj</title>
+<title>xxx:zd</title>
     <meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 	<meta name="description" content="我的主页">
@@ -20,172 +20,153 @@
 <!-- navigation starts-->	
   <div  class="nav clearfloat">
 	<ul>
-	   <li><a href="index.html">网站</a></li>
-	   <li><a href="indexzd.html">终端</a></li>
-		<li class="current"><a href="indexgj.html">工具</a></li>
+	  <li><a href="index.html">网站</a></li>
+	   <li class="current"><a href="indexzd.html">终端</a></li>
+		<li><a href="indexgj.html">工具</a></li>
 		
+
 	</ul>
 <!-- navigation ends-->	
-  </div>					
-<!-- learn starts -->
- <div class="container">
-  <h4>转二维码</h4>
-  <textarea id="content" placeholder="输入内容" rows="4"></textarea>
-  <div class="code-container">
-    <div class="code" id="qrcode"></div>
-    <svg class="code" id="barcode"></svg>
-  </div>
-  <div>
-    <button onclick="generateCode('qrcode')">显示二维码</button>
-    <button onclick="generateCode('barcode')">显示条形码</button>
-  </div>
-</div>
-
-  <div class="container">
-    <h2>日期计算</h2>
+  </div>						
+<!-- shop starts -->
+  <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(0)">MPOS_x86</button>
+        <button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(0)">保存二维码</button>
+        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+        <div class="qrcode" id="qrcode-0"></div>
+    </div>
+	  <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(1)">MPOS_arm</button>
+        <button class="qr-button" onclick="generateQRCode(1)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(1)">保存二维码</button>
+        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/arm&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
+        <div class="qrcode" id="qrcode-1"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(2)">VNC连接提示错误,但是ip正确</button>
+        <button class="qr-button" onclick="generateQRCode(2)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(2)">保存二维码</button>
+        <div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
+        <div class="qrcode" id="qrcode-2"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(3)">重启收银程序</button>
+        <button class="qr-button" onclick="generateQRCode(3)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(3)">保存二维码</button>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
+        <div class="qrcode" id="qrcode-3"></div>
+    </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(4)">更新update</button>
+        <button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(4)">保存二维码</button>
+        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
+        <div class="qrcode" id="qrcode-4"></div>
+    </div>
    
-    <label for="yearInput">年份：</label>
-    <input type="text" id="yearInput" placeholder="输入年份"><br><br>
-    <label for="weekInput">周数：</label>
-    <input type="number" id="weekInput" placeholder="输入周数"><br><br>
-    <button onclick="compareDate()">计算</button><br><br>
-    <div id="result"></div>
-  </div>
+    <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(5)">frp_vnc</button>
+        <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(5)">保存二维码</button>
+        <div class="code-line">@;wget -qO- appmom.mom/1 | bash</div>
+	    <a href="https://note.youdao.com/s/IksfzDnb" target="_blank">使用教程</a>
+        <div class="qrcode" id="qrcode-5"></div>
+    </div>
+   <div class="code-block">
+        <button class="copy-button" onclick="copyCommand(6)">手持终端APP下载</button>
+        <button class="qr-button" onclick="generateQRCode(6)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(6)">保存二维码</button>
+        <div class="code-line">https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk</div>
+        <div class="qrcode" id="qrcode-6"></div>
+    </div>
 
-  <div class="container">
-    <h3>地址替换</h3>
-    <textarea id="输入框" placeholder="输入内容" onclick="清空示例内容()">36:13:E8:B6:4D:8D</textarea><br>
-    <button onclick="替换内容();">执行替换</button>
-    <p>替换后的内容为：</p>
-    <p id="结果"></p>
-  </div>
-
-  <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
-
-  <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
-  <script>
-    var qrCodeDiv = document.getElementById('qrcode');
-    var barcodeSvg = document.getElementById('barcode');
-    var notificationTimeout;
-
-    function generateCode(type) {
-    var content = document.getElementById('content').value;
-    var qrCodeDiv = document.getElementById('qrcode');
-    var barcodeSvg = document.getElementById('barcode');
+<div class="code-block">
+        <button class="copy-button" onclick="copyCommand(7)">测试声音</button>
+        <button class="qr-button" onclick="generateQRCode(7)">生成二维码</button>
+        <button class="save-button" onclick="saveQRCode(7)">保存二维码</button>
+        <div class="code-line">firefox appmom.mom/lb && xdotool key space</div>
+        <div class="qrcode" id="qrcode-7"></div>
+    </div>
+	
     
-    qrCodeDiv.style.display = 'none';
-    barcodeSvg.style.display = 'none';
 
-    if (content.trim() === '') {
-      alert('请输入内容');
-      return;
-    }
+    <div class="copy-success" id="copySuccess"></div>
+  <div class="txt_niubi">
+  <p>nohup /root/frps -c /root/frps.ini & 
+  <p>tr -cd '\11\12\15\40-\176' < ./frpc.ini > ./frpc_clean.ini;mv ./frpc_clean.ini ./frpc.ini;./frpc -c ./frpc.ini
+  <p>myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip
+120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip
+  </div>
 
-    if (type === 'qrcode') {
-      qrCodeDiv.innerHTML = '';
-      new QRCode(qrCodeDiv, {
-        text: content,
-        width: 200,
-        height: 200,
-      });
-      qrCodeDiv.style.display = 'block';
-    } else if (type === 'barcode') {
-      JsBarcode("#barcode", content, {
-        format: "CODE128",
-        width: 2,
-        height: 60,
-        displayValue: false
-      });
-      barcodeSvg.style.display = 'block';
-    }
-  }
+<span style="color:transparent;">
+</span>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function copyCommand(index) {
+            const codeLines = document.getElementsByClassName('code-line');
+            const textToCopy = codeLines[index].textContent.trim();
+            
+            const tempTextArea = document.createElement('textarea');
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            
+            tempTextArea.select();
+            tempTextArea.setSelectionRange(0, 99999); // For mobile devices
+            
+            document.execCommand('copy');
+            
+            document.body.removeChild(tempTextArea);
 
-    function getDateFromYearWeek(year, week) {
-      var januaryFirst = new Date(year, 0, 1);
-      var firstDayOfWeekOne = januaryFirst.getDay() - 1;
-      var weekOneStart = januaryFirst;
-      if (firstDayOfWeekOne > 3) {
-        weekOneStart.setDate(januaryFirst.getDate() + 8 - firstDayOfWeekOne);
-      } else {
-        weekOneStart.setDate(januaryFirst.getDate() - firstDayOfWeekOne);
-      }
-      var targetDate = new Date(weekOneStart.getTime() + ((week - 1) * 7) * 24 * 60 * 60 * 1000);
-      return targetDate;
-    }
+            const copySuccess = document.getElementById('copySuccess');
+            copySuccess.innerHTML = `复制成功: ${textToCopy}`;
+            copySuccess.style.display = 'block';
+            setTimeout(() => {
+                copySuccess.style.display = 'none';
+            }, 2000);
+        }
 
-    function compareDate() {
-      var yearInput = document.getElementById('yearInput').value;
-      var year = parseInt(yearInput);
-      if (yearInput.length === 2) {
-        year += 2000;
-      }
-      var week = parseInt(document.getElementById('weekInput').value);
-      var targetDate = getDateFromYearWeek(year, week);
+        function generateQRCode(index) {
+            const codeLines = document.getElementsByClassName('code-line');
+            const textToGenerate = codeLines[index].textContent.trim();
+            const qrcodeContainer = document.getElementById(`qrcode-${index}`);
+            qrcodeContainer.innerHTML = "";
+            new QRCode(qrcodeContainer, textToGenerate);
+        }
 
-      var date1 = new Date('2012-07-09');
-      var date2 = new Date('2014-04-28');
-      var date3 = new Date('2016-11-22');
-      var date4 = new Date('2018-09-05');
-      var result = '';
+        function saveQRCode(index) {
+				const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
+				if (qrcodeContainer) {
+				// Create a new canvas with extra space for the white background
+				const originalCanvas = qrcodeContainer;
+				const originalWidth = originalCanvas.width;
+				const originalHeight = originalCanvas.height;
+				const padding = 100; // Adjust the padding size as needed
 
-      if (targetDate > date1 && targetDate <= date2) {
-        result = '推荐安装 \'BSJ_D425_SATA250_20120709\'';
-      } else if (targetDate > date2 && targetDate <= date3) {
-        result = '推荐安装 \'BSJ_N2_TOUCH_500G_20140428\'';
-      } else if (targetDate > date3 && targetDate <= date4) {
-        result = '推荐安装 \'BSJ_CAPTOUCH_500G_20161122\'';
-      } else {
-        var month = targetDate.getMonth() + 1;
-        var day = targetDate.getDate();
-        result = '日期是：' + targetDate.getFullYear() + '年' + (month < 10 ? '0' + month : month) + '月' + (day < 10 ? '0' + day : day) + '日';
-      }
+				const newCanvas = document.createElement('canvas');
+				newCanvas.width = originalWidth + 2 * padding;
+				newCanvas.height = originalHeight + 2 * padding;
 
-      document.getElementById('result').innerText = result + '，日期是：' + targetDate.getFullYear() + '年' + (targetDate.getMonth() + 1) + '月' + targetDate.getDate() + '日';
-    }
+				const ctx = newCanvas.getContext('2d');
 
-    function 替换内容() {
-      var 输入内容 = document.getElementById("输入框").value;
-      var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
-      var 结果 = document.getElementById("结果");
-      结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
-        return '<spanclass="可复制" onclick="复制文本(this)">' + item + '</span>';
-      }).join('<br>');
-    }
+				// Fill the new canvas with a white background
+				ctx.fillStyle = '#FFFFFF';
+				ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-    function 复制文本(element) {
-      var 选择器 = window.getSelection();
-      var 范围 = document.createRange();
-      范围.selectNodeContents(element);
-      选择器.removeAllRanges();
-      选择器.addRange(范围);
-      document.execCommand('copy');
+				// Draw the original QR code onto the new canvas, centered
+				ctx.drawImage(originalCanvas, padding, padding);
 
-      var rect = element.getBoundingClientRect();
-      var notification = document.getElementById('notification');
-      notification.innerText = '已复制: ' + element.innerText;
-      notification.style.top = (rect.top - 30) + 'px'; // 将弹窗显示在复制文本的上方
-      notification.style.left = rect.left + 'px';
-      notification.style.display = 'block';
-      clearTimeout(notificationTimeout);
-      notificationTimeout = setTimeout(function() {
-        notification.style.display = 'none';
-      }, 1000); // 1秒后消失
-    }
+				// Save the new canvas as an image
+				const link = document.createElement('a');
+				link.href = newCanvas.toDataURL();
+				link.download = `qrcode-${index}.png`;
+				link.click();
+			} else {
+				alert('请先生成二维码');
+			}
+		}
 
-    function 清空示例内容() {
-      var 输入框 = document.getElementById('输入框');
-      if (输入框.value === '36:13:E8:B6:4D:8D') {
-        输入框.value = '';
-      }
-    }
-
-  </script>
-  
-  
-  
-  
-	<!-- footer starts -->		
+    </script>	
   <div class="footer clearfloat"></div> 
 <!-- wrap ends here -->
 </div>
