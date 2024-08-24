@@ -135,16 +135,37 @@
         }
 
         function saveQRCode(index) {
-            const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
-            if (qrcodeContainer) {
-                const link = document.createElement('a');
-                link.href = qrcodeContainer.toDataURL();
-                link.download = `qrcode-${index}.png`;
-                link.click();
-            } else {
-                alert('请先生成二维码');
-            }
-        }
+				const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
+				if (qrcodeContainer) {
+				// Create a new canvas with extra space for the white background
+				const originalCanvas = qrcodeContainer;
+				const originalWidth = originalCanvas.width;
+				const originalHeight = originalCanvas.height;
+				const padding = 100; // Adjust the padding size as needed
+
+				const newCanvas = document.createElement('canvas');
+				newCanvas.width = originalWidth + 2 * padding;
+				newCanvas.height = originalHeight + 2 * padding;
+
+				const ctx = newCanvas.getContext('2d');
+
+				// Fill the new canvas with a white background
+				ctx.fillStyle = '#FFFFFF';
+				ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+
+				// Draw the original QR code onto the new canvas, centered
+				ctx.drawImage(originalCanvas, padding, padding);
+
+				// Save the new canvas as an image
+				const link = document.createElement('a');
+				link.href = newCanvas.toDataURL();
+				link.download = `qrcode-${index}.png`;
+				link.click();
+			} else {
+				alert('请先生成二维码');
+			}
+		}
+
     </script>	
   <div class="footer clearfloat"></div> 
 <!-- wrap ends here -->
