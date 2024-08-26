@@ -29,79 +29,7 @@
 <!-- navigation ends-->	
   </div>						
 <!-- shop starts -->
-  <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(0)">MPOS_x86</button>
-        <button class="qr-button" onclick="generateQRCode(0)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(0)">保存二维码</button>
-        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-        <div class="qrcode" id="qrcode-0"></div>
-    </div>
-	  <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(1)">MPOS_arm</button>
-        <button class="qr-button" onclick="generateQRCode(1)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(1)">保存二维码</button>
-        <div class="code-line">@;rm -rf MPOS;wget -O 1 s.appmom.mom/arm&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &</div>
-        <div class="qrcode" id="qrcode-1"></div>
-    </div>
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(2)">VNC连接提示错误,但是ip正确</button>
-        <button class="qr-button" onclick="generateQRCode(2)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(2)">保存二维码</button>
-        <div class="code-line">@;nohup /usr/lib/vino/vino-server &</div>
-        <div class="qrcode" id="qrcode-2"></div>
-    </div>
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(3)">重启收银程序</button>
-        <button class="qr-button" onclick="generateQRCode(3)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(3)">保存二维码</button>
-        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start</div>
-        <div class="qrcode" id="qrcode-3"></div>
-    </div>
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(4)">更新update</button>
-        <button class="qr-button" onclick="generateQRCode(4)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(4)">保存二维码</button>
-        <div class="code-line">@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update</div>
-        <div class="qrcode" id="qrcode-4"></div>
-    </div>
-   
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(5)">frp_vnc</button>
-        <button class="qr-button" onclick="generateQRCode(5)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(5)">保存二维码</button>
-        <div class="code-line">@;wget -qO- appmom.mom/1 | bash</div>
-	    <a href="https://note.youdao.com/s/IksfzDnb" target="_blank">使用教程</a>
-        <div class="qrcode" id="qrcode-5"></div>
-    </div>
-
-
-    <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(6)">frp_vnc_lf</button>
-        <button class="qr-button" onclick="generateQRCode(6)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(6)">保存二维码</button>
-        <div class="code-line">@;wget -qO- appmom.mom/2 | bash</div>
-	    <a href="https://note.youdao.com/s/IksfzDnb" target="_blank">使用教程</a>
-        <div class="qrcode" id="qrcode-5"></div>
-    </div>
-
-
-
-   <div class="code-block">
-        <button class="copy-button" onclick="copyCommand(7)">手持终端APP下载</button>
-        <button class="qr-button" onclick="generateQRCode(7)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(7)">保存二维码</button>
-        <div class="code-line">https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk</div>
-        <div class="qrcode" id="qrcode-6"></div>
-    </div>
-
-<div class="code-block">
-        <button class="copy-button" onclick="copyCommand(8)">测试声音</button>
-        <button class="qr-button" onclick="generateQRCode(8)">生成二维码</button>
-        <button class="save-button" onclick="saveQRCode(8)">保存二维码</button>
-        <div class="code-line">firefox appmom.mom/lb && xdotool key space</div>
-        <div class="qrcode" id="qrcode-7"></div>
-    </div>
-	
+<div id="code-container"></div>
     
 
     <div class="copy-success" id="copySuccess"></div>
@@ -178,6 +106,45 @@
 				alert('请先生成二维码');
 			}
 		}
+
+
+
+
+
+
+    const commands = [
+        { name: "MPOS_x86", command: "@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
+        { name: "MPOS_arm", command: "@;rm -rf MPOS;wget -O 1 s.appmom.mom/arm&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
+        { name: "VNC连接提示错误,但是ip正确", command: "@;nohup /usr/lib/vino/vino-server &" },
+        { name: "重启收银程序", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start" },
+        { name: "更新update", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update" },
+        { name: "frp_vnc", command: "@;wget -qO- appmom.mom/1 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
+        { name: "frp_vnc_lf", command: "@;wget -qO- appmom.mom/2 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
+        { name: "手持终端APP下载", command: "https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk" },
+        { name: "测试声音", command: "firefox appmom.mom/lb && xdotool key space" }
+    ];
+    function generateBlocks() {
+        const container = document.getElementById('code-container');
+        commands.forEach((item, index) => {
+            const block = document.createElement('div');
+            block.className = 'code-block';
+            block.innerHTML = `
+                <button class="copy-button" onclick="copyCommand(${index})">${item.name}</button>
+                <button class="qr-button" onclick="generateQRCode(${index})">生成二维码</button>
+                <button class="save-button" onclick="saveQRCode(${index})">保存二维码</button>
+                <div class="code-line">${item.command}</div>
+                ${item.link ? `<a href="${item.link}" target="_blank">使用教程</a>` : ''}
+                <div class="qrcode" id="qrcode-${index}"></div>
+            `;
+            container.appendChild(block);
+        });
+    }
+
+    generateBlocks();
+
+
+
+
 
     </script>	
   <div class="footer clearfloat"></div> 
