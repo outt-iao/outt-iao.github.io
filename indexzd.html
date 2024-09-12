@@ -113,8 +113,8 @@
 
 
     const commands = [
-        { name: "MPOS_x86", command: "@;rm -rf MPOS;wget -O 1 s.appmom.mom/mpos&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
-        { name: "MPOS_arm", command: "@;rm -rf MPOS;wget -O 1 s.appmom.mom/arm&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
+        { name: "MPOS_x86", command: "@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
+        { name: "MPOS_arm", command: "@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
         { name: "VNC连接提示错误,但是ip正确", command: "@;nohup /usr/lib/vino/vino-server &" },
         { name: "重启收银程序", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start" },
         { name: "更新update", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update" },
