@@ -1,34 +1,38 @@
-
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head>
-<title>xxx:gj</title>
-    <meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="我的主页">
-	<meta name="keywords" content="浏览器主页">
+<title>XXX:gj</title>
+<link rel="icon" href="favicon.ico">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="css.css" type="text/css" />
+ <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch('nav.html')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navigation').innerHTML = data;
+                    // 获取当前页面的 URL
+                    const currentPage = window.location.pathname.split('/').pop();
+                    // 查找所有链接并设置 current 类
+                    const links = document.querySelectorAll('.nav a');
+                    links.forEach(link => {
+                        if (link.getAttribute('href') === currentPage) {
+                            link.parentElement.classList.add('current');
+                        }
+                    });
+                })
+                .catch(error => console.error('Error loading navigation:', error));
+        });
+    </script>
 </head>
-<body>
-<!-- wrap starts here -->
-<div class="wrap clearfloat">
-<!--header -->
-  <div class="header clearfloat">			
-    <h1 class="logo-text"><a href="index.html" title="">Syen Farm</a></h1>		
-	<p class="slogan">I know H.T.M.L(How To Meet Ladies)</p>								
-<!--header ends-->					
-  </div>
-<!-- navigation starts-->	
-  <div  class="nav clearfloat">
-	<ul>
-	   <li><a href="index.html">网站</a></li>
-	   <li><a href="indexzd.html">终端</a></li>
-		<li class="current"><a href="indexgj.html">工具</a></li>
-		
-	</ul>
-<!-- navigation ends-->	
-  </div>					
-<!-- learn starts -->
+	<div class="wrap clearfloat">
+		<div class="header clearfloat">			
+		<h1 class="logo-text"><a href="index.html" title="">MYJ</a></h1>		
+		<p class="slogan">美宜佳</p>										
+	</div>	
+
+<div id="navigation"></div>
+
  <div class="container">
   <h4>转二维码</h4>
   <textarea id="content" placeholder="输入内容" rows="4"></textarea>
@@ -63,132 +67,136 @@
 
   <div id="notification" class="notification" onmouseover="clearTimeout(notificationTimeout)" onmouseout="hideNotification()"></div>
 
-  <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-  <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script>
-  <script>
-    var qrCodeDiv = document.getElementById('qrcode');
-    var barcodeSvg = document.getElementById('barcode');
-    var notificationTimeout;
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script> -->
+  <!-- <script src="https://cdn.bootcdn.net/ajax/libs/jsbarcode/3.11.0/JsBarcode.all.min.js"></script> -->
+	  <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jsbarcode@3.11.0/dist/JsBarcode.all.min.js"></script>
 
-    function generateCode(type) {
-    var content = document.getElementById('content').value;
-    var qrCodeDiv = document.getElementById('qrcode');
-    var barcodeSvg = document.getElementById('barcode');
-    
-    qrCodeDiv.style.display = 'none';
-    barcodeSvg.style.display = 'none';
 
-    if (content.trim() === '') {
-      alert('请输入内容');
-      return;
-    }
+  
+	  <script>
+		var qrCodeDiv = document.getElementById('qrcode');
+		var barcodeSvg = document.getElementById('barcode');
+		var notificationTimeout;
 
-    if (type === 'qrcode') {
-      qrCodeDiv.innerHTML = '';
-      new QRCode(qrCodeDiv, {
-        text: content,
-        width: 200,
-        height: 200,
-      });
-      qrCodeDiv.style.display = 'block';
-    } else if (type === 'barcode') {
-      JsBarcode("#barcode", content, {
-        format: "CODE128",
-        width: 2,
-        height: 60,
-        displayValue: false
-      });
-      barcodeSvg.style.display = 'block';
-    }
-  }
+		function generateCode(type) {
+		var content = document.getElementById('content').value;
+		var qrCodeDiv = document.getElementById('qrcode');
+		var barcodeSvg = document.getElementById('barcode');
+		
+		qrCodeDiv.style.display = 'none';
+		barcodeSvg.style.display = 'none';
 
-    function getDateFromYearWeek(year, week) {
-      var januaryFirst = new Date(year, 0, 1);
-      var firstDayOfWeekOne = januaryFirst.getDay() - 1;
-      var weekOneStart = januaryFirst;
-      if (firstDayOfWeekOne > 3) {
-        weekOneStart.setDate(januaryFirst.getDate() + 8 - firstDayOfWeekOne);
-      } else {
-        weekOneStart.setDate(januaryFirst.getDate() - firstDayOfWeekOne);
-      }
-      var targetDate = new Date(weekOneStart.getTime() + ((week - 1) * 7) * 24 * 60 * 60 * 1000);
-      return targetDate;
-    }
+		if (content.trim() === '') {
+		  alert('请输入内容');
+		  return;
+		}
 
-    function compareDate() {
-      var yearInput = document.getElementById('yearInput').value;
-      var year = parseInt(yearInput);
-      if (yearInput.length === 2) {
-        year += 2000;
-      }
-      var week = parseInt(document.getElementById('weekInput').value);
-      var targetDate = getDateFromYearWeek(year, week);
+		if (type === 'qrcode') {
+		  qrCodeDiv.innerHTML = '';
+		  new QRCode(qrCodeDiv, {
+			text: content,
+			width: 200,
+			height: 200,
+		  });
+		  qrCodeDiv.style.display = 'block';
+		} else if (type === 'barcode') {
+		  JsBarcode("#barcode", content, {
+			format: "CODE128",
+			width: 2,
+			height: 60,
+			displayValue: false
+		  });
+		  barcodeSvg.style.display = 'block';
+		}
+	  }
 
-      var date1 = new Date('2012-07-09');
-      var date2 = new Date('2014-04-28');
-      var date3 = new Date('2016-11-22');
-      var date4 = new Date('2018-09-05');
-      var result = '';
+		function getDateFromYearWeek(year, week) {
+		  var januaryFirst = new Date(year, 0, 1);
+		  var firstDayOfWeekOne = januaryFirst.getDay() - 1;
+		  var weekOneStart = januaryFirst;
+		  if (firstDayOfWeekOne > 3) {
+			weekOneStart.setDate(januaryFirst.getDate() + 8 - firstDayOfWeekOne);
+		  } else {
+			weekOneStart.setDate(januaryFirst.getDate() - firstDayOfWeekOne);
+		  }
+		  var targetDate = new Date(weekOneStart.getTime() + ((week - 1) * 7) * 24 * 60 * 60 * 1000);
+		  return targetDate;
+		}
 
-      if (targetDate > date1 && targetDate <= date2) {
-        result = '推荐安装 \'BSJ_D425_SATA250_20120709\'';
-      } else if (targetDate > date2 && targetDate <= date3) {
-        result = '推荐安装 \'BSJ_N2_TOUCH_500G_20140428\'';
-      } else if (targetDate > date3 && targetDate <= date4) {
-        result = '推荐安装 \'BSJ_CAPTOUCH_500G_20161122\'';
-      } else {
-        var month = targetDate.getMonth() + 1;
-        var day = targetDate.getDate();
-        result = '日期是：' + targetDate.getFullYear() + '年' + (month < 10 ? '0' + month : month) + '月' + (day < 10 ? '0' + day : day) + '日';
-      }
+		function compareDate() {
+		  var yearInput = document.getElementById('yearInput').value;
+		  var year = parseInt(yearInput);
+		  if (yearInput.length === 2) {
+			year += 2000;
+		  }
+		  var week = parseInt(document.getElementById('weekInput').value);
+		  var targetDate = getDateFromYearWeek(year, week);
 
-      document.getElementById('result').innerText = result + '，日期是：' + targetDate.getFullYear() + '年' + (targetDate.getMonth() + 1) + '月' + targetDate.getDate() + '日';
-    }
+		  var date1 = new Date('2012-07-09');
+		  var date2 = new Date('2014-04-28');
+		  var date3 = new Date('2016-11-22');
+		  var date4 = new Date('2018-09-05');
+		  var result = '';
 
-    function 替换内容() {
-      var 输入内容 = document.getElementById("输入框").value;
-      var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
-      var 结果 = document.getElementById("结果");
-      结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
-        return '<spanclass="可复制" onclick="复制文本(this)">' + item + '</span>';
-      }).join('<br>');
-    }
+		  if (targetDate > date1 && targetDate <= date2) {
+			result = '推荐安装 \'BSJ_D425_SATA250_20120709\'';
+		  } else if (targetDate > date2 && targetDate <= date3) {
+			result = '推荐安装 \'BSJ_N2_TOUCH_500G_20140428\'';
+		  } else if (targetDate > date3 && targetDate <= date4) {
+			result = '推荐安装 \'BSJ_CAPTOUCH_500G_20161122\'';
+		  } else {
+			var month = targetDate.getMonth() + 1;
+			var day = targetDate.getDate();
+			result = '日期是：' + targetDate.getFullYear() + '年' + (month < 10 ? '0' + month : month) + '月' + (day < 10 ? '0' + day : day) + '日';
+		  }
 
-    function 复制文本(element) {
-      var 选择器 = window.getSelection();
-      var 范围 = document.createRange();
-      范围.selectNodeContents(element);
-      选择器.removeAllRanges();
-      选择器.addRange(范围);
-      document.execCommand('copy');
+		  document.getElementById('result').innerText = result + '，日期是：' + targetDate.getFullYear() + '年' + (targetDate.getMonth() + 1) + '月' + targetDate.getDate() + '日';
+		}
 
-      var rect = element.getBoundingClientRect();
-      var notification = document.getElementById('notification');
-      notification.innerText = '已复制: ' + element.innerText;
-      notification.style.top = (rect.top - 30) + 'px'; // 将弹窗显示在复制文本的上方
-      notification.style.left = rect.left + 'px';
-      notification.style.display = 'block';
-      clearTimeout(notificationTimeout);
-      notificationTimeout = setTimeout(function() {
-        notification.style.display = 'none';
-      }, 1000); // 1秒后消失
-    }
+		function 替换内容() {
+		  var 输入内容 = document.getElementById("输入框").value;
+		  var 替换后内容 = 输入内容.replace(/[:：]/g, "-");
+		  var 结果 = document.getElementById("结果");
+		  结果.innerHTML = 替换后内容.match(/[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}-[0-9A-Fa-f]{2}/g).map(function(item) {
+			return '<spanclass="可复制" onclick="复制文本(this)">' + item + '</span>';
+		  }).join('<br>');
+		}
 
-    function 清空示例内容() {
-      var 输入框 = document.getElementById('输入框');
-      if (输入框.value === '36:13:E8:B6:4D:8D') {
-        输入框.value = '';
-      }
-    }
+		function 复制文本(element) {
+		  var 选择器 = window.getSelection();
+		  var 范围 = document.createRange();
+		  范围.selectNodeContents(element);
+		  选择器.removeAllRanges();
+		  选择器.addRange(范围);
+		  document.execCommand('copy');
 
-  </script>
+		  var rect = element.getBoundingClientRect();
+		  var notification = document.getElementById('notification');
+		  notification.innerText = '已复制: ' + element.innerText;
+		  notification.style.top = (rect.top - 30) + 'px'; // 将弹窗显示在复制文本的上方
+		  notification.style.left = rect.left + 'px';
+		  notification.style.display = 'block';
+		  clearTimeout(notificationTimeout);
+		  notificationTimeout = setTimeout(function() {
+			notification.style.display = 'none';
+		  }, 1000); // 1秒后消失
+		}
+
+		function 清空示例内容() {
+		  var 输入框 = document.getElementById('输入框');
+		  if (输入框.value === '36:13:E8:B6:4D:8D') {
+			输入框.value = '';
+		  }
+		}
+
+	</script>
+
   
   
-  
-  
-	<!-- footer starts -->		
+		
   <div class="footer clearfloat"></div> 
-<!-- wrap ends here -->
-</div>
+
+
 </body>
 </html>

@@ -22,14 +22,14 @@ a:hover {
   background: inherit;
 }
 .clearfloat {
-	zoom: 1;
+    zoom: 1;
 }
 .clearfloat:after {
-	display: block;
-	clear: both;
-	content: "";
-	visibility: hidden;
-	height: 0;
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0;
 }
 /*--- reset end ---*/
 
@@ -228,20 +228,29 @@ ul {
 
 /* index */
 .link-list {
-  margin: 20px auto;
-  padding: 20px;
-  width: 90%;
-  background: #FFF;
-  border: 1px solid #E8E8E8;
-  border-radius: 5px;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-  text-align: left;
+	
+    display: flex; /* 使用 Flexbox 布局 */
+    flex-wrap: wrap; /* 允许换行 */
+    justify-content: flex-start; /* 左对齐 */
+    margin: 20px auto;
+    padding: 20px;
+    width: 90%;
+    background: #FFF;
+    border: 1px solid #E8E8E8;
+    border-radius: 5px;
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.link-item {
+    margin: 8px; /* 每个链接项的间距 */
 }
 
 .link-list a {
-  display: block;
-  margin: 8px 0;
-  padding: 10px;
+	  margin: 2px;
+       padding: 6px;
+  display: inline-block;
+  margin: 4px;
+  padding: 8px;
   font-size: 1.1em;
   font-family: 'Trebuchet MS', 'Helvetica Neue', Arial, sans-serif;
   color: #739A23;
@@ -252,21 +261,11 @@ ul {
 }
 
 .link-list a:hover {
-  color: #FFF;
-  background-color: #8AB84B;
+    color: #FFF;
+    background-color: #8AB84B;
 }
 
-.link-list a:active {
-  background-color: #6B8E23;
-}
 
-.link-list a:first-of-type {
-  margin-top: 0;
-}
-
-.link-list a:last-of-type {
-  margin-bottom: 0;
-}
 
 
 
@@ -403,5 +402,20 @@ ul {
 
 
 
+.nav-button {
+    background-color: #4CAF50; /* 绿色背景 */
+    border: none; /* 去掉边框 */
+    color: white; /* 白色文字 */
+    padding: 15px 32px; /* 内边距 */
+    text-align: center; /* 文本居中 */
+    text-decoration: none; /* 去掉下划线 */
+    display: inline-block; /* 让按钮在一行显示 */
+    margin: 4px 2px; /* 外边距 */
+    cursor: pointer; /* 鼠标悬停时变成手指形状 */
+    border-radius: 4px; /* 圆角 */
+}
 
+.nav-button:hover {
+    background-color: #45a049; /* 悬停时的背景颜色 */
+}
 

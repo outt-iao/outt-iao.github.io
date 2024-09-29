@@ -1,43 +1,27 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html>
 <head>
-<title>xxx:zd</title>
-    <meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-	<meta name="description" content="我的主页">
-	<meta name="keywords" content="浏览器主页">
+<title>XXX:zd</title>
+<link rel="icon" href="favicon.ico">
+<meta charset="UTF-8">
 <link rel="stylesheet" href="css.css" type="text/css" />
 </head>
-<body>
-<!-- wrap starts here -->
-<div class="wrap clearfloat">
-<!--header -->
-  <div class="header clearfloat">			
-    <h1 class="logo-text"><a href="index.html" title="">Syen Farm</a></h1>		
-	<p class="slogan">I know H.T.M.L(How To Meet Ladies)</p>								
-<!--header ends-->					
-  </div>
-<!-- navigation starts-->	
-  <div  class="nav clearfloat">
-	<ul>
-	  <li><a href="index.html">网站</a></li>
-	   <li class="current"><a href="indexzd.html">终端</a></li>
-		<li><a href="indexgj.html">工具</a></li>
-		
+	<div class="wrap clearfloat">
+		<div class="header clearfloat">			
+		<h1 class="logo-text"><a href="index.html" title="">MYJ</a></h1>		
+		<p class="slogan">美宜佳</p>										
+	</div>	
 
-	</ul>
-<!-- navigation ends-->	
-  </div>						
-<!-- shop starts -->
+<div id="navigation"></div>
 <div id="code-container"></div>
     
 
-    <div class="copy-success" id="copySuccess"></div>
+  <div class="copy-success" id="copySuccess"></div>
   <div class="txt_niubi">
   <p>nohup /root/frps -c /root/frps.ini & 
   <p>tr -cd '\11\12\15\40-\176' < ./frpc.ini > ./frpc_clean.ini;mv ./frpc_clean.ini ./frpc.ini;./frpc -c ./frpc.ini
   <p>myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip
-120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip
+  <p>120.76.41.136:9000/api/public/dl/vzDFpROe/32frp.zip
   </div>
 
 <span style="color:transparent;">
@@ -118,6 +102,7 @@
         { name: "VNC连接提示错误,但是ip正确", command: "@;nohup /usr/lib/vino/vino-server &" },
         { name: "重启收银程序", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start" },
         { name: "更新update", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update" },
+		 { name: "提示initramfs", command: "fsck -t ext4 /dev/sda1" },
         { name: "frp_vnc", command: "@;wget -qO- appmom.mom/1 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
         { name: "frp_vnc_lf", command: "@;wget -qO- appmom.mom/2 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
         { name: "手持终端APP下载", command: "https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk" },
@@ -145,10 +130,32 @@
 
 
 
-
     </script>	
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation').innerHTML = data;
+
+                // 获取当前页面的 URL
+                const currentPage = window.location.pathname.split('/').pop();
+
+                // 查找所有链接并设置 current 类
+                const links = document.querySelectorAll('.nav a');
+                links.forEach(link => {
+                    if (link.getAttribute('href') === currentPage) {
+                        link.parentElement.classList.add('current');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    });
+</script>
+	
+	
   <div class="footer clearfloat"></div> 
-<!-- wrap ends here -->
-</div>
+
 </body>
 </html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>XXX:zd</title>
+<link rel="icon" href="favicon.ico">
+<meta charset="UTF-8">
+<link rel="stylesheet" href="css.css" type="text/css" />
+</head>
+	<div class="wrap clearfloat">
+		<div class="header clearfloat">			
+		<h1 class="logo-text"><a href="index.html" title="">MYJ</a></h1>		
+		<p class="slogan">美宜佳</p>										
+	</div>	
+
+<div id="navigation"></div>
+
+	<div class="container">
+    <h2>常用功能</h2>
+    <button class="nav-button" onclick="location.href='http://appmom.mom/ml'">linux命令</button>
+   
+</div>
+<div class="container">
+    <h2>系统文件</h2>
+    <p>
+        BSJ_D425_SATA250_20120709 
+        <a href="http://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ_D425_SATA250_20120709.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+    </p>
+    <p>
+        BSJ_N2_TOUCH_500G_20140428 电阻屏 
+        <a href="https://pan-yz.chaoxing.com/external/m/file/919900950990794752" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+        <a href="http://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ_N2_TOUCH_500G_20140428.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址2&gt;&gt;</a>
+    </p>
+    <p>
+        BSJ_CAPTOUCH_500G_20161122 电容屏 
+        <a href="https://pan-yz.chaoxing.com/external/m/file/919926972075962368" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+        <a href="http://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ_CAPTOUCH_500G_20161122.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址2&gt;&gt;</a>
+    </p>
+    <p>
+        BSJ_N2J1900_500G_20180905 
+        <a href="https://pan-yz.chaoxing.com/external/m/file/919963793585561600" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+        <a href="hhttp://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ_N2J1900_500G_20180905.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址2&gt;&gt;</a>
+    </p>
+    <p>
+        BSJ_T53855U_64G_20180913 
+        <a href="https://pan-yz.chaoxing.com/external/m/file/919962936655704064" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+        <a href="http://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ_T53855U_64G_20180913.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址2&gt;&gt;</a>
+    </p>
+    <p>
+        BSJ-T6-J3855U128G221006 
+        <a href="http://120.76.41.136:5244/d/%E4%B8%AD%E5%9B%BD%E7%A7%BB%E5%8A%A8%E4%BA%91%E7%9B%98/MYJ/%E7%99%BE%E4%BA%8B%E6%8D%B7/BSJ-T6-J3855U128G221006.iso" target="_blank" rel="noopener" style="text-decoration: none;">地址1&gt;&gt;</a>
+    </p>
+</div>
+<div class="container">
+    <h2>额外信息</h2>
+    <p>
+        键盘重置 <br><strong>#123456#21123#</strong>
+    </p>
+	<p>
+        医药软件_春悦林<br>
+        账号: <strong>店号</strong>  密码: <strong>Aa@123456</strong>
+	</p>
+	<p>
+		initramfs下重启用:<strong>reboot</strong>
+	</p>
+</div>
+  <div class="footer clearfloat"></div> 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        fetch('nav.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation').innerHTML = data;
+
+                // 获取当前页面的 URL
+                const currentPage = window.location.pathname.split('/').pop();
+
+                // 查找所有链接并设置 current 类
+                const links = document.querySelectorAll('.nav a');
+                links.forEach(link => {
+                    if (link.getAttribute('href') === currentPage) {
+                        link.parentElement.classList.add('current');
+                    }
+                });
+            })
+            .catch(error => console.error('Error loading navigation:', error));
+    });
+</script>
+	
+
+</body>
+</html>
