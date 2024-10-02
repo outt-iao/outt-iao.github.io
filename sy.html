@@ -1,206 +1,85 @@
-
-
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <meta name='Hi' content='index,nb' />
-	<script>
-		var _hmt = _hmt || [];
-		(function() {
-		  var hm = document.createElement("script");
-		  hm.src = "https://hm.baidu.com/hm.js?c7d621969f7610187256e4a7c0915353";
-		  var s = document.getElementsByTagName("script")[0]; 
-		  s.parentNode.insertBefore(hm, s);
-		})();
-	</script>
-    <title>admin</title>
-	
-	<link rel="icon" href="favicon.ico">
-	<meta name="viewport" content="width=device-width, initial-scale=1" />
-	<meta name="description" content="null">	
-	<meta name="keywords" content="null">
-	<meta name="author" content="li">
-	<body style="max-width:700px;margin:1% 20px;">
-	    <style type="text/css">
-		body{
-		background:#eeeeee url("../bj.png") ;
-		background-attachment: fixed;
-		background-repeat:repeat;
-		margin: 5%;
-		}
-	
-	
-		a:link {
-			text-decoration: none; /* 链接样式：无下划线 */
-			color: #000080; /* 链接文字颜色 */
-			padding: 10px 10px; /* 内边距 */
-			border-radius: 90px; /* 圆角 */
-			background-color: #FCF8FF; /* 背景颜色 */
-			box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* 阴影效果 */
-			transition: transform 0.3s ease, box-shadow 0.3s ease; /* 过渡效果 */
-		}
-
-
-		/* 当链接悬停时的样式 */
-		a:hover {
-			color: red; /* 文本颜色为红色 */
-			font-size: 1.1em; /* 字体大小为原来的 1.1 倍 */
-			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 添加阴影效果 */
-			transform: translateY(-2px); /* 垂直向上移动 2 像素 */
-			text-decoration: none; /* 去除悬停时的下划线 */
-		}
-
-		/* 链接列表的样式 */
-		.link-list {
-			text-indent: 1em; /* 每行文本首行缩进 1em */
-			font-size: 18px; /* 文本大小为 20 像素 */
-			margin-top: 10px; /* 将顶部外边距设置为 10 像素 */
-			margin-left: 2px; /* 将顶部外边距设置为 100 像素 */
-		}
-
-		/* 链接样式 */
-		.link-list a {
-			display:block; /* 将链接元素设置为块级元素 */
-		    width: 300px;  设置宽度为 200 像素 */
-			height: 20px; /* 设置高度为 20 像素 */
-			margin-bottom: 8px; /* 设置下方间距为 8 像素 */
-		}
-
-		<!-- /* 悬浮链接样式 */ -->
-		<!-- #floatingLinks { -->
-			<!-- position: fixed; /* 固定定位 */ -->
-			<!-- position: block; -->
-			<!-- top: 0; /* 距离顶部 1px */ -->
-			<!-- left: 26%; /* 距离左侧 380px */ -->
-			<!-- border: 1px solid #ccc; /* 边框为1像素实线，颜色为淡灰色 */ -->
-			<!-- padding: 10px; /* 内边距为10像素 */ -->
-			<!-- display: none; /* 初始隐藏 */ -->
-		<!-- } -->
-
-		<!-- /* 悬浮链接样式 */ -->
-		<!-- #floatingLinks a { -->
-			<!-- display: block; /* 将链接元素设置为块级元素 */ -->
-			<!-- width: 300px;  -->
-			<!-- height: 20px;  -->
-			<!-- margin-bottom: 8px; /* 下边距 */ -->
-			<!-- color: red;  -->
-			<!-- text-decoration: none; /* 去除链接下划线 */ -->
-			<!-- text-indent: 1em; /* 缩进 */ -->
-			<!-- font-size: 1.1em; /* 字体放大 */ -->
-			
-		<!-- } -->
-
-		<!-- /* 美宜佳图标样式 */ -->
-		<!-- #showAdditionalLinks { -->
-			<!-- position: fixed;  -->
-			<!-- /* bottom: 0; 下top的反义词 */ -->
-			<!-- right: 10px;  -->
-			<!-- top: 8px; -->
-			<!-- cursor: pointer;  -->
-			<!-- z-index: 999; -->
-			<!-- border: none;  -->
-			<!-- background: none;  -->
-		<!-- } -->
-
-		<!-- /* 悬浮链接样式 */ -->
-		<!-- #floatingLinks.active { -->
-			<!-- border: none; /* 删除边框 */ -->
-			 
-			  
-			<!-- } -->
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>实时声音回放与录音</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        button { padding: 10px 20px; margin: 10px; font-size: 16px; }
+        #duration { margin-top: 20px; }
+        #progress { width: 100%; margin-top: 10px; }
     </style>
 </head>
 <body>
+    <h1>实时声音回放与录音</h1>
+    <button id="start">开始录音</button>
+    <button id="stop" disabled>停止录音</button>
+    <div id="duration">录音时间: <span id="time">0</span>秒</div>
+    <audio id="audioPlayback" controls></audio>
+    <progress id="progress" value="0" max="100"></progress>
 
-		<div class="link-list">
-			<a id="link1" href="http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip" target="_blank">①ARM</a>
-			<a id="link2" href="http://myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip" target="_blank">②X86</a>
-			<a href="https://oos.appmom.mom/raw/rj/VNC32.exe" target="_blank">vnc32</a>
-			<a  href="https://pinco.seewo.com/s/d46d8e959d934734902496469460504b" target="_blank">VNC32</a>
-			<a href="https://oos.appmom.mom/raw/rj/VNC64.exe" target="_blank">vnc64</a>
-			<a  href="https://pinco.seewo.com/s/79806b6164774e88907d0563956b1a81" target="_blank">vnc64</a>
-			<a href="https://oos.appmom.mom/raw/rj/LanSee.exe" target="_blank">lansee</a>
-			<a href="https://pinco.seewo.com/s/0d9019df35ee4ed9ab6558ae6ee61679" target="_blank">lansee</a>
-			<a  href="https://down.360safe.com/se/360se_setup.exe" target="_blank">360安全浏览器</a>
-			<a id="link3" href="https://client-api.oray.com/softwares/65/download?versionid=1734" target="_blank">③向日葵(推荐)</a>
-			<a href="https://i.meiyijia.com.cn/" target="_blank">美宜佳在线</a>
-			<a  href="https://download.kugou.com/download/kugou_pc" target="_blank">酷狗音乐</a>
-			<a href="https://oos.appmom.mom/raw/rj/PortScan.exe" target="_blank">portscan</a>	
-			<a href="https://pinco.seewo.com/s/6e9f5b788b8c4bc29b991b8a886371d7" target="_blank">PortScan</a>
-			<a href="https://oos.appmom.mom/raw/rj/Scan-Mac.exe" target="_blank">Scan-Mac</a>
-			<a href="https://oos.appmom.mom/raw/rj/mPing.exe" target="_blank">mping</a>
-			<a  href="https://pinco.seewo.com/s/59374694e2f644b48c7d3b6832ecb359" target="_blank">UltraISO</a>
-			<a  href="https://www.speedtest.cn/" target="_blank">speedtest</a>
-			<a  href="https://10000.gd.cn/" target="_blank">广东电信测速</a>
-			<a  href="https://ko0.com/myj" target="_blank">网络剪贴板ko0</a>
-			<a  href="https://netcut.cn/myj" target="_blank">网络剪贴板netcut</a>
-			<a  href="https://www.xiaoluo.fun/paste" target="_blank">在线粘贴板</a>
-			<a  href="https://pinco.seewo.com/s/d7f1f246ea584ac1b32465187b74a9f9" target="_blank">前台自助驱动</a>
-			<a  href="https://sunlogin.oray.com/download?categ=personal" target="_blank">向日葵</a>
-			<a  href="https://pinco.seewo.com/s/dba9c7a107cd43048d81f68793e8d16e" target="_blank">AI升级文件</a>
-			<a  href="https://pinco.seewo.com/s/62552178d3d3489398bc2acdfa3304b7" target="_blank">鱼眼升级文件</a>
-			<a  href="https://pinco.seewo.com/s/23eeea3c350a431bb34c80de8aed7747" target="_blank">医药软件</a>
-			<a  href="https://pinco.seewo.com/s/b854a9d1c27d4a4da3c043f318571e72" target="_blank">iot_server.apk,4.41MB,1.1.0</a>
-			<a  href="https://pinco.seewo.com/s/4dfadb8a56424d6aa8d084172823bad6" target="_blank">自助收银生鲜.apk,29.93MB,1.0.1517</a>
-			<a  href="https://pinco.seewo.com/s/7a71de3d6d75484ab9e2c152b8361f44" target="_blank">电脑配置读取</a>
-			<a  href="https://pinco.seewo.com/s/30abe3538d134913b62e7e815e4deb59" target="_blank">键盘按键测试软件</a>
-			<a id="link4" href="https://i-gd.meiyijia.com.cn/handler/AccountHander/JumpLoginPage.aspx?action=KFPT" title="打开f12，点击网络-保留日志,打开链接,搜索?">④客服中心</a>
+    <script>
+        let mediaRecorder;
+        let audioChunks = [];
+        let audioContext;
+        let source;
+        let gainNode;
+        let recordingTime = 0;
+        let interval;
 
-			<a href="http://120.76.41.136:9000" target="_blank">File Browser</a>
-			<a href="http://120.76.41.136:5244" target="_blank">alist</a>
-			<a id="link5" href="http://120.76.41.136" target="_blank">⑤留言板</a>
-			
-		   
-		</div>
-		<!-- 悬浮链接挂件 -->
-		<!-- <img id="showAdditionalLinks" src="https://myj.com.cn/images/MYJlogo.png" alt="挂件" width="50px" height="50px"> -->
-		
-		<!-- <div id="floatingLinks" > -->
-			
-			
-		<!-- </div> -->
-	
+        document.getElementById('start').onclick = async () => {
+            const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
 
-		<script type="text/javascript">
-		 //数字按键跳转
-			document.addEventListener("keydown", function(event) {
-			if (event.key >= '1' && event.key <= '9') {
-				var linkId = "link" + event.key;
-				var link = document.getElementById(linkId);
-				if (link) {
-					window.location.href = link.href;
-					}
-				}
-			});
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            source = audioContext.createMediaStreamSource(stream);
+            gainNode = audioContext.createGain();
+            source.connect(gainNode);
+            gainNode.connect(audioContext.destination);
 
-			// 显示/隐藏悬浮链接
-			 var isLinksVisible = false; // 初始化链接状态为隐藏
-			 document.getElementById("showAdditionalLinks").addEventListener("click", function() {
-				var floatingLinks = document.getElementById("floatingLinks");
+            mediaRecorder = new MediaRecorder(stream);
 
-				if (!isLinksVisible) {
-					floatingLinks.style.display = "block";
-					floatingLinks.classList.add("active"); // 添加 active 类名
-				} else {
-					floatingLinks.style.display = "none";
-					floatingLinks.classList.remove("active"); // 移除 active 类名
-				}
+            mediaRecorder.ondataavailable = event => {
+                audioChunks.push(event.data);
+            };
 
-				isLinksVisible = !isLinksVisible; // 更新链接状态
-			  });
-			//禁止右键
-		// document.addEventListener('contextmenu', function (e) {
-		//	 e.preventDefault();
-		// });
+            mediaRecorder.onstop = () => {
+                clearInterval(interval);
+                const audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
+                const audioUrl = URL.createObjectURL(audioBlob);
+                document.getElementById('audioPlayback').src = audioUrl;
+                audioChunks = [];
+                document.getElementById('progress').value = 0;
+                document.getElementById('time').innerText = '0';
+            };
 
+            mediaRecorder.start();
+            document.getElementById('start').disabled = true;
+            document.getElementById('stop').disabled = false;
 
+            recordingTime = 0;
+            interval = setInterval(() => {
+                recordingTime++;
+                document.getElementById('time').innerText = recordingTime;
+                document.getElementById('progress').value = (recordingTime / 60) * 100; // 假设录音最多60秒
+            }, 1000);
+        };
 
+        document.getElementById('stop').onclick = () => {
+            mediaRecorder.stop();
+            document.getElementById('start').disabled = false;
+            document.getElementById('stop').disabled = true;
 
-
-		</script>
-
+            if (source) {
+                source.disconnect();
+            }
+            if (gainNode) {
+                gainNode.disconnect();
+            }
+            if (audioContext) {
+                audioContext.close();
+            }
+        };
+    </script>
 </body>
 </html>
-		
