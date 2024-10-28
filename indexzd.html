@@ -5,6 +5,13 @@
 <link rel="icon" href="favicon.ico">
 <meta charset="UTF-8">
 <link rel="stylesheet" href="css.css" type="text/css" />
+<style>
+        .qrcode {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
 </head>
 	<div class="wrap clearfloat">
 		<div class="header clearfloat">			
@@ -59,37 +66,45 @@
             new QRCode(qrcodeContainer, textToGenerate);
         }
 
-        function saveQRCode(index) {
-				const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
-				if (qrcodeContainer) {
-				// Create a new canvas with extra space for the white background
-				const originalCanvas = qrcodeContainer;
-				const originalWidth = originalCanvas.width;
-				const originalHeight = originalCanvas.height;
-				const padding = 100; // Adjust the padding size as needed
+       function saveQRCode(index) {
+    const qrcodeContainer = document.getElementById(`qrcode-${index}`).getElementsByTagName('canvas')[0];
+    if (qrcodeContainer) {
+        // Create a new canvas with extra space for the white background
+        const originalCanvas = qrcodeContainer;
+        const originalWidth = originalCanvas.width;
+        const originalHeight = originalCanvas.height;
+        const padding = 100; // Adjust the padding size as needed
 
-				const newCanvas = document.createElement('canvas');
-				newCanvas.width = originalWidth + 2 * padding;
-				newCanvas.height = originalHeight + 2 * padding;
+        const newCanvas = document.createElement('canvas');
+        newCanvas.width = originalWidth + 2 * padding;
+        newCanvas.height = originalHeight + 2 * padding + 40; // Extra space for text
 
-				const ctx = newCanvas.getContext('2d');
+        const ctx = newCanvas.getContext('2d');
 
-				// Fill the new canvas with a white background
-				ctx.fillStyle = '#FFFFFF';
-				ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
+        // Fill the new canvas with a white background
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillRect(0, 0, newCanvas.width, newCanvas.height);
 
-				// Draw the original QR code onto the new canvas, centered
-				ctx.drawImage(originalCanvas, padding, padding);
+        // Draw the original QR code onto the new canvas, centered
+        ctx.drawImage(originalCanvas, padding, padding);
 
-				// Save the new canvas as an image
-				const link = document.createElement('a');
-				link.href = newCanvas.toDataURL();
-				link.download = `qrcode-${index}.png`;
-				link.click();
-			} else {
-				alert('请先生成二维码');
-			}
-		}
+        // Add text below the QR code
+        const text = commands[index].name; // Use command name as text
+        ctx.fillStyle = '#000'; // Text color
+        ctx.font = 'bold 20px Arial';
+        ctx.textAlign = 'center';
+        ctx.fillText(text, newCanvas.width / 2, originalHeight + padding + 30); // Position the text
+
+        // Save the new canvas as an image
+        const link = document.createElement('a');
+        link.href = newCanvas.toDataURL();
+        link.download = `qrcode-${text}.png`; // Use name in the filename
+        link.click();
+    } else {
+        alert('请先生成二维码');
+    }
+}
+
 
 
 
@@ -99,13 +114,13 @@
     const commands = [
         { name: "MPOS_x86", command: "@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/x86/mpos-x86-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
         { name: "MPOS_arm", command: "@;rm -rf MPOS;wget -O 1 myj-version.obs.cn-south-1.myhuaweicloud.com/mpos-v2.0/arm/mpos-arm-0.7.9.0.zip&&unzip 1&&cd MPOS&&nohup ./MPOS&&nohup ./update &" },
-        { name: "VNC连接提示错误,但是ip正确", command: "@;nohup /usr/lib/vino/vino-server &" },
+        { name: "vino-server", command: "@;nohup /usr/lib/vino/vino-server &" },
         { name: "重启收银程序", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/start" },
-        { name: "更新update", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update" },
-		 { name: "提示initramfs", command: "fsck -t ext4 /dev/sda1" },
+        { name: "update", command: "@;sudo killall MPOS;sudo killall second_scre+;$HOME/MPOS/update" },
+		 { name: "initramfs", command: "fsck -t ext4 /dev/sda1" },
         { name: "frp_vnc", command: "@;wget -qO- appmom.mom/1 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
         { name: "frp_vnc_lf", command: "@;wget -qO- appmom.mom/2 | bash", link: "https://note.youdao.com/s/IksfzDnb" },
-        { name: "手持终端APP下载", command: "https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk" },
+        { name: "手持终端APP", command: "https://mposshopapi-gd.myj.com.cn/OssFiles/shopkeepermini.apk" },
         { name: "测试声音", command: "firefox appmom.mom/lb && xdotool key space" }
     ];
     function generateBlocks() {
