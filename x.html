@@ -1,67 +1,72 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+    <title>软件下载</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
-            align-items: center;
             height: 100vh;
         }
-
         .container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+        .left {
+            background-color: #2196F3; /* 64位软件 */
+            color: white;
             text-align: center;
-            border-radius: 10px;
-            background-color: #fff;
-            padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
-
+        .right {
+            background-color: #4CAF50; /* 32位软件 */
+            color: white;
+            text-align: center;
+        }
         h1 {
-            color: #333;
-        }
-
-        p {
-            color: #666;
             margin-bottom: 20px;
         }
-
-        .download-btn {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 15px 30px;
-            text-align: center;
-            font-size: 16px;
-            cursor: pointer;
+        .link {
+            display: inline-block;
+            padding: 15px 25px;
+            background-color: #fff;
+            color: #333;
+            text-decoration: none;
             border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin: 10px;
+            transition: background-color 0.3s, transform 0.2s; /* 添加动画效果 */
         }
-
-        .download-btn:hover {
-            background-color: #45a049;
+        .link:hover {
+            background-color: #f1f1f1;
+            transform: scale(1.1); /* 鼠标悬停时放大 */
         }
     </style>
-</head>
-<body>
-    <div class="container">
-       
-        <button class="download-btn" onclick="redirectToDownload('https://d.oray.com/sunlogin/windows/SunloginClient_15.6.8.15068_x64.exe')">向日葵64 (推荐)</button>
-        <button class="download-btn" onclick="redirectToDownload('https://d.oray.com/sunlogin/windows/SunloginClient_15.6.8.15068.exe')">向日葵32</button>
-    </div>
-
     <script>
-        function redirectToDownload(url) {
-            window.location.href = url;
+        function downloadFile(link) {
+            window.open(link, '_blank');
+            setTimeout(function() {
+                alert("下载已开始，请注意查看！");
+            }, 2000); // 模拟下载后延迟2秒弹出提示
         }
     </script>
+</head>
+<body>
+
+<div class="container left">
+    <h1>下载64位软件</h1>
+    <a class="link" href="#" onclick="downloadFile('https://sw.pcmgr.qq.com/fbce98ac492b8189f8614945448bf2e4/6723ad4f/spcmgr/download/SunloginClient_15.6.9.16287_x64.exe')">点击下载</a>
+</div>
+
+<div class="container right">
+    <h1>下载32位软件</h1>
+    <a class="link" href="#" onclick="downloadFile('https://sw.pcmgr.qq.com/429e87cac6f9b2c8b285dda577dfea0b/6723ae4b/spcmgr/download/SunloginClient_15.6.9.16287.exe')">点击下载</a>
+</div>
+
 </body>
 </html>
