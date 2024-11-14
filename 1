@@ -19,5 +19,4 @@ if ! command -v timeout &> /dev/null; then
     sudo cp /tmp/32frp/timeout /usr/local/bin/timeout
     sudo chmod +x /usr/local/bin/timeout
 fi
- echo "已启动,20分钟后自动断开"
 timeout 1200 /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
