@@ -15,7 +15,7 @@ if [! -d ~/32frp ] || [! -f ~/32frp/frpc ] || [! -f ~/32frp/frpc.ini ]; then
     unzip ~/32frp.zip -d ~
     chmod 777 ~/32frp/frpc
 fi
-if! command -v timeout &> /dev/null; then
+if! command -v timeout > /dev/null 2>&1; then
     echo "timeout 命令不存在，将从 ~/32frp/ 复制到 /usr/local/bin/"
     sudo cp ~/32frp/timeout /usr/local/bin/timeout
     sudo chmod 777 /usr/local/bin/timeout
