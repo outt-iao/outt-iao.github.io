@@ -8,16 +8,16 @@ else
     nohup /usr/lib/vino/vino-server &
 fi
 sleep 2
-if [ ! -d /tmp/32frp ] || [ ! -f /tmp/32frp/frpc ] || [ ! -f /tmp/32frp/frpc.ini ]; then
-    [ -f /tmp/32frp.zip ] && rm /tmp/32frp.zip
-    [ -d /tmp/32frp ] && rm -rf /tmp/32frp
-    wget -P /tmp 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
-    unzip /tmp/32frp.zip -d /tmp
-    chmod 777 /tmp/32frp/frpc
+if [! -d ~/32frp ] || [! -f ~/32frp/frpc ] || [! -f ~/32frp/frpc.ini ]; then
+    [ -f ~/32frp.zip ] && rm ~/32frp.zip
+    [ -d ~/32frp ] && rm -rf ~/32frp
+    wget -P ~ 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
+    unzip ~/32frp.zip -d ~
+    chmod 777 ~/32frp/frpc
 fi
-if ! command -v timeout &> /dev/null; then
-    echo "timeout 命令不存在，将从 /tmp/32frp/ 复制到 /usr/local/bin/"
-    sudo cp /tmp/32frp/timeout /usr/local/bin/timeout
+if! command -v timeout &> /dev/null; then
+    echo "timeout 命令不存在，将从 ~/32frp/ 复制到 /usr/local/bin/"
+    sudo cp ~/32frp/timeout /usr/local/bin/timeout
     sudo chmod 777 /usr/local/bin/timeout
 fi
-timeout 1h /tmp/32frp/frpc -c /tmp/32frp/frpc.ini &
+timeout 1h ~/32frp/frpc -c ~/32frp/frpc.ini &
