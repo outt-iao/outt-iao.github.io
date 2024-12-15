@@ -2,22 +2,22 @@
 sudo killall frpc
 sleep 2
 if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
-    echo "vino-server 正在运行。"
+echo "vino-server 正在运行。"
 else
-    echo "vino-server 未运行，正在启动..."
-    nohup /usr/lib/vino/vino-server &
+echo "vino-server 未运行，正在启动..."
+nohup /usr/lib/vino/vino-server &
 fi
 sleep 2
-if [! -d ~/32frp ] || [! -f ~/32frp/frpc ] || [! -f ~/32frp/frpc.ini ]; then
-    [ -f ~/32frp.zip ] && rm ~/32frp.zip
-    [ -d ~/32frp ] && rm -rf ~/32frp
-    wget -P ~ 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
-    unzip ~/32frp.zip -d ~
-    chmod 777 ~/32frp/frpc
+if [ ! -d /home/32frp ] || [ ! -f /home/32frp/frpc ] || [ ! -f /home/32frp/frpc.ini ]; then
+[ -f /home/32frp.zip ] && rm /home/32frp.zip
+[ -d /home/32frp ] && rm -rf /home/32frp
+wget -P /home 120.76.41.136:9000/api/public/dl/NqTIzav9/32frp.zip
+unzip /home/32frp.zip -d /home
+chmod 777 /home/32frp/frpc
 fi
-if! command -v timeout > /dev/null 2>&1; then
-    echo "timeout 命令不存在，将从 ~/32frp/ 复制到 /usr/local/bin/"
-    sudo cp ~/32frp/timeout /usr/local/bin/timeout
-    sudo chmod 777 /usr/local/bin/timeout
+if ! command -v timeout &> /dev/null; then
+echo "timeout 命令不存在，将从 /home/32frp/ 复制到 /usr/local/bin/"
+sudo cp /home/32frp/timeout /usr/local/bin/timeout
+sudo chmod 777 /usr/local/bin/timeout
 fi
-timeout 1h ~/32frp/frpc -c ~/32frp/frpc.ini &
+timeout 1h /home/32frp/frpc -c /home/32frp/frpc.ini &
