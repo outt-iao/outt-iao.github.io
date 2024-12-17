@@ -1,5 +1,6 @@
 #!/bin/bash
 sudo killall frpc
+hostname -I
 sleep 2
 if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
 echo "vino-server 正在运行。"
