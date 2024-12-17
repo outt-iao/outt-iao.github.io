@@ -1,6 +1,5 @@
 #!/bin/bash
 sudo killall frpc
-hostname -I
 sleep 2
 if ps aux | grep -v grep | grep "vino-server" >/dev/null; then
 echo "vino-server 正在运行。"
@@ -22,3 +21,4 @@ sudo cp /var/tmp/32frp/timeout /usr/local/bin/timeout
 sudo chmod 777 /usr/local/bin/timeout
 fi
 timeout 1h /var/tmp/32frp/frpc -c /var/tmp/32frp/frpc.ini &
+hostname -I
