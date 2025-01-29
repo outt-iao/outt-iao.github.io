@@ -18,8 +18,11 @@
         .links-container {
             display: flex;
             flex-wrap: wrap; /* 允许换行 */
-            justify-content: flex-start; /* 默认从左侧开始 */
+            justify-content: flex-start; /* 内部内容从左到右排列 */
             gap: 10px; /* 每个链接之间的间隙 */
+            max-width: 1200px; /* 设置最大宽度，避免内容过宽 */
+            margin: 0 auto; /* 容器整体居中 */
+            padding: 0 20px; /* 左右留出一些间距 */
         }
         .link-item {
             background-color: #fff;
