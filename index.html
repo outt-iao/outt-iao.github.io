@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时空胶囊 - 时间流逝进度条</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #0c0c2e, #1a1a3a, #2d1b69);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 15px 15px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .current-time {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 50px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 300px;
+        }
+        
+        .header {
+            margin-bottom: 20px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            background: linear-gradient(90deg, #ff6ec7, #7873f5);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 15px rgba(255, 110, 199, 0.5);
+        }
+        
+        .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.4;
+        }
+        
+        .capsules-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .capsule {
+            background: rgba(255, 255, 255, 0.07);
+            backdrop-filter: blur(10px);
+            border-radius: 40px;
+            padding: 20px 15px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .capsule:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+        }
+        
+        .capsule::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            border-radius: 40px 40px 0 0;
+        }
+        
+        .today::before {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+        
+        .week::before {
+            background: linear-gradient(90deg, #43e97b, #38f9d7);
+        }
+        
+        .month::before {
+            background: linear-gradient(90deg, #fa709a, #fee140);
+        }
+        
+        .year::before {
+            background: linear-gradient(90deg, #9d50bb, #6e48aa);
+        }
+        
+        .capsule-title {
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+        
+        .progress-container {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            height: 16px;
+            margin: 12px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            border-radius: 40px;
+            transition: width 1s ease;
+            position: relative;
+        }
+        
+        .today .progress-bar {
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+        }
+        
+        .week .progress-bar {
+            background: linear-gradient(90deg, #43e97b, #38f9d7);
+        }
+        
+        .month .progress-bar {
+            background: linear-gradient(90deg, #fa709a, #fee140);
+        }
+        
+        .year .progress-bar {
+            background: linear-gradient(90deg, #9d50bb, #6e48aa);
+        }
+        
+        .progress-text {
+            font-size: 1.6rem;
+            font-weight: bold;
+            margin: 8px 0;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+        }
+        
+        .time-details {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 12px;
+            font-size: 0.85rem;
+        }
+        
+        .time-left {
+            text-align: left;
+        }
+        
+        .time-elapsed {
+            text-align: right;
+        }
+        
+        .time-unit {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 10px 10px;
+            }
+            
+            .capsules-container {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .capsule {
+                max-width: 100%;
+                padding: 18px 12px;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .current-time {
+                font-size: 1rem;
+                padding: 10px 15px;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .capsule-title {
+                font-size: 1rem;
+            }
+            
+            .progress-text {
+                font-size: 1.4rem;
+            }
+            
+            .time-details {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="current-time" id="current-time">
+            当前时间: 加载中...
+        </div>
+        
+        <div class="header">
+            <h1>时空胶囊</h1>
+            <p class="subtitle">时间悄然流逝，每一刻都值得珍惜。把握当下，创造未来。</p>
+        </div>
+        
+        <div class="capsules-container">
+            <div class="capsule today">
+                <h2 class="capsule-title">
+                    <span>⏳</span> 今日
+                </h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="today-progress"></div>
+                </div>
+                <div class="progress-text" id="today-percent">0%</div>
+                <div class="time-details">
+                    <div class="time-left">
+                        剩余: <span id="today-left">0时0分</span>
+                    </div>
+                    <div class="time-elapsed">
+                        已过: <span id="today-elapsed">0时0分</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="capsule week">
+                <h2 class="capsule-title">
+                    <span>📅</span> 本周
+                </h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="week-progress"></div>
+                </div>
+                <div class="progress-text" id="week-percent">0%</div>
+                <div class="time-details">
+                    <div class="time-left">
+                        剩余: <span id="week-left">0天</span>
+                    </div>
+                    <div class="time-elapsed">
+                        已过: <span id="week-elapsed">0天</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="capsule month">
+                <h2 class="capsule-title">
+                    <span>📆</span> 本月
+                </h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="month-progress"></div>
+                </div>
+                <div class="progress-text" id="month-percent">0%</div>
+                <div class="time-details">
+                    <div class="time-left">
+                        剩余: <span id="month-left">0天</span>
+                    </div>
+                    <div class="time-elapsed">
+                        已过: <span id="month-elapsed">0天</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="capsule year">
+                <h2 class="capsule-title">
+                    <span>🎉</span> 今年
+                </h2>
+                <div class="progress-container">
+                    <div class="progress-bar" id="year-progress"></div>
+                </div>
+                <div class="progress-text" id="year-percent">0%</div>
+                <div class="time-details">
+                    <div class="time-left">
+                        剩余: <span id="year-left">0个月</span>
+                    </div>
+                    <div class="time-elapsed">
+                        已过: <span id="year-elapsed">0个月</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateTimeProgress() {
+            const now = new Date();
+            
+            // 更新当前时间显示
+            document.getElementById('current-time').textContent = 
+                `当前时间: ${now.toLocaleString('zh-CN')}`;
+            
+            // 计算今日进度
+            const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+            const endOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+            const todayProgress = (now - startOfDay) / (endOfDay - startOfDay);
+            const todayPercent = (todayProgress * 100).toFixed(2);
+            
+            document.getElementById('today-progress').style.width = `${todayPercent}%`;
+            document.getElementById('today-percent').textContent = `${todayPercent}%`;
+            
+            // 计算今日剩余时间
+            const todayLeft = endOfDay - now;
+            const todayLeftHours = Math.floor(todayLeft / (1000 * 60 * 60));
+            const todayLeftMinutes = Math.floor((todayLeft % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('today-left').textContent = `${todayLeftHours}时${todayLeftMinutes}分`;
+            
+            // 计算今日已过时间
+            const todayElapsed = now - startOfDay;
+            const todayElapsedHours = Math.floor(todayElapsed / (1000 * 60 * 60));
+            const todayElapsedMinutes = Math.floor((todayElapsed % (1000 * 60 * 60)) / (1000 * 60));
+            document.getElementById('today-elapsed').textContent = `${todayElapsedHours}时${todayElapsedMinutes}分`;
+            
+            // 计算本周进度
+            const startOfWeek = new Date(now);
+            startOfWeek.setDate(now.getDate() - now.getDay() + (now.getDay() === 0 ? -6 : 1)); // 周一为周开始
+            startOfWeek.setHours(0, 0, 0, 0);
+            
+            const endOfWeek = new Date(startOfWeek);
+            endOfWeek.setDate(startOfWeek.getDate() + 7);
+            
+            const weekProgress = (now - startOfWeek) / (endOfWeek - startOfWeek);
+            const weekPercent = (weekProgress * 100).toFixed(2);
+            
+            document.getElementById('week-progress').style.width = `${weekPercent}%`;
+            document.getElementById('week-percent').textContent = `${weekPercent}%`;
+            
+            // 计算本周剩余时间
+            const weekLeft = endOfWeek - now;
+            const weekLeftDays = Math.floor(weekLeft / (1000 * 60 * 60 * 24));
+            document.getElementById('week-left').textContent = `${weekLeftDays}天`;
+            
+            // 计算本周已过时间
+            const weekElapsed = now - startOfWeek;
+            const weekElapsedDays = Math.floor(weekElapsed / (1000 * 60 * 60 * 24));
+            document.getElementById('week-elapsed').textContent = `${weekElapsedDays}天`;
+            
+            // 计算本月进度
+            const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 1);
+            const monthProgress = (now - startOfMonth) / (endOfMonth - startOfMonth);
+            const monthPercent = (monthProgress * 100).toFixed(2);
+            
+            document.getElementById('month-progress').style.width = `${monthPercent}%`;
+            document.getElementById('month-percent').textContent = `${monthPercent}%`;
+            
+            // 计算本月剩余时间
+            const monthLeft = endOfMonth - now;
+            const monthLeftDays = Math.floor(monthLeft / (1000 * 60 * 60 * 24));
+            document.getElementById('month-left').textContent = `${monthLeftDays}天`;
+            
+            // 计算本月已过时间
+            const monthElapsed = now - startOfMonth;
+            const monthElapsedDays = Math.floor(monthElapsed / (1000 * 60 * 60 * 24));
+            document.getElementById('month-elapsed').textContent = `${monthElapsedDays}天`;
+            
+            // 计算今年进度
+            const startOfYear = new Date(now.getFullYear(), 0, 1);
+            const endOfYear = new Date(now.getFullYear() + 1, 0, 1);
+            const yearProgress = (now - startOfYear) / (endOfYear - startOfYear);
+            const yearPercent = (yearProgress * 100).toFixed(2);
+            
+            document.getElementById('year-progress').style.width = `${yearPercent}%`;
+            document.getElementById('year-percent').textContent = `${yearPercent}%`;
+            
+            // 计算今年剩余时间
+            const yearLeft = endOfYear - now;
+            const yearLeftMonths = Math.floor(yearLeft / (1000 * 60 * 60 * 24 * 30.44));
+            document.getElementById('year-left').textContent = `${yearLeftMonths}个月`;
+            
+            // 计算今年已过时间
+            const yearElapsed = now - startOfYear;
+            const yearElapsedMonths = Math.floor(yearElapsed / (1000 * 60 * 60 * 24 * 30.44));
+            document.getElementById('year-elapsed').textContent = `${yearElapsedMonths}个月`;
+        }
+        
+        // 初始调用
+        updateTimeProgress();
+        
+        // 每秒更新一次
+        setInterval(updateTimeProgress, 1000);
+    </script>
+</body>
+</html>
