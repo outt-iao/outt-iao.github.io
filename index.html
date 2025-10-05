@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>时空胶囊 - 时间流逝进度条</title>
+    <title>时空胶囊 - 横屏时间流逝进度条</title>
     <style>
         * {
             margin: 0;
@@ -17,63 +17,73 @@
             color: #fff;
             min-height: 100vh;
             display: flex;
-            flex-direction: column;
             align-items: center;
-            padding: 15px 15px;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: auto;
         }
         
         .container {
+            display: flex;
             max-width: 1200px;
             width: 100%;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .time-display {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
             text-align: center;
         }
         
         .current-time {
+            font-size: 3.5rem;
+            font-weight: bold;
             margin-bottom: 20px;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 12px 20px;
-            border-radius: 50px;
-            display: inline-block;
-            backdrop-filter: blur(5px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            width: 100%;
-            max-width: 300px;
-        }
-        
-        .header {
-            margin-bottom: 20px;
-        }
-        
-        h1 {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
             background: linear-gradient(90deg, #ff6ec7, #7873f5);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 15px rgba(255, 110, 199, 0.5);
+            text-shadow: 0 0 20px rgba(255, 110, 199, 0.5);
+            line-height: 1.2;
+        }
+        
+        .current-date {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        
+        .title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, #4facfe, #00f2fe);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         
         .subtitle {
-            font-size: 0.95rem;
+            font-size: 1rem;
             opacity: 0.8;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.4;
+            max-width: 300px;
+            line-height: 1.5;
         }
         
-        .capsules-container {
+        .countdowns {
+            flex: 1.5;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
         }
         
-        .capsule {
+        .countdown-card {
             background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(10px);
-            border-radius: 40px;
-            padding: 20px 15px;
+            border-radius: 20px;
+            padding: 25px 20px;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -81,19 +91,19 @@
             overflow: hidden;
         }
         
-        .capsule:hover {
-            transform: translateY(-3px);
+        .countdown-card:hover {
+            transform: translateY(-5px);
             box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
         }
         
-        .capsule::before {
+        .countdown-card::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 3px;
-            border-radius: 40px 40px 0 0;
+            height: 4px;
+            border-radius: 20px 20px 0 0;
         }
         
         .today::before {
@@ -112,27 +122,27 @@
             background: linear-gradient(90deg, #9d50bb, #6e48aa);
         }
         
-        .capsule-title {
-            font-size: 1.1rem;
-            margin-bottom: 12px;
+        .card-title {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
         
         .progress-container {
             background: rgba(255, 255, 255, 0.15);
-            border-radius: 40px;
+            border-radius: 20px;
             height: 16px;
-            margin: 12px 0;
+            margin: 15px 0;
             overflow: hidden;
             position: relative;
         }
         
         .progress-bar {
             height: 100%;
-            border-radius: 40px;
+            border-radius: 20px;
             transition: width 1s ease;
             position: relative;
         }
@@ -154,17 +164,17 @@
         }
         
         .progress-text {
-            font-size: 1.6rem;
+            font-size: 2rem;
             font-weight: bold;
-            margin: 8px 0;
+            margin: 10px 0;
             text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
         }
         
         .time-details {
             display: flex;
             justify-content: space-between;
-            margin-top: 12px;
-            font-size: 0.85rem;
+            margin-top: 15px;
+            font-size: 0.9rem;
         }
         
         .time-left {
@@ -180,61 +190,94 @@
             opacity: 0.7;
         }
         
-        @media (max-width: 768px) {
-            body {
-                padding: 10px 10px;
+        /* 响应式设计 */
+        @media (max-width: 1024px) {
+            .container {
+                flex-direction: column;
+                gap: 40px;
             }
             
-            .capsules-container {
-                grid-template-columns: 1fr;
-                gap: 12px;
+            .time-display {
+                width: 100%;
             }
             
-            .capsule {
-                max-width: 100%;
-                padding: 18px 12px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
+            .countdowns {
+                width: 100%;
             }
             
             .current-time {
-                font-size: 1rem;
-                padding: 10px 15px;
-                margin-bottom: 15px;
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .countdowns {
+                grid-template-columns: 1fr;
+            }
+            
+            .current-time {
+                font-size: 2.2rem;
+            }
+            
+            .current-date {
+                font-size: 1.2rem;
+            }
+            
+            .title {
+                font-size: 1.8rem;
             }
         }
         
         @media (max-width: 480px) {
-            .capsule-title {
-                font-size: 1rem;
+            body {
+                padding: 15px;
+            }
+            
+            .current-time {
+                font-size: 1.8rem;
+            }
+            
+            .countdown-card {
+                padding: 20px 15px;
             }
             
             .progress-text {
-                font-size: 1.4rem;
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* 横屏优化 */
+        @media (orientation: landscape) and (max-height: 500px) {
+            body {
+                padding: 10px;
             }
             
-            .time-details {
-                font-size: 0.8rem;
+            .container {
+                gap: 20px;
+            }
+            
+            .current-time {
+                font-size: 2.5rem;
+            }
+            
+            .countdown-card {
+                padding: 15px 12px;
             }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="current-time" id="current-time">
-            当前时间: 加载中...
-        </div>
-        
-        <div class="header">
-            <h1>时空胶囊</h1>
+        <div class="time-display">
+            <div class="current-time" id="current-time">00:00:00</div>
+            <div class="current-date" id="current-date">2023年1月1日 星期X</div>
+            <h1 class="title">时空胶囊</h1>
             <p class="subtitle">时间悄然流逝，每一刻都值得珍惜。把握当下，创造未来。</p>
         </div>
         
-        <div class="capsules-container">
-            <div class="capsule today">
-                <h2 class="capsule-title">
+        <div class="countdowns">
+            <div class="countdown-card today">
+                <h2 class="card-title">
                     <span>⏳</span> 今日
                 </h2>
                 <div class="progress-container">
@@ -251,8 +294,8 @@
                 </div>
             </div>
             
-            <div class="capsule week">
-                <h2 class="capsule-title">
+            <div class="countdown-card week">
+                <h2 class="card-title">
                     <span>📅</span> 本周
                 </h2>
                 <div class="progress-container">
@@ -269,8 +312,8 @@
                 </div>
             </div>
             
-            <div class="capsule month">
-                <h2 class="capsule-title">
+            <div class="countdown-card month">
+                <h2 class="card-title">
                     <span>📆</span> 本月
                 </h2>
                 <div class="progress-container">
@@ -287,8 +330,8 @@
                 </div>
             </div>
             
-            <div class="capsule year">
-                <h2 class="capsule-title">
+            <div class="countdown-card year">
+                <h2 class="card-title">
                     <span>🎉</span> 今年
                 </h2>
                 <div class="progress-container">
@@ -312,8 +355,18 @@
             const now = new Date();
             
             // 更新当前时间显示
-            document.getElementById('current-time').textContent = 
-                `当前时间: ${now.toLocaleString('zh-CN')}`;
+            const timeString = now.toLocaleTimeString('zh-CN');
+            document.getElementById('current-time').textContent = timeString;
+            
+            // 更新当前日期显示
+            const dateOptions = { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric', 
+                weekday: 'long' 
+            };
+            const dateString = now.toLocaleDateString('zh-CN', dateOptions);
+            document.getElementById('current-date').textContent = dateString;
             
             // 计算今日进度
             const startOfDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
