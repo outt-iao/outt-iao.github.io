@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书签</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 15px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            padding: 15px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .bookmarks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+            gap: 5px;
+            justify-items: center;
+        }
+        
+        .bookmark-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            transition: transform 0.3s ease;
+            padding: 5px;
+        }
+        
+        .bookmark-item:hover {
+            transform: translateY(-3px);
+        }
+        
+        .bookmark-icon {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 8px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none !important;
+        }
+        
+        .bookmark-icon::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .bookmark-icon:hover::before {
+            opacity: 1;
+        }
+        
+        .bookmark-icon:hover {
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .bookmark-name {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #2c3e50;
+            font-weight: 500;
+            line-height: 1.2;
+            max-width: 90px;
+            word-break: break-word;
+        }
+        
+        .bookmark-remark {
+            font-size: 0.65rem;
+            color: #7f8c8d;
+            margin-top: 2px;
+            text-align: center;
+            max-width: 90px;
+            line-height: 1.1;
+            max-height: 2.2em;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+        }
+        
+        .bookmark-remark:empty {
+            display: none;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 15px;
+            color: #7f8c8d;
+            font-size: 0.85rem;
+        }
+        
+        @media (max-width: 768px) {
+            .bookmarks-grid {
+                grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+                gap: 5px;
+            }
+            
+            .bookmark-icon {
+                width: 65px;
+                height: 65px;
+                font-size: 1.3rem;
+            }
+            
+            h1 {
+                font-size: 1.8rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .bookmarks-grid {
+                grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+                gap: 5px;
+            }
+            
+            .bookmark-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.2rem;
+            }
+            
+            .bookmark-name {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>我的书签</h1>
+            <p class="subtitle">点击图标访问相应网站</p>
+        </header>
+        
+        <div class="bookmarks-grid" id="bookmarksContainer">
+            <!-- 书签将通过JavaScript动态生成 -->
+        </div>
+        
+        <footer>
+            <p>共 <span id="bookmarkCount">0</span> 个书签</p>
+        </footer>
+    </div>
+
+    <script>
+        // 书签数据
+        const bookmarksData = {
+            "bookmarks": [
+                {
+                    "id": 1,
+                    "nickname": "vnc32",
+                    "url": "https://cfoos.pages.dev/raw/rj/VNC32.exe",
+                    "remark": "",
+                    "color": "#4a6fa5"
+                },
+                {
+                    "nickname": "VNC32_2",
+                    "url": "https://pinco.seewo.com/s/d46d8e959d934734902496469460504b",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 2
+                },
+                {
+                    "nickname": "vnc64",
+                    "url": "https://cfoos.pages.dev/raw/rj/VNC64.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 3
+                },
+                {
+                    "nickname": "VNC64_2",
+                    "url": "https://pinco.seewo.com/s/79806b6164774e88907d0563956b1a81",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 4
+                },
+                {
+                    "nickname": "lansee",
+                    "url": "https://cfoos.pages.dev/raw/rj/LanSee.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 5
+                },
+                {
+                    "nickname": "LanSee_2",
+                    "url": "https://pinco.seewo.com/s/0d9019df35ee4ed9ab6558ae6ee61679",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 6
+                },
+                {
+                    "nickname": "portscan",
+                    "url": "https://cfoos.pages.dev/raw/rj/PortScan.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 7
+                },
+                {
+                    "nickname": "PortScan_2",
+                    "url": "https://pinco.seewo.com/s/6e9f5b788b8c4bc29b991b8a886371d7",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 8
+                },
+                {
+                    "nickname": "向日葵 (旧版)",
+                    "url": "https://client-api.oray.com/softwares/65/download?versionid=1734",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 9
+                },
+                {
+                    "nickname": "向日葵 (新版)",
+                    "url": "https://dw.oray.com/sunlogin/windows/SunloginClient_15.8.2.19742_x64.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 10
+                },
+                {
+                    "nickname": "360 安全浏览器",
+                    "url": "https://down.360safe.com/se/360se_setup.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 11
+                },
+                {
+                    "nickname": "电脑配置读取",
+                    "url": "https://pinco.seewo.com/s/7a71de3d6d75484ab9e2c152b8361f44",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 12
+                },
+                {
+                    "nickname": "Scan-Mac",
+                    "url": "https://cfoos.pages.dev/raw/rj/Scan-Mac.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 13
+                },
+                {
+                    "nickname": "mping",
+                    "url": "https://cfoos.pages.dev/raw/rj/mPing.exe",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 14
+                },
+                {
+                    "nickname": "酷狗音乐",
+                    "url": "https://download.kugou.com/download/kugou_pc",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 15
+                },
+                {
+                    "nickname": "UltraISO",
+                    "url": "https://pinco.seewo.com/s/59374694e2f644b48c7d3b6832ecb359",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 16
+                },
+                {
+                    "nickname": "键盘测试软件",
+                    "url": "https://pinco.seewo.com/s/30abe3538d134913b62e7e815e4deb59",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 17
+                },
+                {
+                    "nickname": "speedtest",
+                    "url": "https://www.speedtest.cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 18
+                },
+                {
+                    "nickname": "广东电信测速",
+                    "url": "https://10000.gd.cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 19
+                },
+                {
+                    "nickname": "网络剪贴板 netcut",
+                    "url": "https://netcut.cn",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 20
+                },
+                {
+                    "nickname": "批量重命名",
+                    "url": "https://lanzyun.lanzouy.com/iCxaE08r3fod",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 21
+                },
+                {
+                    "nickname": "WinNTSetup",
+                    "url": "https://www.lanzoui.com/b695886",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 22
+                },
+                {
+                    "id": 23,
+                    "nickname": "海康工具",
+                    "url": "https://partners.hikvision.com/tools",
+                    "remark": "",
+                    "color": "#ff0000"
+                },
+                {
+                    "id": 24,
+                    "nickname": "TP-LINK 资料中心",
+                    "url": "https://resource.tp-link.com.cn/pc/docCenter/showDoc?id=1656038832408051",
+                    "remark": "",
+                    "color": "#ff0000"
+                },
+                {
+                    "nickname": "ip111",
+                    "url": "https://ip111.cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 25
+                },
+                {
+                    "nickname": "免费视频",
+                    "url": "https://www.ysxq.cc/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 26
+                },
+                {
+                    "nickname": "opencut",
+                    "url": "https://opencut.net/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 27
+                },
+                {
+                    "nickname": "DiskGenius Pro",
+                    "url": "https://www.cmdpe.com/post/38.html",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 28
+                },
+                {
+                    "nickname": "DiskGenius",
+                    "url": "https://macace.lanzouj.com/b0134amab",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 29
+                },
+                {
+                    "nickname": "apks",
+                    "url": "https://liteapks.com",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 30
+                },
+                {
+                    "nickname": "apkpure",
+                    "url": "https://m.apkpure.com/cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 31
+                },
+                {
+                    "nickname": "希沃品课",
+                    "url": "https://pinco.seewo.com/teacher/main/drive/resource",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 32
+                },
+                {
+                    "id": 33,
+                    "nickname": "设备搜索补丁",
+                    "url": "https://pinco.seewo.com/s/bef3300369c74043968f8acfac5088aa",
+                    "remark": "",
+                    "color": "#4a6fa5"
+                },
+                {
+                    "nickname": "Win系统",
+                    "url": "https://hellowindows.cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 34
+                },
+                {
+                    "nickname": "萤石云",
+                    "url": "https://share.hikmall.com/common/mobileAppDownloadGuide/h5?http://support.hikvision.com:8085?QD=04&SN= FK9928639 PThhP8A7 HNVR3110-V3",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 35
+                },
+                {
+                    "nickname": "日志",
+                    "url": "https://v2ex.com/t/1145554#reply23",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 36
+                },
+                {
+                    "nickname": "可视化存储",
+                    "url": "https://pinco.seewo.com/s/cfd0d1706d074bfaab893353b4acc17e",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 37
+                },
+                {
+                    "nickname": "禁止更新",
+                    "url": "https://pinco.seewo.com/s/abf57808a47f4033a221117ccacf7628",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 38
+                },
+                {
+                    "nickname": "印",
+                    "url": "http://66.59.199.196:9002/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 39
+                },
+                {
+                    "nickname": "clashverge",
+                    "url": "https://clashverge.net/other_tools/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 40
+                },
+                {
+                    "nickname": "万店掌",
+                    "url": "https://www.ovopark.com/resource/download",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 41
+                },
+                {
+                    "nickname": "新nps",
+                    "url": "https://github.com/djylb/nps",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 42
+                },
+                {
+                    "nickname": "扩展推荐",
+                    "url": "https://www.v2ex.com/t/1151179#reply12",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 43
+                },
+                {
+                    "nickname": "在线转换器",
+                    "url": "https://convertio.co/zh/image-converter/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 44
+                },
+                {
+                    "nickname": "情侣飞行棋",
+                    "url": "https://couplegamenight.com/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 45
+                },
+                {
+                    "nickname": "语音打字",
+                    "url": "https://lazytyper.com/zh",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 46
+                },
+                {
+                    "nickname": "ai生图",
+                    "url": "https://musion.art/zh/explore",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 47
+                },
+                {
+                    "nickname": "图片切分工具",
+                    "url": "https://pic.web-tools.work/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 48
+                },
+                {
+                    "nickname": "梦魇兽",
+                    "url": "https://nightmare.press/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 49
+                },
+                {
+                    "nickname": "哈希密码生成",
+                    "url": "https://tinyfilemanager.github.io/docs/pwd.html",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 50
+                },
+                {
+                    "nickname": "nps",
+                    "url": "https://github.com/yisier/nps",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 51
+                },
+                {
+                    "nickname": "nps",
+                    "url": "https://github.com/ehang-io/nps",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 52
+                },
+                {
+                    "nickname": "cinnamon",
+                    "url": "https://www.geekxw.top/2723/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 53
+                },
+                {
+                    "id": 54,
+                    "nickname": "最新版frp32编译",
+                    "url": "https://github.com/fatedier/frp/issues/3916#issuecomment-1886139232",
+                    "remark": "",
+                    "color": "#4a6fa5"
+                },
+                {
+                    "nickname": "流量杀手",
+                    "url": "https://kill.catiz.cn/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 55
+                },
+                {
+                    "nickname": "Font Awesome 图标类名",
+                    "url": "https://fontawesome.com/search?f=classic&s=solid&o=r",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 56
+                },
+                {
+                    "nickname": "‎inftab主页",
+                    "url": "https://inftab.com/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 57
+                },
+                {
+                    "nickname": "CodeBuddy",
+                    "url": "https://www.codebuddy.ai/",
+                    "remark": "",
+                    "color": "#4a6fa5",
+                    "id": 58
+                },
+                {
+                    "id": 59,
+                    "nickname": "openwrt",
+                    "url": "https://github.com/AUK9527/Are-u-ok?tab=readme-ov-file",
+                    "remark": "",
+                    "color": "#4a6fa5"
+                }
+            ]
+        };
+
+        // 生成网站标题缩写
+        function generateAbbreviation(name) {
+            // 如果是中文，取前两个字符
+            if (/[\u4e00-\u9fa5]/.test(name)) {
+                return name.length > 2 ? name.substring(0, 2) : name;
+            }
+            
+            // 如果是英文，取每个单词的首字母，最多两个
+            const words = name.split(/[\s\-_]+/);
+            if (words.length >= 2) {
+                return (words[0].charAt(0) + words[1].charAt(0)).toUpperCase();
+            } else {
+                return name.length > 2 ? name.substring(0, 4).toUpperCase() : name.toUpperCase();
+            }
+        }
+
+        // 渲染书签
+        function renderBookmarks() {
+            const container = document.getElementById('bookmarksContainer');
+            const countElement = document.getElementById('bookmarkCount');
+            
+            // 清空容器
+            container.innerHTML = '';
+            
+            // 按id排序书签（支持小数）
+            const sortedBookmarks = [...bookmarksData.bookmarks].sort((a, b) => {
+                // 将id转换为数字进行比较
+                const idA = parseFloat(a.id);
+                const idB = parseFloat(b.id);
+                return idA - idB;
+            });
+            
+            // 渲染每个书签
+            sortedBookmarks.forEach(bookmark => {
+                const abbreviation = generateAbbreviation(bookmark.nickname);
+                
+                const bookmarkElement = document.createElement('div');
+                bookmarkElement.className = 'bookmark-item';
+                
+                bookmarkElement.innerHTML = `
+                    <a href="${bookmark.url}" target="_blank" class="bookmark-icon" style="background-color: ${bookmark.color}">
+                        ${abbreviation}
+                    </a>
+                    <div class="bookmark-name">${bookmark.nickname}</div>
+                    ${bookmark.remark ? `<div class="bookmark-remark">${bookmark.remark}</div>` : ''}
+                `;
+                
+                container.appendChild(bookmarkElement);
+            });
+            
+            // 更新书签数量
+            countElement.textContent = bookmarksData.bookmarks.length;
+        }
+
+        // 页面加载完成后渲染书签
+        document.addEventListener('DOMContentLoaded', renderBookmarks);
+    </script>
+</body>
+</html>
