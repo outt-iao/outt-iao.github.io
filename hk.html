@@ -3,170 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>海康软件工具中心</title>
+    <title>软件工具中心</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: "Microsoft YaHei", sans-serif;
-        }
+        :root { --primary: #1a73e8; --bg: #f5f7fa; --text: #333; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: "Microsoft YaHei", sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
         
-        body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 30px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #1a73e8;
-        }
-        
-        .search-box {
-            display: flex;
-            width: 300px;
-        }
-        
-        .search-box input {
-            flex: 1;
-            padding: 10px 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px 0 0 4px;
-            outline: none;
-            transition: border-color 0.3s;
-        }
-        
-        .search-box input:focus {
-            border-color: #1a73e8;
-        }
-        
-        .search-box button {
-            padding: 10px 15px;
-            background-color: #1a73e8;
-            color: white;
-            border: none;
-            border-radius: 0 4px 4px 0;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        
-        .search-box button:hover {
-            background-color: #0d62c9;
-        }
-        
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        
-        .tool-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-            padding: 20px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-        
-        .tool-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        .tool-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 15px;
-        }
-        
-        .tool-name {
-            font-size: 18px;
-            font-weight: bold;
-            color: #1a73e8;
-            flex: 1;
-        }
-        
-        .tool-category {
-            background-color: #e8f0fe;
-            color: #1a73e8;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-size: 12px;
-            white-space: nowrap;
-            margin-left: 10px;
-        }
-        
-        .tool-description {
-            color: #666;
-            font-size: 14px;
-            margin-bottom: 15px;
-        }
-        
-        .section-title {
-            font-size: 20px;
-            margin: 30px 0 15px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #eaeaea;
-        }
-        
-        .no-results {
-            text-align: center;
-            padding: 40px;
-            color: #888;
-            font-size: 16px;
-            grid-column: 1 / -1;
-        }
-        
-        .highlight {
-            background-color: #fff9c4;
-            padding: 0 2px;
-            border-radius: 2px;
-        }
-        
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .search-box {
-                width: 100%;
-                margin-top: 15px;
-            }
-            
-            .tools-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .tool-header {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .tool-category {
-                margin-left: 0;
-                margin-top: 8px;
-            }
-        }
+        header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid #ddd; padding-bottom: 15px; flex-wrap: wrap; gap: 15px; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary); }
+        .search-box { display: flex; width: 300px; }
+        .search-box input { flex: 1; padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px 0 0 4px; outline: none; }
+        .search-box button { padding: 8px 15px; background: var(--primary); color: white; border: none; border-radius: 0 4px 4px 0; cursor: pointer; }
+
+        .tools-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
+        .tool-card { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); padding: 20px; transition: 0.3s; cursor: pointer; }
+        .tool-card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.15); }
+        .tool-name { font-size: 18px; font-weight: bold; color: var(--primary); margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; }
+        .tag { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #e8f0fe; }
+        .tool-desc { color: #666; font-size: 14px; white-space: pre-line; }
+        .highlight { background: #fff9c4; font-weight: bold; }
+        @media (max-width: 600px) { .search-box { width: 100%; } }
     </style>
 </head>
 <body>
@@ -174,220 +31,58 @@
         <header>
             <div class="logo">软件工具中心</div>
             <div class="search-box">
-                <input type="text" id="searchInput" placeholder="搜索工具...">
-                <button id="searchButton">搜索</button>
+                <input type="text" id="searchInput" placeholder="搜索工具或分类...">
+                <button onclick="render()">搜索</button>
             </div>
         </header>
-        
-        <div class="tools-grid" id="toolsContainer">
-            <div class="tool-card" data-name="海康设备网络搜索" data-description="" data-url="https://partners.hikvision.com/tools/tooldetail?id=599912016971890688" data-category="网络工具">
-                <div class="tool-header">
-                    <div class="tool-name">海康设备网络搜索</div>
-                    <div class="tool-category">需安装</div>
-                </div>
-                <div class="tool-description">
-                    搜索海康设备
-                </br>
-                    打开后在地址栏再回车一下
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="TP-LINK安防运维配置工具" data-description="" data-url="https://resource.tp-link.com.cn/pc/docCenter/showDoc?id=1656038832408051" data-category="配置工具">
-                <div class="tool-header">
-                    <div class="tool-name">TP-LINK安防运维配置工具</div>
-                    <div class="tool-category">需安装</div>
-                </div>
-                <div class="tool-description">
-                    TP摄像头专用,支持修改参数,修改密码等,支持搜索onvif设备
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="onvif工具demo" data-description="" data-url="https://pinco.seewo.com/s/6560a0f19fe04151b1ddc8973e3f3739#打开链接，下载我所分享的文件吧" data-category="开发工具">
-                <div class="tool-header">
-                    <div class="tool-name">onvif工具demo</div>
-                    <div class="tool-category">免安装</div>
-                </div>
-                <div class="tool-description">
-                    支持搜索onvif设备，支持搜索局域网大多数监控设备，
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="万店掌搜索工具" data-description="" data-url="https://www.ovopark.com/resource/download#设备搜索工具" data-category="计算工具">
-                <div class="tool-header">
-                    <div class="tool-name">万店掌搜索工具</div>
-                    <div class="tool-category">需安装</div>
-                </div>
-                <div class="tool-description">
-                    只支持搜索海康设备,和小一部分onvif设备比如天地伟业,支持修改网络参数
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="私人定制的安防运维工具" data-description="" data-url="https://pan.baidu.com/s/1Y1TZISC5FNXr-GtiYgP4Ug?pwd=52pj" data-category="计算工具">
-                 <div class="tool-header">
-                <div class="tool-name">私人定制的安防运维工具</div>
-                    <div class="tool-category">收费</div>
-                </div>
-                <div class="tool-description">
-                    支持批量操作
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="私人定制的安防运维工具2" data-description="" data-url="http://pan.hkipc.cn:88/kod/#" data-category="诊断工具">
-                <div class="tool-header">
-                    <div class="tool-name">私人定制的安防运维工具2</div>
-                    <div class="tool-category">收费</div>
-                </div>
-                <div class="tool-description">
-                    支持批量操作
-                </div>
-            </div>
-            
-            <div class="tool-card" data-name="易调试" data-description="" data-url="https://pinco.seewo.com/s/a87f98a12ca14a8fa069cb009a16965f#打开链接，下载我所分享的文件吧" data-category="诊断工具">
-                <div class="tool-header">
-                    <div class="tool-name">易调试</div>
-                    <div class="tool-category">Android</div>
-                </div>
-                <div class="tool-description">
-                    支持搜索海康设备,修改参数
-                </div>
-            </div>
-
-            <div class="tool-card" data-name="监控Onvif" data-description="" data-url="https://pinco.seewo.com/s/2e16757612984e0a9fe7f6fc9a434d4c#打开链接，下载我所分享的文件吧" data-category="诊断工具">
-                <div class="tool-header">
-                    <div class="tool-name">监控Onvif</div>
-                    <div class="tool-category">Android</div>
-                </div>
-                <div class="tool-description">
-                    支持搜索大多数监控设备,已翻译成中文
-                </div>
-            </div>
-
-            <div class="tool-card" data-name="Network Analyzer" data-description="" data-url="https://pinco.seewo.com/s/99946a18a6bc45a6bc3d204998719d17#打开链接，下载我所分享的文件吧" data-category="诊断工具">
-                <div class="tool-header">
-                    <div class="tool-name">Network Analyzer</div>
-                    <div class="tool-category">Android</div>
-                </div>
-                <div class="tool-description">
-                    支持获取局域网所有ip地址
-                </div>
-            </div>
-
-             <div class="tool-card" data-name="Binary Eye" data-description="" data-url="https://pinco.seewo.com/s/81c9a7e5bd7447f68357bc7f22341b90#打开链接，下载我所分享的文件吧" data-category="诊断工具">
-                <div class="tool-header">
-                    <div class="tool-name">Binary Eye</div>
-                    <div class="tool-category">Android</div>
-                </div>
-                <div class="tool-description">
-                    手机上非常好用的二维码扫描工具
-                </div>
-            </div>
-        </div>
+        <div class="tools-grid" id="toolsContainer"></div>
     </div>
-    
+
     <script>
-        // 搜索功能实现
-        document.getElementById('searchButton').addEventListener('click', performSearch);
-        document.getElementById('searchInput').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                performSearch();
-            }
-        });
+        // 【以后编辑内容只改这里即可】
+        const tools = [
+            { name: "海康设备网络搜索", cat: "需安装", desc: "搜索海康设备\n打开后在地址栏再回车一下", url: "https://partners.hikvision.com/tools/tooldetail?id=599912016971890688" },
+            { name: "TP-LINK安防运维", cat: "需安装", desc: "TP摄像头专用,支持修改参数/密码,支持搜索onvif设备", url: "https://resource.tp-link.com.cn/pc/docCenter/showDoc?id=1656038832408051" },
+            { name: "onvif工具demo", cat: "免安装", desc: "支持搜索onvif及局域网大多数监控设备", url: "https://pinco.seewo.com/s/6560a0f19fe04151b1ddc8973e3f3739" },
+            { name: "万店掌搜索工具", cat: "需安装", desc: "主搜海康及部分天地伟业设备,支持修改网络参数", url: "https://www.ovopark.com/resource/download" },
+            { name: "私人定制安防工具", cat: "收费", desc: "支持批量操作的运维工具", url: "https://pan.baidu.com/s/1Y1TZISC5FNXr-GtiYgP4Ug?pwd=52pj" },
+            { name: "私人定制工具2", cat: "收费", desc: "支持批量操作", url: "http://pan.hkipc.cn:88/kod/#" },
+            { name: "易调试", cat: "Android", desc: "手机端搜索海康设备,修改参数", url: "https://pinco.seewo.com/s/a87f98a12ca14a8fa069cb009a16965f" },
+            { name: "监控Onvif", cat: "Android", desc: "支持搜索大多数监控设备,已翻译成中文", url: "https://pinco.seewo.com/s/2e16757612984e0a9fe7f6fc9a434d4c" },
+            { name: "Network Analyzer", cat: "Android", desc: "获取局域网内所有IP地址", url: "https://pinco.seewo.com/s/99946a18a6bc45a6bc3d204998719d17" },
+            { name: "Binary Eye", cat: "Android", desc: "非常纯净好用的二维码扫描工具", url: "https://pinco.seewo.com/s/81c9a7e5bd7447f68357bc7f22341b90" },
+            { name: "柚坛工具箱", cat: "Windows", desc: "手机adb工具", url: "https://github.com/Uotan-Dev/UotanToolboxNT" }
+        ];
 
-        // 为所有工具卡片添加点击事件
-        document.querySelectorAll('.tool-card').forEach(card => {
-            card.addEventListener('click', function() {
-                const url = this.getAttribute('data-url');
-                if (url) {
-                    window.open(url, '_blank');
-                }
-            });
-        });
+        function render() {
+            const kw = document.getElementById('searchInput').value.toLowerCase();
+            const container = document.getElementById('toolsContainer');
+            
+            const filtered = tools.filter(t => 
+                t.name.toLowerCase().includes(kw) || 
+                t.cat.toLowerCase().includes(kw) || 
+                t.desc.toLowerCase().includes(kw)
+            );
 
-        function performSearch() {
-            const searchTerm = document.getElementById('searchInput').value.trim().toLowerCase();
-            
-            // 获取所有工具卡片
-            const allCards = document.querySelectorAll('.tool-card');
-            let hasResults = false;
-            
-            // 重置所有卡片显示
-            allCards.forEach(card => {
-                card.style.display = 'block';
-                
-                // 移除之前的高亮
-                const nameElement = card.querySelector('.tool-name');
-                const descElement = card.querySelector('.tool-description');
-                const categoryElement = card.querySelector('.tool-category');
-                
-                nameElement.innerHTML = nameElement.textContent;
-                descElement.innerHTML = descElement.textContent;
-                categoryElement.innerHTML = categoryElement.textContent;
-            });
-            
-            // 如果没有搜索词，显示所有卡片
-            if (searchTerm === '') {
-                return;
-            }
-            
-            // 搜索匹配
-            allCards.forEach(card => {
-                const toolName = card.dataset.name.toLowerCase();
-                const toolDescription = card.dataset.description.toLowerCase();
-                const toolCategory = card.dataset.category.toLowerCase();
-                
-                // 检查是否匹配
-                if (toolName.includes(searchTerm) || toolDescription.includes(searchTerm) || toolCategory.includes(searchTerm)) {
-                    hasResults = true;
-                    
-                    // 高亮匹配的文本
-                    const nameElement = card.querySelector('.tool-name');
-                    const descElement = card.querySelector('.tool-description');
-                    const categoryElement = card.querySelector('.tool-category');
-                    
-                    // 高亮工具名称
-                    if (toolName.includes(searchTerm)) {
-                        const regex = new RegExp(searchTerm, 'gi');
-                        nameElement.innerHTML = nameElement.textContent.replace(regex, match => `<span class="highlight">${match}</span>`);
-                    }
-                    
-                    // 高亮描述
-                    if (toolDescription.includes(searchTerm)) {
-                        const regex = new RegExp(searchTerm, 'gi');
-                        descElement.innerHTML = descElement.textContent.replace(regex, match => `<span class="highlight">${match}</span>`);
-                    }
-                    
-                    // 高亮分类
-                    if (toolCategory.includes(searchTerm)) {
-                        const regex = new RegExp(searchTerm, 'gi');
-                        categoryElement.innerHTML = categoryElement.textContent.replace(regex, match => `<span class="highlight">${match}</span>`);
-                    }
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-            
-            // 处理无结果情况
-            if (!hasResults) {
-                // 显示无结果消息
-                const noResults = document.createElement('div');
-                noResults.className = 'no-results';
-                noResults.textContent = `没有找到与"${searchTerm}"相关的结果`;
-                
-                // 清除之前可能存在的无结果消息
-                const existingNoResults = document.querySelector('.no-results');
-                if (existingNoResults) {
-                    existingNoResults.remove();
-                }
-                
-                document.getElementById('toolsContainer').appendChild(noResults);
-            } else {
-                // 移除无结果消息
-                const existingNoResults = document.querySelector('.no-results');
-                if (existingNoResults) {
-                    existingNoResults.remove();
-                }
-            }
+            container.innerHTML = filtered.map(t => `
+                <div class="tool-card" onclick="window.open('${t.url}', '_blank')">
+                    <div class="tool-name">
+                        ${highlight(t.name, kw)}
+                        <span class="tag">${highlight(t.cat, kw)}</span>
+                    </div>
+                    <div class="tool-desc">${highlight(t.desc, kw)}</div>
+                </div>
+            `).join('') || '<div style="grid-column:1/-1;text-align:center;padding:40px;color:#999">未找到相关工具</div>';
         }
+
+        function highlight(text, kw) {
+            if (!kw) return text;
+            const reg = new RegExp(`(${kw})`, 'gi');
+            return text.replace(reg, '<span class="highlight">$1</span>');
+        }
+
+        document.getElementById('searchInput').oninput = render; // 输入即搜索，更丝滑
+        render(); // 页面加载后立即显示
     </script>
 </body>
 </html>
