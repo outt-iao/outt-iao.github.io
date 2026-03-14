@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>永劫无间-天选试炼系统</title>
+    <style>
+        :root { --gold: #c5a059; --red: #ff4500; --bg: #0d0d0d; --glow: rgba(197, 160, 89, 0.4); }
+        body { 
+            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            color: #fff; font-family: "Microsoft YaHei", sans-serif; 
+            display: flex; flex-direction: column; align-items: center; margin: 0; min-height: 100vh;
+        }
+        
+        h1 { color: var(--gold); margin: 25px 0; letter-spacing: 8px; text-shadow: 0 0 15px var(--glow); }
+
+        /* 一键抽奖大按钮 - 强化金属质感 */
+        .all-in-btn {
+            background: linear-gradient(135deg, #f1d59f 0%, #c5a059 50%, #8b6d31 100%);
+            color: #1a1a1a; font-size: 24px; font-weight: 900; padding: 16px 60px;
+            border: 1px solid #fff; border-radius: 4px; cursor: pointer;
+            box-shadow: 0 0 25px var(--glow); margin-bottom: 40px; transition: 0.2s;
+        }
+        .all-in-btn:hover { transform: scale(1.03); filter: brightness(1.1); box-shadow: 0 0 40px var(--gold); }
+        .all-in-btn:disabled { filter: grayscale(1); cursor: not-allowed; opacity: 0.6; }
+
+        .container { display: flex; justify-content: center; gap: 25px; flex-wrap: wrap; }
+        .wheel-box { 
+            position: relative; width: 310px; text-align: center; 
+            background: rgba(25,25,25,0.9); padding: 20px; border: 1px solid #c5a05944;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .wheel-box h2 { color: var(--gold); font-size: 16px; margin-bottom: 20px; letter-spacing: 2px; opacity: 0.9; }
+        
+        .canvas-wrap { position: relative; width: 280px; height: 280px; margin: 0 auto; }
+        .pointer { 
+            position: absolute; top: -18px; left: 50%; transform: translateX(-50%); 
+            width: 0; height: 0; border-left: 14px solid transparent; border-right: 14px solid transparent; 
+            border-top: 35px solid var(--red); z-index: 10; filter: drop-shadow(0 0 8px var(--red));
+        }
+
+        canvas { width: 100%; height: 100%; transition: transform 4.8s cubic-bezier(0.1, 0, 0, 1); }
+
+        /* 汇总弹窗 */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 100; justify-content: center; align-items: center; }
+        .modal-content { 
+            background: #111; border: 2px solid var(--gold); padding: 40px; border-radius: 4px; 
+            text-align: center; box-shadow: 0 0 80px rgba(197,160,89,0.2); width: 460px;
+            animation: modalIn 0.5s ease-out;
+        }
+        @keyframes modalIn { from { transform: translateY(30px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .result-card { background: #181818; border: 1px solid #333; margin: 12px 0; padding: 15px; border-left: 5px solid var(--gold); text-align: left; }
+        .result-card label { color: #777; font-size: 13px; display: block; margin-bottom: 6px; letter-spacing: 1px; }
+        .result-card b { color: #fff; font-size: 26px; letter-spacing: 1px; }
+        
+        .skill-tag { background: var(--red); color: #fff; padding: 1px 8px; font-size: 16px; border-radius: 2px; margin-left: 12px; vertical-align: middle; }
+        .slogan { color: var(--gold); font-style: italic; margin-top: 25px; display: block; opacity: 0.8; font-size: 14px; }
+        
+        .close-btn { margin-top: 25px; padding: 12px 60px; background: var(--gold); color: #000; border: none; cursor: pointer; font-weight: bold; }
+        .close-btn:hover { background: #fff; }
+    </style>
+</head>
+<body>
+
+    <h1>聚 窟 洲 试 炼 之 门</h1>
+
+    <button id="allInBtn" class="all-in-btn" onclick="spinAll()">听 凭 万 物 指 引</button>
+
+    <div class="container">
+        <div class="wheel-box">
+            <h2>出战英雄</h2>
+            <div class="canvas-wrap">
+                <div class="pointer"></div>
+                <canvas id="heroWheel" width="600" height="600"></canvas>
+            </div>
+        </div>
+        <div class="wheel-box">
+            <h2>近战主武</h2>
+            <div class="canvas-wrap">
+                <div class="pointer"></div>
+                <canvas id="meleWheel" width="600" height="600"></canvas>
+            </div>
+        </div>
+        <div class="wheel-box">
+            <h2>远程副武</h2>
+            <div class="canvas-wrap">
+                <div class="pointer"></div>
+                <canvas id="rangeWheel" width="600" height="600"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div id="allResultModal" class="modal">
+        <div class="modal-content">
+            <h2 style="color:var(--gold); margin-top:0;">天选之人，领命！</h2>
+            
+            <div class="result-card">
+                <label>出战角色</label>
+                <b id="res-hero"></b> <span id="res-skills"></span>
+            </div>
+            <div class="result-card">
+                <label>主战兵刃</label>
+                <b id="res-mele"></b>
+            </div>
+            <div class="result-card">
+                <label>远距压制</label>
+                <b id="res-range"></b>
+            </div>
+
+            <span class="slogan" id="res-slogan">"愿君武运昌隆，把把大吉大利"</span>
+            
+            <button class="close-btn" onclick="closeModal()">进入聚窟洲</button>
+        </div>
+    </div>
+
+    <script>
+        // 数据修正：长弓->弓箭，一弩->连弩
+        const heroes = ["宁红夜", "特木尔", "迦南", "季沧海", "土御门胡桃", "天海", "妖刀姬", "崔三娘", "岳山", "无尘", "顾清寒", "武田信忠", "殷紫萍", "沈妙", "胡为", "季莹莹", "玉玲珑", "哈迪", "魏轻", "刘炼", "席拉", "蓝梦", "巫真", "张起灵"];
+        const meleWeapons = ["长剑", "太刀", "阔刀", "长枪", "匕首", "双节棍", "双刀", "双戟", "斩马刀", "横刀", "棍", "扇", "拳刃", "恒剑"];
+        const rangeWeapons = ["弓箭", "鸟铳", "五眼铳", "火炮", "连弩", "双发火枪", "喷火筒"];
+        const slogans = ["此战必让聚窟洲风云变色！", "利刃已出鞘，只等敌首归。", "这套组合，我能打十个！", "这就是这一局的最优解。", "感受到金光闪闪的气运了吗？"];
+
+        const config = {
+            hero: { items: heroes, canvas: 'heroWheel', currentRot: 0, result: "" },
+            mele: { items: meleWeapons, canvas: 'meleWheel', currentRot: 0, result: "" },
+            range: { items: rangeWeapons, canvas: 'rangeWheel', currentRot: 0, result: "" }
+        };
+
+        function initAll() {
+            Object.keys(config).forEach(type => {
+                const { items, canvas: canvasId } = config[type];
+                const canvas = document.getElementById(canvasId);
+                const ctx = canvas.getContext('2d');
+                const step = (Math.PI * 2) / items.length;
+                
+                for(let i=0; i<items.length; i++) {
+                    ctx.save();
+                    ctx.beginPath();
+                    ctx.moveTo(300, 300);
+                    ctx.arc(300, 300, 300, i * step - Math.PI/2, (i + 1) * step - Math.PI/2);
+                    ctx.fillStyle = i % 2 === 0 ? "#181818" : "#222222";
+                    ctx.fill();
+                    ctx.strokeStyle = "#c5a05933"; 
+                    ctx.lineWidth = 1;
+                    ctx.stroke();
+                    
+                    ctx.translate(300, 300);
+                    ctx.rotate(i * step + step/2 - Math.PI/2);
+                    ctx.fillStyle = "#fff"; 
+                    ctx.font = "bold 20px Microsoft YaHei";
+                    ctx.textAlign = "right";
+                    // 细微优化：微调文字位置，确保长名字不重叠
+                    ctx.fillText(items[i], 275, 8);
+                    ctx.restore();
+                }
+            });
+        }
+
+        function spinAll() {
+            document.getElementById('allInBtn').disabled = true;
+            document.getElementById('allInBtn').innerText = "命 运 轮 转 中...";
+            
+            Object.keys(config).forEach(type => {
+                const c = config[type];
+                const itemCount = c.items.length;
+                const randomIdx = Math.floor(Math.random() * itemCount);
+                const stepDeg = 360 / itemCount;
+                // 精准指向修正
+                const targetDeg = (360 - (randomIdx * stepDeg)) - (stepDeg / 2);
+                c.currentRot += 2160 + targetDeg - (c.currentRot % 360);
+                document.getElementById(c.canvas).style.transform = `rotate(${c.currentRot}deg)`;
+                c.result = c.items[randomIdx];
+            });
+
+            setTimeout(() => {
+                document.getElementById('allInBtn').disabled = false;
+                document.getElementById('allInBtn').innerText = "听 凭 万 物 指 引";
+                showFinalModal();
+            }, 5000);
+        }
+
+        function showFinalModal() {
+            document.getElementById('res-hero').innerText = config.hero.result;
+            const f = Math.floor(Math.random() * 2) + 1;
+            const v = Math.floor(Math.random() * 2) + 1;
+            document.getElementById('res-skills').innerHTML = `<span class="skill-tag">F${f}</span><span class="skill-tag">V${v}</span>`;
+            document.getElementById('res-mele').innerText = config.mele.result;
+            document.getElementById('res-range').innerText = config.range.result;
+            document.getElementById('res-slogan').innerText = `"${slogans[Math.floor(Math.random()*slogans.length)]}"`;
+            document.getElementById('allResultModal').style.display = 'flex';
+        }
+
+        function closeModal() { document.getElementById('allResultModal').style.display = 'none'; }
+        initAll();
+    </script>
+</body>
+</html>
